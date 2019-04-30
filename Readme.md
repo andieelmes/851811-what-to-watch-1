@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Зульфия Салихкулова](https://up.htmlacademy.ru/react/1/user/851811).
-* Наставник: `Неизвестно`.
+* Наставник: [Николай Яшин](https://htmlacademy.ru/profile/id213763).
 
 ---
 
