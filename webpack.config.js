@@ -22,6 +22,12 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: `babel-loader`,
+          options: {
+            presets: [
+              require.resolve('@babel/preset-env'),
+              require.resolve('@babel/preset-react'),
+            ],
+          },
         },
       }
     ],
