@@ -7,16 +7,18 @@ import {MOVIES} from 'mocks/movies';
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`Main page correctly renders`, () => {
-  const clickHandler = jest.fn();
-  const main = shallow(<Main
-    movies={MOVIES}
-    onClick={clickHandler}
-  />);
+describe(`Main component`, () => {
+  it(`should call onClick on movie title click`, () => {
+    const clickHandler = jest.fn();
+    const main = shallow(<Main
+      movies={MOVIES}
+      onClick={clickHandler}
+    />);
 
-  const movieTitleLink = main.find(`.small-movie-card__link`).at(0);
+    const movieTitleLink = main.find(`.small-movie-card__link`).at(0);
 
-  movieTitleLink.simulate(`click`);
+    movieTitleLink.simulate(`click`);
 
-  expect(clickHandler).toHaveBeenCalledTimes(1);
+    expect(clickHandler).toHaveBeenCalledTimes(1);
+  });
 });

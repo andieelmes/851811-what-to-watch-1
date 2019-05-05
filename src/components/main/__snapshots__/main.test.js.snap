@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main component renders correctly 1`] = `
+exports[`Main component should render correctly 1`] = `
 Array [
   <div
     className="visually-hidden"
