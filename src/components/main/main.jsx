@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.string)
+  movies: PropTypes.arrayOf(PropTypes.string),
+  onClick: PropTypes.func,
 };
 
 const Main = (props) => {
   const {
     movies,
+    onClick,
   } = props;
 
   return (
@@ -148,7 +150,7 @@ const Main = (props) => {
                     <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
                   </div>
                   <h3 className="small-movie-card__title">
-                    <a className="small-movie-card__link" href="movie-page.html">{movie}</a>
+                    <a className="small-movie-card__link" href="movie-page.html" onClick={onClick}>{movie}</a>
                   </h3>
                 </article>
               ))
