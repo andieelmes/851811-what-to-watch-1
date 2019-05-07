@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 
 const propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.string),
-  onClick: PropTypes.func,
+  movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        img: PropTypes.string,
+        title: PropTypes.string,
+      })
+  ),
 };
 
 const Main = (props) => {
   const {
     movies,
-    onClick,
   } = props;
 
   return (
@@ -138,24 +143,7 @@ const Main = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {
-              movies.map((movie, index) => (
-                <article
-                  key={index}
-                  className="small-movie-card catalog__movies-card"
-                >
-                  <button className="small-movie-card__play-btn" type="button">Play</button>
-                  <div className="small-movie-card__image">
-                    <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-                  </div>
-                  <h3 className="small-movie-card__title">
-                    <a className="small-movie-card__link" href="movie-page.html" onClick={onClick}>{movie}</a>
-                  </h3>
-                </article>
-              ))
-            }
-          </div>
+          <MovieCardList movies={movies}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
