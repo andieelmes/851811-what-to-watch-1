@@ -5,12 +5,12 @@ import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 
 const movies = [
   {
-    id: `fantastic-beasts-the-crimes-of-grindelwald`,
+    id: 1,
     img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
   },
   {
-    id: `bohemian-rhapsody`,
+    id: 2,
     img: `img/bohemian-rhapsody.jpg`,
     title: `Bohemian Rhapsody`,
   },
@@ -26,10 +26,10 @@ describe(`Movie card list component`, () => {
 
     expect(movieCardList.state(`activeCardId`)).toBe(null);
 
-    const movieCard = movieCardList.find(`#bohemian-rhapsody`);
+    const movieCard = movieCardList.find(`[data-movie-id=1]`);
 
     movieCard.simulate(`mouseenter`);
-    expect(movieCardList.state(`activeCardId`)).toBe(`bohemian-rhapsody`);
+    expect(movieCardList.state(`activeCardId`)).toBe(1);
 
     movieCard.simulate(`mouseleave`);
     expect(movieCardList.state(`activeCardId`)).toBe(null);

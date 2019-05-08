@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   onHover: PropTypes.func.isRequired,
@@ -20,6 +20,7 @@ const MovieCard = (props) => {
 
   return (
     <article
+      data-movie-id={id}
       className="small-movie-card catalog__movies-card"
       onMouseEnter={onHover.bind(null, id)}
       onMouseLeave={onHover.bind(null, null)}

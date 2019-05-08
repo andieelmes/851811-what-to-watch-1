@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import MovieCard from 'components/movie-card/movie-card.jsx';
 
 const movie = {
-  id: `fantastic-beasts-the-crimes-of-grindelwald`,
+  id: 1,
   img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
 };

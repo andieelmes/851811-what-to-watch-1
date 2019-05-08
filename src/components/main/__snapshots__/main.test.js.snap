@@ -377,6 +377,7 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          data-movie-id={1}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -410,6 +411,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          data-movie-id={2}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -443,6 +445,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          data-movie-id={3}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -476,6 +479,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          data-movie-id={4}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -509,6 +513,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          data-movie-id={5}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >

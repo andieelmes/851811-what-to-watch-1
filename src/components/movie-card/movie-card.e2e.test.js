@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import MovieCard from 'components/movie-card/movie-card.jsx';
 
 const movie = {
-  id: `fantastic-beasts-the-crimes-of-grindelwald`,
+  id: 1,
   img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
 };
@@ -26,6 +26,6 @@ describe(`Movie card component`, () => {
 
     playButton.simulate(`click`);
 
-    expect(clickHandler).toHaveBeenCalledWith(`fantastic-beasts-the-crimes-of-grindelwald`);
+    expect(clickHandler).toHaveBeenCalledWith(1);
   });
 });

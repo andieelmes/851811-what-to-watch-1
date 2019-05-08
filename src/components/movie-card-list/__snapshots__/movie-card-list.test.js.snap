@@ -6,6 +6,7 @@ exports[`Movie card list component should render correctly 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
+    data-movie-id={1}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -39,6 +40,7 @@ exports[`Movie card list component should render correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    data-movie-id={2}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >

@@ -5,7 +5,7 @@ import MovieCard from 'components/movie-card/movie-card.jsx';
 const propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
         img: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
       })

@@ -4,12 +4,12 @@ import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 
 const movies = [
   {
-    id: `fantastic-beasts-the-crimes-of-grindelwald`,
+    id: 1,
     img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
   },
   {
-    id: `bohemian-rhapsody`,
+    id: 2,
     img: `img/bohemian-rhapsody.jpg`,
     title: `Bohemian Rhapsody`,
   },
