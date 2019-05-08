@@ -12,20 +12,30 @@ const movie = {
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`Movie card component`, () => {
-  it(`should receive active card id on play button click`, () => {
-    const hoverHandler = jest.fn();
-    const clickHandler = jest.fn();
-    const movieCard = shallow(<MovieCard
+  let movieCard;
+  const hoverHandler = jest.fn();
+  const clickHandler = jest.fn();
+
+  beforeEach(() => {
+    movieCard = shallow(<MovieCard
       {...movie}
       onHover={hoverHandler}
       onClick={clickHandler}
     />);
 
+  });
 
+  it(`should receive active card id on play button click`, () => {
     const playButton = movieCard.find(`button`);
 
     playButton.simulate(`click`);
 
     expect(clickHandler).toHaveBeenCalledWith(1);
+  });
+
+  it(`should receive active card id on hover`, () => {
+    movieCard.simulate(`mouseenter`);
+
+    expect(hoverHandler).toHaveBeenCalledWith(1);
   });
 });
