@@ -22,10 +22,10 @@ const MovieCard = (props) => {
     <article
       data-movie-id={id}
       className="small-movie-card catalog__movies-card"
-      onMouseEnter={onHover.bind(null, id)}
-      onMouseLeave={onHover.bind(null, null)}
+      onMouseEnter={() => onHover(id)}
+      onMouseLeave={() => onHover(null)}
     >
-      <button className="small-movie-card__play-btn" type="button" onClick={onClick.bind(null, id)}>Play</button>
+      <button className="small-movie-card__play-btn" type="button" onClick={() => onClick(id)}>Play</button>
       <div className="small-movie-card__image">
         <img src={img} alt={title} width="280" height="175" />
       </div>
