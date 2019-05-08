@@ -12,7 +12,7 @@ const propTypes = {
   ),
 };
 
-class MovieCardList extends React.Component {
+class MovieCardList extends React.PureComponent {
   constructor(props) {
     super(props);
 
