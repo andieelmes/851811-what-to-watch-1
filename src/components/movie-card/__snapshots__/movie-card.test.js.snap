@@ -7,21 +7,26 @@ exports[`Movie card component should render correctly 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  <button
-    className="small-movie-card__play-btn"
-    onClick={[Function]}
-    type="button"
-  >
-    Play
-  </button>
   <div
     className="small-movie-card__image"
+    style={null}
   >
     <img
       alt="Fantastic Beasts: The Crimes of Grindelwald"
       height="175"
       src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+      style={null}
       width="280"
+    />
+    <video
+      controls={true}
+      muted={true}
+      poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
     />
   </div>
   <h3

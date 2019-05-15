@@ -381,21 +381,26 @@ Array [
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <button
-            className="small-movie-card__play-btn"
-            onClick={[Function]}
-            type="button"
-          >
-            Play
-          </button>
           <div
             className="small-movie-card__image"
+            style={null}
           >
             <img
               alt="Fantastic Beasts: The Crimes of Grindelwald"
               height="175"
               src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              style={null}
               width="280"
+            />
+            <video
+              controls={true}
+              muted={true}
+              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
             />
           </div>
           <h3
@@ -415,21 +420,26 @@ Array [
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <button
-            className="small-movie-card__play-btn"
-            onClick={[Function]}
-            type="button"
-          >
-            Play
-          </button>
           <div
             className="small-movie-card__image"
+            style={null}
           >
             <img
               alt="Bohemian Rhapsody"
               height="175"
               src="img/bohemian-rhapsody.jpg"
+              style={null}
               width="280"
+            />
+            <video
+              controls={true}
+              muted={true}
+              poster="img/bohemian-rhapsody.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
             />
           </div>
           <h3
@@ -449,21 +459,26 @@ Array [
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <button
-            className="small-movie-card__play-btn"
-            onClick={[Function]}
-            type="button"
-          >
-            Play
-          </button>
           <div
             className="small-movie-card__image"
+            style={null}
           >
             <img
               alt="Seven Years in Tibet"
               height="175"
               src="img/seven-years-in-tibet.jpg"
+              style={null}
               width="280"
+            />
+            <video
+              controls={true}
+              muted={true}
+              poster="img/seven-years-in-tibet.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
             />
           </div>
           <h3
@@ -483,21 +498,26 @@ Array [
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <button
-            className="small-movie-card__play-btn"
-            onClick={[Function]}
-            type="button"
-          >
-            Play
-          </button>
           <div
             className="small-movie-card__image"
+            style={null}
           >
             <img
               alt="What We Do in the Shadows"
               height="175"
               src="img/what-we-do-in-the-shadows.jpg"
+              style={null}
               width="280"
+            />
+            <video
+              controls={true}
+              muted={true}
+              poster="img/what-we-do-in-the-shadows.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
             />
           </div>
           <h3
@@ -517,21 +537,26 @@ Array [
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <button
-            className="small-movie-card__play-btn"
-            onClick={[Function]}
-            type="button"
-          >
-            Play
-          </button>
           <div
             className="small-movie-card__image"
+            style={null}
           >
             <img
               alt="Pulp Fiction"
               height="175"
               src="img/pulp-fiction.jpg"
+              style={null}
               width="280"
+            />
+            <video
+              controls={true}
+              muted={true}
+              poster="img/pulp-fiction.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
             />
           </div>
           <h3

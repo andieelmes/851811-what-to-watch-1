@@ -5,7 +5,7 @@ import App from 'components/app/app.jsx';
 describe(`App component`, () => {
   it(`should render correctly`, () => {
     const tree = renderer
-      .create(<App/>)
+      .create(<App/>, {createNodeMock: (el) => el})
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
