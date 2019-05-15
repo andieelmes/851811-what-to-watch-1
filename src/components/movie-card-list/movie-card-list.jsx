@@ -29,10 +29,6 @@ class MovieCardList extends React.PureComponent {
     });
   }
 
-  onClick(cardId) {
-    return cardId;
-  }
-
   render() {
     const {
       movies,
@@ -41,7 +37,7 @@ class MovieCardList extends React.PureComponent {
     return (
       <div className="catalog__movies-list">
         {
-          movies.map((movie) => <MovieCard key={movie.id} onHover={this.onHover} onClick={this.onClick} {...movie}/>)
+          movies.map((movie) => <MovieCard key={movie.id} onHover={this.onHover} {...movie}/>)
         }
       </div>
     );
