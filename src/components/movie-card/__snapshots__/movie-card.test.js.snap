@@ -20,6 +20,7 @@ exports[`Movie card component should render correctly 1`] = `
     />
     <video
       controls={true}
+      loop={true}
       muted={true}
       poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
       style={

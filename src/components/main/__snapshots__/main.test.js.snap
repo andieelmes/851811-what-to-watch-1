@@ -394,6 +394,7 @@ Array [
             />
             <video
               controls={true}
+              loop={true}
               muted={true}
               poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               style={
@@ -433,6 +434,7 @@ Array [
             />
             <video
               controls={true}
+              loop={true}
               muted={true}
               poster="img/bohemian-rhapsody.jpg"
               style={
@@ -472,6 +474,7 @@ Array [
             />
             <video
               controls={true}
+              loop={true}
               muted={true}
               poster="img/seven-years-in-tibet.jpg"
               style={
@@ -511,6 +514,7 @@ Array [
             />
             <video
               controls={true}
+              loop={true}
               muted={true}
               poster="img/what-we-do-in-the-shadows.jpg"
               style={
@@ -550,6 +554,7 @@ Array [
             />
             <video
               controls={true}
+              loop={true}
               muted={true}
               poster="img/pulp-fiction.jpg"
               style={
