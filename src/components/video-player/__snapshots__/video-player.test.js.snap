@@ -3,7 +3,12 @@
 exports[`Video player component should render correctly 1`] = `
 <div
   className="small-movie-card__image"
-  style={null}
+  style={
+    Object {
+      "position": "relavive",
+      "zIndex": 3,
+    }
+  }
 >
   <img
     alt="Fantastic Beasts: The Crimes of Grindelwald"
