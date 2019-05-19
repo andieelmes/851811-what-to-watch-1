@@ -102,7 +102,7 @@ class VideoPlayer extends React.PureComponent {
     return (
       <div
         className="small-movie-card__image"
-        style={this.state.active ? containerStyles : null}
+        style={this.props.active ? containerStyles : null}
       >
         <img
           src={img}
