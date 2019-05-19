@@ -43,26 +43,31 @@ class VideoPlayer extends React.PureComponent {
     });
   }
 
-  componentDidUpdate() {
-    const video = this._videoRef.current;
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.active !== this.props.active) {
+      this.getVideoStatus();
+    }
 
-    this.getVideoStatus();
+    if (prevState.active !== this.state.active) {
+      const video = this._videoRef.current;
 
-    const playPromise = video.play();
+      const playPromise = video.play();
 
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        if (this.state.active) {
-          video.currentTime = 0;
-        } else {
-          video.pause();
-        }
-      })
-      .catch((error) => {
-        throw error;
-      });
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          if (this.state.active) {
+            video.currentTime = 0;
+          } else {
+            video.pause();
+          }
+        })
+        .catch((error) => {
+          throw error;
+        });
+      }
     }
   }
+
 
   componentWillUnmount() {
     const video = this._videoRef.current;
