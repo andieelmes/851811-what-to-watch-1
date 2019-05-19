@@ -10,7 +10,7 @@ describe(`Main component`, () => {
       .create(
           <Main
             movies={MOVIES}
-          />)
+          />, {createNodeMock: (el) => el})
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video player component should render correctly 1`] = `
+<div
+  className="small-movie-card__image"
+  style={
+    Object {
+      "position": "relavive",
+      "zIndex": 3,
+    }
+  }
+>
+  <img
+    alt="Fantastic Beasts: The Crimes of Grindelwald"
+    height="175"
+    src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+    style={null}
+    width="280"
+  />
+  <video
+    controls={true}
+    loop={true}
+    muted={true}
+    poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  />
+</div>
+`;
