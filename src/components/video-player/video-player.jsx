@@ -48,11 +48,19 @@ class VideoPlayer extends React.PureComponent {
 
     this.getVideoStatus();
 
-    if (this.state.active) {
-      video.currentTime = 0;
-      video.play();
-    } else {
-      video.pause();
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        if (this.state.active) {
+          video.currentTime = 0;
+        } else {
+          video.pause();
+        }
+      })
+      .catch((error) => {
+        throw error;
+      });
     }
   }
 
