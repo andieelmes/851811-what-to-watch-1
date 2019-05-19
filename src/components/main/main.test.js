@@ -10,6 +10,7 @@ describe(`Main component`, () => {
       .create(
           <Main
             movies={MOVIES}
+            onGenreClick={() => {}}
           />, {createNodeMock: (el) => el})
       .toJSON();
     expect(tree).toMatchSnapshot();
