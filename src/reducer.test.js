@@ -4,7 +4,7 @@ import {
 
 import {
   ALL_GENRES
-} from "consts";
+} from "movie-variables";
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator for genre change returns correct action`, () => {

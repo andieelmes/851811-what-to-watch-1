@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   ALL_GENRES
-} from "consts";
+} from "movie-variables";
 
 const propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string),

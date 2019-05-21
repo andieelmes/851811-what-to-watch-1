@@ -5,7 +5,7 @@ import Main from 'components/main/main.jsx';
 import {ActionCreator} from "reducer";
 import {
   ALL_GENRES
-} from "consts";
+} from "movie-variables";
 
 const propTypes = {
   movies: PropTypes.arrayOf(

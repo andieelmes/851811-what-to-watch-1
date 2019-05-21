@@ -2,7 +2,7 @@ import {MOVIES} from 'mocks/movies';
 
 import {
   ALL_GENRES
-} from "consts";
+} from "movie-variables";
 
 const initialState = {
   genre: ALL_GENRES,

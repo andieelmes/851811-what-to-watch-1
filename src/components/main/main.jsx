@@ -4,7 +4,7 @@ import GenreList from 'components/genre-list/genre-list.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 import {
   ALL_GENRES
-} from "consts";
+} from "movie-variables";
 
 import {MOVIES} from 'mocks/movies';
 
