@@ -29,6 +29,8 @@ const GenreList = (props) => {
         genres.map((genre) => {
           const [firstLetter, ...rest] = genre;
 
+          const capitalizedGenre = [firstLetter.toUpperCase(), ...rest].join(``);
+
           const onGenreLinkClick = (e) => {
             e.preventDefault();
             onClick(genre);
@@ -39,7 +41,7 @@ const GenreList = (props) => {
               key={genre}
               className={`catalog__genres-item ${genre === activeGenre ? `catalog__genres-item--active` : ``}`}
             >
-              <a href="#" className="catalog__genres-link" onClick={onGenreLinkClick}>{firstLetter.toUpperCase()}{rest}</a>
+              <a href="#" className="catalog__genres-link" onClick={onGenreLinkClick}>{capitalizedGenre}</a>
             </li>
           );
         })

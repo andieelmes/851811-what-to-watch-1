@@ -279,16 +279,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            A
-            l
-            l
-             
-            g
-            e
-            n
-            r
-            e
-            s
+            All genres
           </a>
         </li>
         <li
@@ -299,14 +290,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            C
-            o
-            m
-            e
-            d
-            i
-            e
-            s
+            Comedies
           </a>
         </li>
         <li
@@ -317,11 +301,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            C
-            r
-            i
-            m
-            e
+            Crime
           </a>
         </li>
         <li
@@ -332,19 +312,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            D
-            o
-            c
-            u
-            m
-            e
-            n
-            t
-            a
-            r
-            i
-            e
-            s
+            Documentaries
           </a>
         </li>
         <li
@@ -355,12 +323,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            D
-            r
-            a
-            m
-            a
-            s
+            Dramas
           </a>
         </li>
       </ul>

@@ -12,16 +12,7 @@ exports[`Genre list component should render correctly 1`] = `
       href="#"
       onClick={[Function]}
     >
-      A
-      l
-      l
-       
-      g
-      e
-      n
-      r
-      e
-      s
+      All genres
     </a>
   </li>
   <li
@@ -32,14 +23,7 @@ exports[`Genre list component should render correctly 1`] = `
       href="#"
       onClick={[Function]}
     >
-      C
-      o
-      m
-      e
-      d
-      i
-      e
-      s
+      Comedies
     </a>
   </li>
   <li
@@ -50,11 +34,7 @@ exports[`Genre list component should render correctly 1`] = `
       href="#"
       onClick={[Function]}
     >
-      C
-      r
-      i
-      m
-      e
+      Crime
     </a>
   </li>
   <li
@@ -65,19 +45,7 @@ exports[`Genre list component should render correctly 1`] = `
       href="#"
       onClick={[Function]}
     >
-      D
-      o
-      c
-      u
-      m
-      e
-      n
-      t
-      a
-      r
-      i
-      e
-      s
+      Documentaries
     </a>
   </li>
   <li
@@ -88,12 +56,7 @@ exports[`Genre list component should render correctly 1`] = `
       href="#"
       onClick={[Function]}
     >
-      D
-      r
-      a
-      m
-      a
-      s
+      Dramas
     </a>
   </li>
 </ul>
