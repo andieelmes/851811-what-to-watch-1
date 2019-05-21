@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withActiveItem from 'hocs/with-active-item/with-active-item.jsx';
 import GenreList from 'components/genre-list/genre-list.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 import {
@@ -30,6 +31,9 @@ const Main = (props) => {
     genre,
     onGenreClick,
   } = props;
+
+  const GenreListWithActiveItem = withActiveItem(GenreList, genre);
+  const MovieCardListWithActiveItem = withActiveItem(MovieCardList);
 
   return (
     <>
@@ -124,8 +128,8 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenreList onClick={onGenreClick} activeGenre={genre} genres={[...new Set(MOVIES.map((movie) => movie.genre))]}/>
-          <MovieCardList movies={movies}/>
+          <GenreListWithActiveItem onChange={onGenreClick} genres={[ALL_GENRES, ...new Set(MOVIES.map((movie) => movie.genre))]}/>
+          <MovieCardListWithActiveItem movies={movies}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
