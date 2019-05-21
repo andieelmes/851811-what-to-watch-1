@@ -1,16 +1,20 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Main from 'components/main/main.jsx';
+import GenreList from 'components/genre-list/genre-list.jsx';
 
 import {MOVIES} from 'mocks/movies';
 
-describe(`Main component`, () => {
+const genres = [...new Set(MOVIES.map((movie) => movie.genre))];
+
+describe(`Genre list component`, () => {
   it(`should render correctly`, () => {
     const tree = renderer
       .create(
-          <Main
+          <GenreList
             movies={MOVIES}
-            onGenreClick={() => {}}
+            onClick={() => {}}
+            activeGenre="comedies"
+            genres={genres}
           />, {createNodeMock: (el) => el})
       .toJSON();
     expect(tree).toMatchSnapshot();

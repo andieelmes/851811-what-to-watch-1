@@ -20,16 +20,18 @@ class VideoPlayer extends React.PureComponent {
     };
 
     this.getVideoStatus = this.getVideoStatus.bind(this);
-
-    this.VIDEO_TIMEOUT = 1000;
+    this.videoTimeout = null;
+    this.VIDEO_TIMEOUT_DELAY = 1000;
   }
 
   getVideoStatus() {
-    return this.props.active
-      ? setTimeout(() => {
+    if (this.props.active) {
+      this.videoTimeout = setTimeout(() => {
         this.setState({active: !this.state.isLoading && this.props.active});
-      }, this.VIDEO_TIMEOUT)
-      : this.setState({active: !this.state.isLoading && this.props.active});
+      }, this.VIDEO_TIMEOUT_DELAY);
+    } else {
+      this.setState({active: !this.state.isLoading && this.props.active});
+    }
   }
 
   componentDidMount() {
@@ -74,6 +76,8 @@ class VideoPlayer extends React.PureComponent {
 
     video.oncanplaythrough = null;
     video.src = ``;
+
+    clearTimeout(this.videoTimeout);
   }
 
   render() {
