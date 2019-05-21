@@ -21,19 +21,20 @@ const movies = [
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`Movie card list component`, () => {
+  const changeHandler = jest.fn();
+
   it(`should receive active card id on card hover`, () => {
     const movieCardList = mount(<MovieCardList
       movies={movies}
+      onChange={changeHandler}
     />);
-
-    expect(movieCardList.state(`activeCardId`)).toBe(null);
 
     const movieCard = movieCardList.find(`[data-movie-id=1]`);
 
     movieCard.simulate(`mouseenter`);
-    expect(movieCardList.state(`activeCardId`)).toBe(1);
+    expect(changeHandler).toHaveBeenCalledWith(1);
 
     movieCard.simulate(`mouseleave`);
-    expect(movieCardList.state(`activeCardId`)).toBe(null);
+    expect(changeHandler).toHaveBeenCalledWith(null);
   });
 });
