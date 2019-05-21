@@ -33,17 +33,9 @@ export const ActionCreator = {
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case `CHANGE_GENRE`: return Object.assign({}, state, {
-      genre: action.payload,
-    });
-
-    case `GET_MOVIES`: return Object.assign({}, state, {
-      movies: action.payload,
-    });
-
-    case `ALL_MOVIES`: return Object.assign({}, state, {
-      movies: MOVIES,
-    });
+    case `CHANGE_GENRE`: return {...state, genre: action.payload}
+    case `GET_MOVIES`: return {...state, movies: action.payload}
+    case `ALL_MOVIES`: return initialState
   }
 
   return state;
