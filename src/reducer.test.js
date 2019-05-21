@@ -1,7 +1,10 @@
 import {
   ActionCreator,
-  reducer,
 } from "reducer";
+
+import {
+  ALL_GENRES
+} from "consts";
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator for genre change returns correct action`, () => {
@@ -41,7 +44,7 @@ describe(`Action creators work correctly`, () => {
 
   it(`Action creator for genre based movie filtering returns array of all movies when genre is defaulted to all genres`, () => {
     expect(ActionCreator.getMovies(
-        `all genres`,
+        ALL_GENRES,
         [{
           id: 1,
           img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,

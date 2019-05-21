@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GenreList from 'components/genre-list/genre-list.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
+import {
+  ALL_GENRES
+} from "consts";
 
 import {MOVIES} from 'mocks/movies';
 
@@ -18,7 +21,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  genre: `all genres`,
+  genre: ALL_GENRES,
 };
 
 const Main = (props) => {

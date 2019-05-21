@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  ALL_GENRES
+} from "consts";
 
 const propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string),
@@ -8,7 +11,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  genre: `all genres`,
+  genre: ALL_GENRES,
 };
 
 const GenreList = (props) => {
@@ -18,7 +21,7 @@ const GenreList = (props) => {
     activeGenre,
   } = props;
 
-  genres.unshift(`all genres`);
+  genres.unshift(ALL_GENRES);
 
   return (
     <ul className="catalog__genres-list">

@@ -1,7 +1,11 @@
 import {MOVIES} from 'mocks/movies';
 
+import {
+  ALL_GENRES
+} from "consts";
+
 const initialState = {
-  genre: `all genres`,
+  genre: ALL_GENRES,
   movies: MOVIES,
 };
 
@@ -12,7 +16,7 @@ export const ActionCreator = {
   }),
 
   getMovies: (genre, movies) => {
-    if (genre === `all genres`) {
+    if (genre === ALL_GENRES) {
       return {
         type: `ALL_MOVIES`,
         payload: movies,

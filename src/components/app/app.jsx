@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import Main from 'components/main/main.jsx';
 import {ActionCreator} from "reducer";
+import {
+  ALL_GENRES
+} from "consts";
 
 const propTypes = {
   movies: PropTypes.arrayOf(
@@ -17,7 +20,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  genre: `all genres`,
+  genre: ALL_GENRES,
 };
 
 const App = (props) => {
