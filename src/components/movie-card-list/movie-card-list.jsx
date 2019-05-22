@@ -10,39 +10,23 @@ const propTypes = {
         title: PropTypes.string.isRequired,
       })
   ),
+  onChange: PropTypes.func.isRequired,
 };
 
-class MovieCardList extends React.PureComponent {
-  constructor(props) {
-    super(props);
+const MovieCardList = (props) => {
+  const {
+    movies,
+    onChange,
+  } = props;
 
-    this.state = {
-      activeCardId: null
-    };
-
-    this.onHover = this.onHover.bind(this);
-  }
-
-  onHover(cardId) {
-    this.setState({
-      activeCardId: cardId
-    });
-  }
-
-  render() {
-    const {
-      movies,
-    } = this.props;
-
-    return (
-      <div className="catalog__movies-list">
-        {
-          movies.map((movie) => <MovieCard key={movie.id} onHover={this.onHover} {...movie}/>)
-        }
-      </div>
-    );
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {
+        movies.map((movie) => <MovieCard key={movie.id} onHover={onChange} {...movie}/>)
+      }
+    </div>
+  );
+};
 
 MovieCardList.propTypes = propTypes;
 

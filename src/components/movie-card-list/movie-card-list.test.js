@@ -23,6 +23,7 @@ describe(`Movie card list component`, () => {
       .create(
           <MovieCardList
             movies={movies}
+            onChange={() => {}}
           />, {createNodeMock: (el) => el})
       .toJSON();
     expect(tree).toMatchSnapshot();

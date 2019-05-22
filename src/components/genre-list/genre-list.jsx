@@ -6,8 +6,8 @@ import {
 
 const propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string),
-  onClick: PropTypes.func.isRequired,
-  activeGenre: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  activeItem: PropTypes.string,
 };
 
 const defaultProps = {
@@ -17,31 +17,23 @@ const defaultProps = {
 const GenreList = (props) => {
   const {
     genres,
-    onClick,
-    activeGenre,
+    onChange,
+    activeItem,
   } = props;
-
-  genres.unshift(ALL_GENRES);
 
   return (
     <ul className="catalog__genres-list">
       {
         genres.map((genre) => {
           const [firstLetter, ...rest] = genre;
-
           const capitalizedGenre = [firstLetter.toUpperCase(), ...rest].join(``);
-
-          const onGenreLinkClick = (e) => {
-            e.preventDefault();
-            onClick(genre);
-          };
 
           return (
             <li
               key={genre}
-              className={`catalog__genres-item ${genre === activeGenre ? `catalog__genres-item--active` : ``}`}
+              className={`catalog__genres-item ${genre === activeItem ? `catalog__genres-item--active` : ``}`}
             >
-              <a href="#" className="catalog__genres-link" onClick={onGenreLinkClick}>{capitalizedGenre}</a>
+              <a href="#" className="catalog__genres-link" onClick={() => onChange(genre)}>{capitalizedGenre}</a>
             </li>
           );
         })

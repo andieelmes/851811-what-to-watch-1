@@ -1,7 +1,8 @@
 import React from 'react';
-import Enzyme, {mount} from 'enzyme';
+import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
+import MovieCard from 'components/movie-card/movie-card.jsx';
 
 const movies = [
   {
@@ -21,19 +22,20 @@ const movies = [
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`Movie card list component`, () => {
+  const changeHandler = jest.fn();
+
   it(`should receive active card id on card hover`, () => {
-    const movieCardList = mount(<MovieCardList
+    const movieCardList = shallow(<MovieCardList
       movies={movies}
+      onChange={changeHandler}
     />);
 
-    expect(movieCardList.state(`activeCardId`)).toBe(null);
-
-    const movieCard = movieCardList.find(`[data-movie-id=1]`);
+    const movieCard = movieCardList.find(MovieCard).at(0).dive().find(`[data-movie-id=1]`);
 
     movieCard.simulate(`mouseenter`);
-    expect(movieCardList.state(`activeCardId`)).toBe(1);
+    expect(changeHandler).toHaveBeenCalledWith(1);
 
     movieCard.simulate(`mouseleave`);
-    expect(movieCardList.state(`activeCardId`)).toBe(null);
+    expect(changeHandler).toHaveBeenCalledWith(null);
   });
 });
