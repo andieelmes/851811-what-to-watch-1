@@ -19,18 +19,18 @@ class MovieCard extends React.PureComponent {
       active: false,
     };
 
-    this.onMouseEnter = this.onMouseEnter.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
+    this._onMouseEnter = this._onMouseEnter.bind(this);
+    this._onMouseLeave = this._onMouseLeave.bind(this);
   }
 
-  onMouseEnter() {
+  _onMouseEnter() {
     this.setState({
       active: true,
     });
     this.props.onHover(this.props.id);
   }
 
-  onMouseLeave() {
+  _onMouseLeave() {
     this.setState({
       active: false,
     });
@@ -49,8 +49,8 @@ class MovieCard extends React.PureComponent {
       <article
         data-movie-id={id}
         className="small-movie-card catalog__movies-card"
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
+        onMouseEnter={this._onMouseEnter}
+        onMouseLeave={this._onMouseLeave}
       >
         <VideoPlayer img={img} preview={preview} title={title} active={this.state.active}/>
         <h3 className="small-movie-card__title">

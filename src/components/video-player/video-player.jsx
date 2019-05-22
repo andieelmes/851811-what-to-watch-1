@@ -19,19 +19,9 @@ class VideoPlayer extends React.PureComponent {
       active: false,
     };
 
-    this.getVideoStatus = this.getVideoStatus.bind(this);
+    this._getVideoStatus = this._getVideoStatus.bind(this);
     this.videoTimeout = null;
     this.VIDEO_TIMEOUT_DELAY = 1000;
-  }
-
-  getVideoStatus() {
-    if (this.props.active) {
-      this.videoTimeout = setTimeout(() => {
-        this.setState({active: !this.state.isLoading && this.props.active});
-      }, this.VIDEO_TIMEOUT_DELAY);
-    } else {
-      this.setState({active: !this.state.isLoading && this.props.active});
-    }
   }
 
   componentDidMount() {
@@ -47,7 +37,7 @@ class VideoPlayer extends React.PureComponent {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.active !== this.props.active) {
-      this.getVideoStatus();
+      this._getVideoStatus();
     }
 
     if (prevState.active !== this.state.active) {
@@ -125,6 +115,16 @@ class VideoPlayer extends React.PureComponent {
         />
       </div>
     );
+  }
+
+  _getVideoStatus() {
+    if (this.props.active) {
+      this.videoTimeout = setTimeout(() => {
+        this.setState({active: !this.state.isLoading && this.props.active});
+      }, this.VIDEO_TIMEOUT_DELAY);
+    } else {
+      this.setState({active: !this.state.isLoading && this.props.active});
+    }
   }
 }
 
