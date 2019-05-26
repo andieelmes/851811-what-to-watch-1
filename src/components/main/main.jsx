@@ -17,7 +17,6 @@ const propTypes = {
         title: PropTypes.string.isRequired,
       })
   ),
-  genre: PropTypes.string,
   onGenreClick: PropTypes.func.isRequired,
 };
 
@@ -25,15 +24,15 @@ const defaultProps = {
   genre: ALL_GENRES,
 };
 
+
+const GenreListWithActiveItem = withActiveItem(GenreList);
+const MovieCardListWithActiveItem = withActiveItem(MovieCardList);
+
 const Main = (props) => {
   const {
     movies,
-    genre,
     onGenreClick,
   } = props;
-
-  const GenreListWithActiveItem = withActiveItem(GenreList, genre);
-  const MovieCardListWithActiveItem = withActiveItem(MovieCardList);
 
   return (
     <>
@@ -128,7 +127,7 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenreListWithActiveItem onChange={onGenreClick} genres={[ALL_GENRES, ...new Set(MOVIES.map((movie) => movie.genre))]}/>
+          <GenreListWithActiveItem onActiveItemChange={onGenreClick} genres={[ALL_GENRES, ...new Set(MOVIES.map((movie) => movie.genre))]}/>
           <MovieCardListWithActiveItem movies={movies}/>
 
           <div className="catalog__more">

@@ -1,17 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || `Component`;
 }
 
-const withActiveItem = (Component, defaultActiveItem = null) => {
+const withActiveItem = (Component) => {
+  const propTypes = {
+    onActiveItemChange: PropTypes.func,
+  };
+
   class WrappedComponent extends React.Component {
     constructor(props) {
       super(props);
-      this._handleChange = this._handleChange.bind(this);
+
       this.state = {
-        activeItem: defaultActiveItem,
+        activeItem: undefined,
       };
+
+      this._handleChange = this._handleChange.bind(this);
     }
 
     render() {
@@ -22,9 +29,14 @@ const withActiveItem = (Component, defaultActiveItem = null) => {
       this.setState({
         activeItem: value
       });
+
+      if (this.props.onActiveItemChange) {
+        this.props.onActiveItemChange(value);
+      }
     }
   }
 
+  WrappedComponent.propTypes = propTypes;
   WrappedComponent.displayName = `withActiveItem(${getDisplayName(Component)})`;
 
   return WrappedComponent;

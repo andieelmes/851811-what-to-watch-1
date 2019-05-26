@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import Main from 'components/main/main.jsx';
 import {ActionCreator} from "reducer";
-import {
-  ALL_GENRES
-} from "movie-variables";
 
 const propTypes = {
   movies: PropTypes.arrayOf(
@@ -19,13 +16,8 @@ const propTypes = {
   genre: PropTypes.string,
 };
 
-const defaultProps = {
-  genre: ALL_GENRES,
-};
-
 const App = (props) => {
   const {
-    genre,
     movies,
     onGenreClick,
   } = props;
@@ -33,7 +25,6 @@ const App = (props) => {
 
   return (
     <Main
-      genre={genre}
       movies={movies}
       onGenreClick={(clickedGenre) => onGenreClick(clickedGenre, movies)}
     />
@@ -42,7 +33,6 @@ const App = (props) => {
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   movies: state.movies,
-  genre: state.genre,
 });
 
 
@@ -54,7 +44,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 App.propTypes = propTypes;
-App.defaultProps = defaultProps;
 
 export {App};
 
