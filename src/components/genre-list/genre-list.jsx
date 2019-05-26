@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {
   ALL_GENRES
 } from "movie-variables";
+
 
 const propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string),
@@ -11,7 +13,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  genre: ALL_GENRES,
+  activeItem: ALL_GENRES,
 };
 
 const GenreList = (props) => {
@@ -20,6 +22,11 @@ const GenreList = (props) => {
     onChange,
     activeItem,
   } = props;
+
+  const onGenreClick = (e, genre) => {
+    e.preventDefault();
+    onChange(genre);
+  };
 
   return (
     <ul className="catalog__genres-list">
@@ -33,7 +40,7 @@ const GenreList = (props) => {
               key={genre}
               className={`catalog__genres-item ${genre === activeItem ? `catalog__genres-item--active` : ``}`}
             >
-              <a href="#" className="catalog__genres-link" onClick={() => onChange(genre)}>{capitalizedGenre}</a>
+              <a href="#" className="catalog__genres-link" onClick={(e) => onGenreClick(e, genre)}>{capitalizedGenre}</a>
             </li>
           );
         })
