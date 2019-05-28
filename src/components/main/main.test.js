@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Main from 'components/main/main.jsx';
 
-import {MOVIES} from 'mocks/movies';
+import {MOVIES, GENRES} from 'mocks/movies';
 
 describe(`Main component`, () => {
   it(`should render correctly`, () => {
@@ -10,6 +10,7 @@ describe(`Main component`, () => {
       .create(
           <Main
             movies={MOVIES}
+            genres={GENRES}
             onGenreClick={() => {}}
           />, {createNodeMock: (el) => el})
       .toJSON();
