@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withActiveItem from 'hocs/with-active-item/with-active-item.jsx';
+import {Link} from 'react-router-dom';
 import GenreList from 'components/genre-list/genre-list.jsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
 import {
@@ -16,7 +17,11 @@ const propTypes = {
       })
   ),
   onGenreClick: PropTypes.func.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string)
+  genres: PropTypes.arrayOf(PropTypes.string),
+  user: PropTypes.shape({
+    authorized: PropTypes.bool.isRequired,
+    avatar: PropTypes.string,
+  }),
 };
 
 const defaultProps = {
@@ -32,6 +37,7 @@ const Main = (props) => {
     genres,
     movies,
     onGenreClick,
+    user,
   } = props;
 
   return (
@@ -53,9 +59,17 @@ const Main = (props) => {
           </div>
 
           <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
+            {
+              user.authorized
+                ? (
+                  <div className="user-block__avatar">
+                    <img src={user.avatar} alt="User avatar" width="63" height="63" />
+                  </div>
+                )
+                : (
+                  <Link to="/sign-in" className="user-block__link">Sign in</Link>
+                )
+            }
           </div>
         </header>
 
