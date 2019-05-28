@@ -746,7 +746,7 @@ Array [
           className="user-block__avatar"
         >
           <img
-            alt="User avatar"
+            alt="User avatar of name"
             height="63"
             src=""
             width="63"

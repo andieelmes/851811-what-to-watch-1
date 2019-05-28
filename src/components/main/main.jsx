@@ -21,6 +21,7 @@ const propTypes = {
   user: PropTypes.shape({
     authorized: PropTypes.bool.isRequired,
     avatar: PropTypes.string,
+    name: PropTypes.string,
   }),
 };
 
@@ -63,7 +64,7 @@ const Main = (props) => {
               user.authorized
                 ? (
                   <div className="user-block__avatar">
-                    <img src={user.avatar} alt="User avatar" width="63" height="63" />
+                    <img src={user.avatar} alt={`User avatar of ${user.name}`} width="63" height="63" />
                   </div>
                 )
                 : (

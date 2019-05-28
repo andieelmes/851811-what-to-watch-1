@@ -3,6 +3,7 @@ import {ENDPOINT_URL} from 'server-variables';
 const initialState = {
   isAuthorizationRequired: true,
   avatar: ``,
+  name: ``,
 };
 
 const ActionType = {
@@ -33,6 +34,7 @@ const Operation = {
       .then((response) => {
         const data = {
           avatar: `${ENDPOINT_URL}${response.data.avatar_url.replace(`/wtw`, ``)}`,
+          name: response.data.name,
         }
         dispatch(ActionCreator.requireAuthorization(false));
         dispatch(ActionCreator.getUserData(data));

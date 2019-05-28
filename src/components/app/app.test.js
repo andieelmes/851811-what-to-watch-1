@@ -16,6 +16,7 @@ describe(`App component`, () => {
           user={{
             authorized: true,
             avatar: ``,
+            name: `name`,
           }}
         />
       </BrowserRouter>, {createNodeMock: (el) => el})
@@ -32,7 +33,6 @@ describe(`App component`, () => {
           onGenreClick={() => {}}
           user={{
             authorized: false,
-            avatar: ``,
           }}
         />
       </BrowserRouter>, {createNodeMock: (el) => el})
