@@ -50,7 +50,7 @@ describe(`Reducer`, () => {
 
     return moviesLoader(dispatch, jest.fn(), api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_MOVIES,
           payload: movies,
@@ -62,13 +62,6 @@ describe(`Reducer`, () => {
     expect(ActionCreator.changeGenre(`comedies`)).toEqual({
       type: `CHANGE_GENRE`,
       payload: `comedies`,
-    });
-  });
-
-  it(`should return all genres`, () => {
-    expect(ActionCreator.getGenres(movies)).toEqual({
-      type: `GET_GENRES`,
-      payload: [`all genres`, `comedies`, `crime`],
     });
   });
 });

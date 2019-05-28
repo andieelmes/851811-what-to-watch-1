@@ -14,9 +14,11 @@ export const getGenre = (state) => {
   return state[NAME_SPACE].genre;
 };
 
-export const getGenres = (state) => {
-  return state[NAME_SPACE].genres;
-};
+export const getGenres = createSelector(
+    getAllMovies,
+    (movies) => [ALL_GENRES, ...new Set(movies.map((movie) => movie.genre))]
+);
+
 
 export const getMovies = createSelector(
     getGenre,

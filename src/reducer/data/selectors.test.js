@@ -1,5 +1,6 @@
 import {
   getMovies,
+  getGenres
 } from "./selectors";
 import {
   ALL_GENRES
@@ -50,5 +51,15 @@ describe(`Selector`, () => {
     };
 
     expect(getMovies(mockedState)).toEqual(movies);
+  });
+
+  it(`should return array of all genres`, () => {
+    const mockedState = {
+      [NAME_SPACE]: {
+        movies,
+      }
+    };
+
+    expect(getGenres(mockedState)).toEqual([`all genres`, `comedies`, `crime`]);
   });
 });
