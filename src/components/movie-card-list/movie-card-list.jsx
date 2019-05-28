@@ -11,18 +11,20 @@ const propTypes = {
       })
   ),
   onChange: PropTypes.func.isRequired,
+  activeItem: PropTypes.number,
 };
 
 const MovieCardList = (props) => {
   const {
     movies,
     onChange,
+    activeItem,
   } = props;
 
   return (
     <div className="catalog__movies-list">
       {
-        movies.map((movie) => <MovieCard key={movie.id} onHover={onChange} {...movie}/>)
+        movies.map((movie) => <MovieCard key={movie.id} onHover={onChange} activeItem={activeItem} {...movie}/>)
       }
     </div>
   );

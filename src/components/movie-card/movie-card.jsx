@@ -9,57 +9,33 @@ const propTypes = {
   preview: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   onHover: PropTypes.func.isRequired,
+  activeItem: PropTypes.number,
 };
 
-class MovieCard extends React.PureComponent {
-  constructor(props) {
-    super(props);
+const MovieCard = (props) => {
+  const {
+    id,
+    preview,
+    img,
+    title,
+    onHover,
+    activeItem,
+  } = props;
 
-    this.state = {
-      active: false,
-    };
-
-    this._onMouseEnter = this._onMouseEnter.bind(this);
-    this._onMouseLeave = this._onMouseLeave.bind(this);
-  }
-
-  _onMouseEnter() {
-    this.setState({
-      active: true,
-    });
-    this.props.onHover(this.props.id);
-  }
-
-  _onMouseLeave() {
-    this.setState({
-      active: false,
-    });
-    this.props.onHover(null);
-  }
-
-  render() {
-    const {
-      id,
-      preview,
-      img,
-      title,
-    } = this.props;
-
-    return (
-      <article
-        data-movie-id={id}
-        className="small-movie-card catalog__movies-card"
-        onMouseEnter={this._onMouseEnter}
-        onMouseLeave={this._onMouseLeave}
-      >
-        <VideoPlayer img={img} preview={preview} title={title} active={this.state.active}/>
-        <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html">{title}</a>
-        </h3>
-      </article>
-    );
-  }
-}
+  return (
+    <article
+      data-movie-id={id}
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={() => onHover(id)}
+      onMouseLeave={() => onHover(null)}
+    >
+      <VideoPlayer img={img} preview={preview} title={title} active={activeItem === id}/>
+      <h3 className="small-movie-card__title">
+        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+      </h3>
+    </article>
+  );
+};
 
 MovieCard.propTypes = propTypes;
 
