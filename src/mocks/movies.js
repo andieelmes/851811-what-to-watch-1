@@ -35,3 +35,7 @@ export const MOVIES = [
     genre: `dramas`,
   },
 ];
+
+export const GENRES = [
+  `all genres`, `comedies`, `crime`, `documentaries`, `dramas`,
+];

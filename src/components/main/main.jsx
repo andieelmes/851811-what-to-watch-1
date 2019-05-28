@@ -7,8 +7,6 @@ import {
   ALL_GENRES
 } from "movie-variables";
 
-import {MOVIES} from 'mocks/movies';
-
 const propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
@@ -18,6 +16,7 @@ const propTypes = {
       })
   ),
   onGenreClick: PropTypes.func.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string)
 };
 
 const defaultProps = {
@@ -30,6 +29,7 @@ const MovieCardListWithActiveItem = withActiveItem(MovieCardList);
 
 const Main = (props) => {
   const {
+    genres,
     movies,
     onGenreClick,
   } = props;
@@ -127,7 +127,7 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenreListWithActiveItem onActiveItemChange={onGenreClick} genres={[ALL_GENRES, ...new Set(MOVIES.map((movie) => movie.genre))]}/>
+          <GenreListWithActiveItem onActiveItemChange={onGenreClick} genres={genres}/>
           <MovieCardListWithActiveItem movies={movies}/>
 
           <div className="catalog__more">
