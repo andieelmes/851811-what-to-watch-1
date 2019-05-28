@@ -1,17 +1,17 @@
 import {createSelector} from "reselect";
-import NameSpace from "../name-spaces";
+import Namespace from "../namespaces";
 import {
   ALL_GENRES
 } from "movie-variables";
 
-const NAME_SPACE = NameSpace.DATA;
+const NAMESPACE = Namespace.DATA;
 
 export const getAllMovies = (state) => {
-  return state[NAME_SPACE].movies;
+  return state[NAMESPACE].movies;
 };
 
 export const getGenre = (state) => {
-  return state[NAME_SPACE].genre;
+  return state[NAMESPACE].genre;
 };
 
 export const getGenres = createSelector(
