@@ -20,9 +20,7 @@ const ActionCreator = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.REQUIRED_AUTHORIZATION:
-      return Object.assign({}, state, {
-        isAuthorizationRequired: action.payload,
-      });
+      return {...state, isAuthorizationRequired: action.payload}
   }
 
   return state;
