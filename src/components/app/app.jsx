@@ -27,12 +27,14 @@ const App = (props) => {
 
 
   return (
-    <Main
-      genres={genres}
-      movies={movies}
-      onGenreClick={(clickedGenre) => onGenreClick(clickedGenre)}
-    />
-  );
+      <Wrapper>
+        <Main
+          genres={genres}
+          movies={movies}
+        onGenreClick={(clickedGenre) => onGenreClick(clickedGenre)}
+      />
+      </Wrapper>
+    );
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
