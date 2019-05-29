@@ -77,7 +77,7 @@ export {App};
 const connectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
 const AppWithRouter = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={window.location.pathname}>
     <Switch>
       <Route exact path="/" component={connectedApp}/>
       <Route path="/sign-in" component={SignIn}/>
