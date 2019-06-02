@@ -1,125 +1,466 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main component should render correctly 1`] = `
+exports[`Main component should render correctly for guests 1`] = `
 Array [
-  <div
-    className="visually-hidden"
+  <section
+    className="movie-card"
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      className="movie-card__bg"
     >
-      <symbol
-        id="add"
-        viewBox="0 0 19 20"
+      <img
+        alt="The Grand Budapest Hotel"
+        src="img/bg-the-grand-budapest-hotel.jpg"
+      />
+    </div>
+    <h1
+      className="visually-hidden"
+    >
+      WTW
+    </h1>
+    <header
+      className="page-header movie-card__head"
+    >
+      <div
+        className="logo"
       >
-        <title>
-          +
-        </title>
-        <desc>
-          Created with Sketch.
-        </desc>
-        <g
-          fill="none"
-          fillRule="evenodd"
-          id="Page-1"
-          stroke="none"
-          strokeWidth="1"
+        <a
+          className="logo__link"
         >
-          <polygon
-            fill="#EEE5B5"
-            id="+"
-            points="10.777832 11.2880859 10.777832 19.5527344 8.41650391 19.5527344 8.41650391 11.2880859 0.627929688 11.2880859 0.627929688 8.92675781 8.41650391 8.92675781 8.41650391 0.662109375 10.777832 0.662109375 10.777832 8.92675781 18.5664062 8.92675781 18.5664062 11.2880859"
-          />
-        </g>
-      </symbol>
-      <symbol
-        id="full-screen"
-        viewBox="0 0 27 27"
+          <span
+            className="logo__letter logo__letter--1"
+          >
+            W
+          </span>
+          <span
+            className="logo__letter logo__letter--2"
+          >
+            T
+          </span>
+          <span
+            className="logo__letter logo__letter--3"
+          >
+            W
+          </span>
+        </a>
+      </div>
+      <div
+        className="user-block"
       >
-        <path
-          clipRule="evenodd"
-          d="M23.8571 0H16V3.14286H23.8571V11H27V3.14286V0H23.8571Z"
-          fill="#FFF9D9"
-          fillOpacity="0.7"
-          fillRule="evenodd"
-        />
-        <path
-          clipRule="evenodd"
-          d="M27 23.8571V16H23.8571V23.8571H16V27H23.8571H27L27 23.8571Z"
-          fill="#FFF9D9"
-          fillOpacity="0.7"
-          fillRule="evenodd"
-        />
-        <path
-          clipRule="evenodd"
-          d="M0 3.14286L0 11H3.14286L3.14286 3.14286L11 3.14286V0H3.14286H0L0 3.14286Z"
-          fill="#FFF9D9"
-          fillOpacity="0.7"
-          fillRule="evenodd"
-        />
-        <path
-          clipRule="evenodd"
-          d="M3.14286 27H11V23.8571H3.14286L3.14286 16H0L0 23.8571V27H3.14286Z"
-          fill="#FFF9D9"
-          fillOpacity="0.7"
-          fillRule="evenodd"
-        />
-      </symbol>
-      <symbol
-        id="in-list"
-        viewBox="0 0 18 14"
-      >
-        <path
-          clipRule="evenodd"
-          d="M2.40513 5.35353L6.1818 8.90902L15.5807 0L18 2.80485L6.18935 14L0 8.17346L2.40513 5.35353Z"
-          fill="#EEE5B5"
-          fillRule="evenodd"
-        />
-      </symbol>
-      <symbol
-        id="pause"
-        viewBox="0 0 14 21"
-      >
-        <title>
-          Artboard
-        </title>
-        <desc>
-          Created with Sketch.
-        </desc>
-        <g
-          fill="none"
-          fillRule="evenodd"
-          id="Artboard"
-          stroke="none"
-          strokeWidth="1"
+        <a
+          className="user-block__link"
+          href="/login"
+          onClick={[Function]}
         >
-          <polygon
-            fill="#EEE5B5"
-            fillRule="nonzero"
-            id="Line"
-            points="0 -1.11910481e-13 4 -1.11910481e-13 4 21 0 21"
-          />
-          <polygon
-            fill="#EEE5B5"
-            fillRule="nonzero"
-            id="Line"
-            points="10 -1.11910481e-13 14 -1.11910481e-13 14 21 10 21"
-          />
-        </g>
-      </symbol>
-      <symbol
-        id="play-s"
-        viewBox="0 0 19 19"
+          Sign in
+        </a>
+      </div>
+    </header>
+    <div
+      className="movie-card__wrap"
+    >
+      <div
+        className="movie-card__info"
       >
-        <path
-          clipRule="evenodd"
-          d="M0 0L19 9.5L0 19V0Z"
-          fill="#EEE5B5"
-          fillRule="evenodd"
-        />
-      </symbol>
-    </svg>
+        <div
+          className="movie-card__poster"
+        >
+          <img
+            alt="The Grand Budapest Hotel poster"
+            height="327"
+            src="img/the-grand-budapest-hotel-poster.jpg"
+            width="218"
+          />
+        </div>
+        <div
+          className="movie-card__desc"
+        >
+          <h2
+            className="movie-card__title"
+          >
+            The Grand Budapest Hotel
+          </h2>
+          <p
+            className="movie-card__meta"
+          >
+            <span
+              className="movie-card__genre"
+            >
+              Drama
+            </span>
+            <span
+              className="movie-card__year"
+            >
+              2014
+            </span>
+          </p>
+          <div
+            className="movie-card__buttons"
+          >
+            <button
+              className="btn btn--play movie-card__button"
+              type="button"
+            >
+              <svg
+                height="19"
+                viewBox="0 0 19 19"
+                width="19"
+              >
+                <use
+                  xlinkHref="#play-s"
+                />
+              </svg>
+              <span>
+                Play
+              </span>
+            </button>
+            <button
+              className="btn btn--list movie-card__button"
+              type="button"
+            >
+              <svg
+                height="20"
+                viewBox="0 0 19 20"
+                width="19"
+              >
+                <use
+                  xlinkHref="#add"
+                />
+              </svg>
+              <span>
+                My list
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>,
+  <div
+    className="page-content"
+  >
+    <section
+      className="catalog"
+    >
+      <h2
+        className="catalog__title visually-hidden"
+      >
+        Catalog
+      </h2>
+      <ul
+        className="catalog__genres-list"
+      >
+        <li
+          className="catalog__genres-item catalog__genres-item--active"
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            All genres
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            Comedies
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            Crime
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            Documentaries
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            Dramas
+          </a>
+        </li>
+      </ul>
+      <div
+        className="catalog__movies-list"
+      >
+        <article
+          className="small-movie-card catalog__movies-card"
+          data-movie-id={1}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            style={null}
+          >
+            <img
+              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              height="175"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              style={null}
+              width="280"
+            />
+            <video
+              controls={true}
+              loop={true}
+              muted={true}
+              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Fantastic Beasts: The Crimes of Grindelwald
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          data-movie-id={2}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            style={null}
+          >
+            <img
+              alt="Bohemian Rhapsody"
+              height="175"
+              src="img/bohemian-rhapsody.jpg"
+              style={null}
+              width="280"
+            />
+            <video
+              controls={true}
+              loop={true}
+              muted={true}
+              poster="img/bohemian-rhapsody.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Bohemian Rhapsody
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          data-movie-id={3}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            style={null}
+          >
+            <img
+              alt="Seven Years in Tibet"
+              height="175"
+              src="img/seven-years-in-tibet.jpg"
+              style={null}
+              width="280"
+            />
+            <video
+              controls={true}
+              loop={true}
+              muted={true}
+              poster="img/seven-years-in-tibet.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Seven Years in Tibet
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          data-movie-id={4}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            style={null}
+          >
+            <img
+              alt="What We Do in the Shadows"
+              height="175"
+              src="img/what-we-do-in-the-shadows.jpg"
+              style={null}
+              width="280"
+            />
+            <video
+              controls={true}
+              loop={true}
+              muted={true}
+              poster="img/what-we-do-in-the-shadows.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              What We Do in the Shadows
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          data-movie-id={5}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            style={null}
+          >
+            <img
+              alt="Pulp Fiction"
+              height="175"
+              src="img/pulp-fiction.jpg"
+              style={null}
+              width="280"
+            />
+            <video
+              controls={true}
+              loop={true}
+              muted={true}
+              poster="img/pulp-fiction.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Pulp Fiction
+            </a>
+          </h3>
+        </article>
+      </div>
+      <div
+        className="catalog__more"
+      >
+        <button
+          className="catalog__button"
+          type="button"
+        >
+          Show more
+        </button>
+      </div>
+    </section>
+    <footer
+      className="page-footer"
+    >
+      <div
+        className="logo"
+      >
+        <a
+          className="logo__link logo__link--light"
+        >
+          <span
+            className="logo__letter logo__letter--1"
+          >
+            W
+          </span>
+          <span
+            className="logo__letter logo__letter--2"
+          >
+            T
+          </span>
+          <span
+            className="logo__letter logo__letter--3"
+          >
+            W
+          </span>
+        </a>
+      </div>
+      <div
+        className="copyright"
+      >
+        <p>
+          © 2019 What to watch Ltd.
+        </p>
+      </div>
+    </footer>
   </div>,
+]
+`;
+
+exports[`Main component should render correctly when authorized 1`] = `
+Array [
   <section
     className="movie-card"
   >
@@ -169,9 +510,9 @@ Array [
           className="user-block__avatar"
         >
           <img
-            alt="User avatar"
+            alt="User avatar of name"
             height="63"
-            src="img/avatar.jpg"
+            src=""
             width="63"
           />
         </div>

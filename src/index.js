@@ -7,29 +7,32 @@ import {compose} from "recompose";
 
 import App from 'components/app/app.jsx';
 import reducer from "./reducer";
-import {Operation} from "reducer/data/data";
+import {Operation as DataOperation} from "reducer/data/data";
+import {Operation as UserOperation} from "reducer/user/user";
 import {createAPI} from './api';
 
-const init = () => {
-  const api = createAPI((...args) => store.dispatch(...args));
+const api = createAPI((...args) => store.dispatch(...args));
 
-  const store = createStore(
-      reducer,
-      compose(
-          applyMiddleware(thunk.withExtraArgument(api)),
-          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-      )
-  );
+const composeEnhancers =
+  typeof window === `object` &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) : compose;
 
-  store.dispatch(Operation.loadMovies());
+const enhancer = composeEnhancers(
+    applyMiddleware(thunk.withExtraArgument(api))
+    // other store enhancers if any
+);
 
-  ReactDOM.render(
-      <Provider store={store}>
-        <App/>
-      </Provider>,
-      document.getElementById(`root`)
-  );
+const store = createStore(reducer, enhancer);
 
-};
+store.dispatch(DataOperation.loadMovies());
+store.dispatch(UserOperation.getLogin());
 
-init();
+ReactDOM.render(
+    <Provider store={store}>
+      <App/>
+    </Provider>,
+    document.getElementById(`root`)
+);

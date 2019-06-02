@@ -1,9 +1,10 @@
 import axios from 'axios';
 import {ActionCreator} from 'reducer/user/user';
+import {ENDPOINT_URL} from 'server-variables';
 
 export const createAPI = (dispatch) => {
   const api = axios.create({
-    baseURL: `https://es31-server.appspot.com/wtw`,
+    baseURL: ENDPOINT_URL,
     timeout: 5000,
     withCredentials: true,
   });
@@ -13,7 +14,7 @@ export const createAPI = (dispatch) => {
     if (err.response.status === 403) {
       dispatch(ActionCreator.requireAuthorization(true));
     }
-    return err;
+    return Promise.reject(err);
   };
 
   api.interceptors.response.use(onSuccess, onFail);

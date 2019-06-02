@@ -1,9 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import Main from 'components/main/main.jsx';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+
 import {ActionCreator} from "reducer/data/data";
 import {getGenres, getMovies} from "reducer/data/selectors";
+import {getAuthorizationStatus, getUserInfo} from "reducer/user/selectors";
+
+import privateRoute from 'hocs/private-route/private-route.jsx';
+
+import Wrapper from 'components/wrapper/wrapper.jsx';
+import Main from 'components/main/main.jsx';
+import SignIn from 'components/sign-in/sign-in.jsx';
+import Favorites from 'components/favorites/favorites.jsx';
+
+const PrivateFavorites = privateRoute(Favorites);
 
 const propTypes = {
   movies: PropTypes.arrayOf(
@@ -14,32 +25,59 @@ const propTypes = {
       })
   ),
   onGenreClick: PropTypes.func.isRequired,
-  genre: PropTypes.string,
-  genres: PropTypes.arrayOf(PropTypes.string)
+  genres: PropTypes.arrayOf(PropTypes.string),
+  user: PropTypes.shape({
+    authorized: PropTypes.bool.isRequired,
+    avatar: PropTypes.string,
+    name: PropTypes.string,
+  }),
 };
 
-const App = (props) => {
-  const {
-    genres,
-    movies,
-    onGenreClick,
-  } = props;
+class App extends React.PureComponent {
+  render() {
+    const {
+      genres,
+      movies,
+      onGenreClick,
+      user,
+    } = this.props;
 
+    return (
+      <Wrapper>
+        <Switch>
+          <Route
+            exact path="/"
+            render={(props) => (
+              <Main
+                genres={genres}
+                movies={movies}
+                user={user}
+                onGenreClick={(clickedGenre) => onGenreClick(clickedGenre)}
+                {...props}
+              />
+            )}
+          />
+          <Route exact path="/login" component={SignIn}/>
+          <Route exact path="/mylist" component={PrivateFavorites}/>
+        </Switch>
+      </Wrapper>
+    );
+  }
+}
 
-  return (
-    <Main
-      genres={genres}
-      movies={movies}
-      onGenreClick={(clickedGenre) => onGenreClick(clickedGenre)}
-    />
-  );
+const mapStateToProps = (state, ownProps) => {
+  const userInfo = getUserInfo(state);
+
+  return Object.assign({}, ownProps, {
+    movies: getMovies(state),
+    genres: getGenres(state),
+    user: {
+      authorized: getAuthorizationStatus(state),
+      avatar: userInfo.avatar,
+      name: userInfo.name,
+    }
+  });
 };
-
-const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  movies: getMovies(state),
-  genres: getGenres(state)
-});
-
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreClick: (genre) => {
@@ -51,4 +89,12 @@ App.propTypes = propTypes;
 
 export {App};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const connectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
+
+const AppWithRouter = () => (
+  <BrowserRouter>
+    <Route component={connectedApp}/>
+  </BrowserRouter>
+);
+
+export default AppWithRouter;
