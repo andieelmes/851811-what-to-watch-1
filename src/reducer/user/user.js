@@ -29,7 +29,6 @@ const ActionCreator = {
 
 const Operation = {
   login: (email, password) => (dispatch, _getState, api) => {
-    console.log(email, password);
     return api.post(`/login`, {email, password})
       .then((response) => {
         const data = {
@@ -38,7 +37,10 @@ const Operation = {
         }
         dispatch(ActionCreator.requireAuthorization(false));
         dispatch(ActionCreator.getUserData(data));
-      });
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   },
 };
 
