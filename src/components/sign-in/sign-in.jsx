@@ -6,7 +6,7 @@ import {Operation} from "reducer/user/user";
 const propTypes = {
   onSubmit: PropTypes.func.isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func,
+    goBack: PropTypes.func,
   }).isRequired,
   getLogin: PropTypes.func,
 };
@@ -48,7 +48,7 @@ class SignIn extends React.PureComponent {
       history
     } = this.props;
     onSubmit({email: this.state.email, password: this.state.password});
-    history.push(`/`);
+    history.goBack();
   }
 
   render() {
