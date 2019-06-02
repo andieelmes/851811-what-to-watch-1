@@ -7,9 +7,14 @@ import {ActionCreator} from "reducer/data/data";
 import {getGenres, getMovies} from "reducer/data/selectors";
 import {getAuthorizationStatus, getUserInfo} from "reducer/user/selectors";
 
+import privateRoute from 'hocs/private-route/private-route.jsx';
+
 import Wrapper from 'components/wrapper/wrapper.jsx';
 import Main from 'components/main/main.jsx';
 import SignIn from 'components/sign-in/sign-in.jsx';
+import Favorites from 'components/favorites/favorites.jsx';
+
+const PrivateFavorites = privateRoute(Favorites);
 
 const propTypes = {
   movies: PropTypes.arrayOf(
@@ -53,6 +58,7 @@ class App extends React.PureComponent {
             )}
           />
           <Route exact path="/login" component={SignIn}/>
+          <Route exact path="/mylist" component={PrivateFavorites}/>
         </Switch>
       </Wrapper>
     );
