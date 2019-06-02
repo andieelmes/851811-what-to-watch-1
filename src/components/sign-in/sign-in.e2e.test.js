@@ -15,6 +15,7 @@ describe(`Sign in component`, () => {
         push: historyPushHandler
       }}
       onSubmit={submitHandler}
+      getLogin={() => {}}
     />);
 
     const email = signIn.find(`input[type="email"]`);
@@ -32,6 +33,7 @@ describe(`Sign in component`, () => {
         push: historyPushHandler
       }}
       onSubmit={submitHandler}
+      getLogin={() => {}}
     />);
 
     const email = signIn.find(`input[type="email"]`);
@@ -57,6 +59,7 @@ describe(`Sign in component`, () => {
         push: historyPushHandler
       }}
       onSubmit={submitHandler}
+      getLogin={() => {}}
     />);
 
     const form = signIn.find(`form`);

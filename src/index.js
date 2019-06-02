@@ -7,7 +7,8 @@ import {compose} from "recompose";
 
 import App from 'components/app/app.jsx';
 import reducer from "./reducer";
-import {Operation} from "reducer/data/data";
+import {Operation as DataOperation} from "reducer/data/data";
+import {Operation as UserOperation} from "reducer/user/user";
 import {createAPI} from './api';
 
 const api = createAPI((...args) => store.dispatch(...args));
@@ -26,7 +27,8 @@ const enhancer = composeEnhancers(
 
 const store = createStore(reducer, enhancer);
 
-store.dispatch(Operation.loadMovies());
+store.dispatch(DataOperation.loadMovies());
+store.dispatch(UserOperation.getLogin());
 
 ReactDOM.render(
     <Provider store={store}>

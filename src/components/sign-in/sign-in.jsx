@@ -8,6 +8,7 @@ const propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  getLogin: PropTypes.func,
 };
 
 class SignIn extends React.PureComponent {
@@ -22,6 +23,10 @@ class SignIn extends React.PureComponent {
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getLogin();
   }
 
   onEmailChange({target: {value}}) {
@@ -108,7 +113,10 @@ export {SignIn};
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: ({email, password}) => {
-    dispatch(Operation.login(email, password));
+    dispatch(Operation.postLogin(email, password));
+  },
+  getLogin: () => {
+    dispatch(Operation.getLogin());
   },
 });
 

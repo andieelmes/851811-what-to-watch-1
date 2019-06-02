@@ -8,6 +8,7 @@ describe(`Sign in component`, () => {
       .create(
           <SignIn
             onSubmit={() => {}}
+            getLogin={() => {}}
             history={{
               push: () => {}
             }}

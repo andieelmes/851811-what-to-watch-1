@@ -27,17 +27,26 @@ const ActionCreator = {
   },
 };
 
+const onLoginSuccess = (response, dispatch) => {
+  const data = {
+    avatar: `${ENDPOINT_URL}${response.data.avatar_url.replace(`/wtw`, ``)}`,
+    name: response.data.name,
+  }
+  dispatch(ActionCreator.requireAuthorization(false));
+  dispatch(ActionCreator.getUserData(data));
+}
+
 const Operation = {
-  login: (email, password) => (dispatch, _getState, api) => {
+  postLogin: (email, password) => (dispatch, _getState, api) => {
     return api.post(`/login`, {email, password})
-      .then((response) => {
-        const data = {
-          avatar: `${ENDPOINT_URL}${response.data.avatar_url.replace(`/wtw`, ``)}`,
-          name: response.data.name,
-        }
-        dispatch(ActionCreator.requireAuthorization(false));
-        dispatch(ActionCreator.getUserData(data));
+      .then((responce) => onLoginSuccess(responce, dispatch))
+      .catch((error) => {
+        console.log(error);
       })
+  },
+  getLogin: () => (dispatch, _getState, api) => {
+    return api.get(`/login`)
+      .then((responce) => onLoginSuccess(responce, dispatch))
       .catch((error) => {
         console.log(error);
       })
