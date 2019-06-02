@@ -42,12 +42,13 @@ class App extends React.PureComponent {
         <Switch>
           <Route
             exact path="/"
-            render={() => (
+            render={(props) => (
               <Main
                 genres={genres}
                 movies={movies}
                 user={user}
                 onGenreClick={(clickedGenre) => onGenreClick(clickedGenre)}
+                {...props}
               />
             )}
           />
