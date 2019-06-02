@@ -39,12 +39,20 @@ class App extends React.PureComponent {
 
     return (
       <Wrapper>
-        <Main
-          genres={genres}
-          movies={movies}
-          user={user}
-          onGenreClick={(clickedGenre) => onGenreClick(clickedGenre)}
-        />
+        <Switch>
+          <Route
+            exact path="/"
+            render={() => (
+              <Main
+                genres={genres}
+                movies={movies}
+                user={user}
+                onGenreClick={(clickedGenre) => onGenreClick(clickedGenre)}
+              />
+            )}
+          />
+          <Route exact path="/login" component={SignIn}/>
+        </Switch>
       </Wrapper>
     );
   }
@@ -77,11 +85,8 @@ export {App};
 const connectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
 const AppWithRouter = () => (
-  <BrowserRouter basename={window.location.pathname}>
-    <Switch>
-      <Route exact path="/" component={connectedApp}/>
-      <Route path="/sign-in" component={SignIn}/>
-    </Switch>
+  <BrowserRouter>
+    <Route component={connectedApp}/>
   </BrowserRouter>
 );
 

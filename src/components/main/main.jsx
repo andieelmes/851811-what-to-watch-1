@@ -68,7 +68,7 @@ const Main = (props) => {
                   </div>
                 )
                 : (
-                  <Link to="/sign-in" className="user-block__link">Sign in</Link>
+                  <Link to="/login" className="user-block__link">Sign in</Link>
                 )
             }
           </div>
