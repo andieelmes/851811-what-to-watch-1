@@ -51,23 +51,4 @@ describe(`Sign in component`, () => {
 
     expect(submitHandler).toHaveBeenCalledWith({email: `1`, password: `2`});
   });
-
-  it(`should go back after form submit`, () => {
-    const historyGobackHandler = jest.fn();
-    const signIn = shallow(<SignIn
-      history={{
-        goBack: historyGobackHandler
-      }}
-      onSubmit={submitHandler}
-      getLogin={() => {}}
-    />);
-
-    const form = signIn.find(`form`);
-
-    form.simulate(`submit`, {
-      preventDefault() {}
-    });
-
-    expect(historyGobackHandler).toHaveBeenCalledTimes(1);
-  });
 });
