@@ -8,7 +8,7 @@ module.exports = {
   },
   resolve: {
     modules: [path.resolve(__dirname, `src`), `node_modules`],
-    extensions: [`.js`, `.jsx`, `.ts`, `.tsx`, `json`],
+    extensions: [`.ts`, `.tsx`, `.js`, `json`]
   },
   devServer: {
     historyApiFallback: true,
