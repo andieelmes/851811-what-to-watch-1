@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withActiveItem from 'hocs/with-active-item/with-active-item.jsx';
+import withActiveItem from 'hocs/with-active-item/with-active-item.tsx';
 import {Link} from 'react-router-dom';
-import GenreList from 'components/genre-list/genre-list.jsx';
-import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
+import GenreList from 'components/genre-list/genre-list.tsx';
+import MovieCardList from 'components/movie-card-list/movie-card-list.tsx';
 import {
   ALL_GENRES
 } from "movie-variables";

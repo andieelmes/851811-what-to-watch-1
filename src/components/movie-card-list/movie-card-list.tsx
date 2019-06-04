@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MovieCard from 'components/movie-card/movie-card.jsx';
+import MovieCard from 'components/movie-card/movie-card.tsx';
 
 const propTypes = {
   movies: PropTypes.arrayOf(

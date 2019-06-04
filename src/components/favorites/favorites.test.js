@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Favorites from 'components/favorites/favorites.jsx';
+import Favorites from 'components/favorites/favorites.tsx';
 
 describe(`Favorites component`, () => {
   it(`should render correctly`, () => {

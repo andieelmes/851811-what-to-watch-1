@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import withActiveItem from 'hocs/with-active-item/with-active-item.jsx';
+import withActiveItem from 'hocs/with-active-item/with-active-item.tsx';
 
 Enzyme.configure({adapter: new Adapter()});
 

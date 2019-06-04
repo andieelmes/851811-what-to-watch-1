@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import VideoPlayer from 'components/video-player/video-player.jsx';
+import VideoPlayer from 'components/video-player/video-player.tsx';
 
 const propTypes = {
   id: PropTypes.number.isRequired,

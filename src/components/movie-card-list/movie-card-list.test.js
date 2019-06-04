@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MovieCardList from 'components/movie-card-list/movie-card-list.jsx';
+import MovieCardList from 'components/movie-card-list/movie-card-list.tsx';
 
 const movies = [
   {
