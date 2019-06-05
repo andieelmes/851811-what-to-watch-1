@@ -1,17 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from "react-redux";
-import {Operation} from "reducer/user/user";
+import {Operation} from "App/reducer/user/user";
 
-const propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  history: PropTypes.shape({
-    goBack: PropTypes.func,
-  }).isRequired,
-  getLogin: PropTypes.func,
+interface Props {
+  onSubmit: ({}: State, callback: () => void) => void,
+  history: {goBack: () => void},
+  getLogin: () => void,
 };
 
-class SignIn extends React.PureComponent {
+interface State {
+  email: string,
+  password: string,
+};
+
+class SignIn extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
 
@@ -105,8 +107,6 @@ class SignIn extends React.PureComponent {
     );
   }
 }
-
-SignIn.propTypes = propTypes;
 
 export {SignIn};
 

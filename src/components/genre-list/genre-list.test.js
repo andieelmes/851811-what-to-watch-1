@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import GenreList from 'components/genre-list/genre-list.jsx';
+import GenreList from 'App/components/genre-list/genre-list';
 
-import {MOVIES} from 'mocks/movies';
+import {MOVIES} from 'App/mocks/movies';
 import {
   ALL_GENRES
-} from "movie-variables";
+} from "App/movie-variables";
 
 const genres = [ALL_GENRES, ...new Set(MOVIES.map((movie) => movie.genre))];
 

@@ -1,18 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-import VideoPlayer from 'components/video-player/video-player.jsx';
+import VideoPlayer from 'App/components/video-player/video-player';
 
-const propTypes = {
-  id: PropTypes.number.isRequired,
-  img: PropTypes.string.isRequired,
-  preview: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  onHover: PropTypes.func.isRequired,
-  activeItem: PropTypes.number,
+interface Props {
+  id: number,
+  img: string,
+  preview: string,
+  title: string,
+  onHover: (id: number) => void,
+  activeItem: number,
 };
 
-const MovieCard = (props) => {
+const MovieCard: React.FunctionComponent<Props> = (props) => {
   const {
     id,
     preview,
@@ -36,7 +35,5 @@ const MovieCard = (props) => {
     </article>
   );
 };
-
-MovieCard.propTypes = propTypes;
 
 export default MovieCard;

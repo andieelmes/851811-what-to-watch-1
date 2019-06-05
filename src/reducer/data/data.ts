@@ -1,8 +1,13 @@
+import { Movie } from 'types';
+import { Action, ActionCreator, AnyAction } from 'redux';
+import { ThunkDispatch, ThunkAction } from 'redux-thunk';
+
 import {
   ALL_GENRES
-} from "movie-variables";
+} from "App/movie-variables";
+import {Data} from 'App/types';
 
-const initialState = {
+const initialState: Data = {
   genre: ALL_GENRES,
   movies: [],
   genres: [],
@@ -13,20 +18,27 @@ const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
 };
 
-const ActionCreator = {
-  loadMovies: (movies) => ({
+const loadMovies: ActionCreator<Action> = (movies: Movie[]) => {
+  return {
     type: ActionType.LOAD_MOVIES,
     payload: movies,
-  }),
+  };
+};
 
-  changeGenre: (genre) => ({
+const changeGenre: ActionCreator<Action> = (genre: string) => {
+  return {
     type: ActionType.CHANGE_GENRE,
     payload: genre,
-  }),
+  };
+};
+
+const ActionCreator = {
+  loadMovies: loadMovies,
+  changeGenre: changeGenre,
 };
 
 const Operation = {
-  loadMovies: () => (dispatch, _getState, api) => {
+  loadMovies: () :ThunkAction<void, Data, null, AnyAction> => (dispatch: ThunkDispatch<Data, void, AnyAction>, _getState: () => Data, api: any) => {
     return api.get(`/films`)
       .then((response) => {
         const data = response.data.map((movie) => {
@@ -43,7 +55,7 @@ const Operation = {
   },
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case ActionType.LOAD_MOVIES: return {...state, movies: action.payload}
     case ActionType.CHANGE_GENRE: return {...state, genre: action.payload}

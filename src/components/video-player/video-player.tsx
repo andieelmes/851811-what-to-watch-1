@@ -1,14 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-const propTypes = {
-  img: PropTypes.string.isRequired,
-  preview: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  active: PropTypes.bool.isRequired,
+interface Props {
+  img: string,
+  preview: string,
+  title: string,
+  active: boolean,
 };
 
-class VideoPlayer extends React.PureComponent {
+interface State {
+  active: boolean,
+  isLoading: boolean,
+};
+
+class VideoPlayer extends React.PureComponent<Props, State> {
+  _videoRef: React.RefObject<HTMLVideoElement>;
+  videoTimeout: NodeJS.Timer;
+  VIDEO_TIMEOUT_DELAY: number;
+
   constructor(props) {
     super(props);
 
@@ -76,20 +84,20 @@ class VideoPlayer extends React.PureComponent {
       title,
     } = this.props;
 
-    const containerStyles = {
-      position: `relavive`,
+    const containerStyles: React.CSSProperties = {
+      position: `relavive` as `relative`,
       zIndex: 3,
     };
 
-    const videoPlayerStyles = {
-      position: `relative`,
+    const videoPlayerStyles: React.CSSProperties = {
+      position: `relavive` as `relative`,
       zIndex: 2,
       objectFit: `cover`,
       maxWidth: `100%`,
       height: `100%`,
     };
 
-    const hiddenStyles = {
+    const hiddenStyles: React.CSSProperties = {
       display: `none`,
     };
 
@@ -127,7 +135,5 @@ class VideoPlayer extends React.PureComponent {
     }
   }
 }
-
-VideoPlayer.propTypes = propTypes;
 
 export default VideoPlayer;

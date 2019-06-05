@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import MovieCard from 'components/movie-card/movie-card.jsx';
+import MovieCard from 'App/components/movie-card/movie-card';
 
 const movie = {
   id: 1,

@@ -1,14 +1,17 @@
 const path = require(`path`);
 
 module.exports = {
-  entry: `./src/index.js`,
+  entry: `./src/index.tsx`,
   output: {
     filename: `bundle.js`,
     path: path.join(__dirname, `public`)
   },
   resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-    extensions: ['.js', '.jsx'],
+    modules: [path.resolve(__dirname, `src`), `node_modules`],
+    extensions: [`.ts`, `.tsx`, `.js`, `json`],
+    alias: {
+      App: path.resolve(__dirname, 'src'),
+    }
   },
   devServer: {
     historyApiFallback: true,
@@ -24,6 +27,10 @@ module.exports = {
         use: {
           loader: `babel-loader`,
         },
+      },
+      {
+        test: /\.(tsx|ts)?$/,
+        loader: `ts-loader`
       }
     ],
   },

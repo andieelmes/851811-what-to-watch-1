@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import VideoPlayer from 'components/video-player/video-player.jsx';
+import VideoPlayer from 'App/components/video-player/video-player';
 
 const videoPlayerProps = {
   img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,

@@ -1,22 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
 import {
   ALL_GENRES
-} from "movie-variables";
+} from "App/movie-variables";
 
 
-const propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.string),
-  onChange: PropTypes.func.isRequired,
-  activeItem: PropTypes.string,
+interface Props {
+  genres: string[],
+  onChange: (genre: string) => void
+  activeItem: string,
 };
 
 const defaultProps = {
   activeItem: ALL_GENRES,
 };
 
-const GenreList = (props) => {
+const GenreList: React.FunctionComponent<Props> = (props) => {
   const {
     genres,
     onChange,
@@ -49,7 +48,6 @@ const GenreList = (props) => {
   );
 };
 
-GenreList.propTypes = propTypes;
 GenreList.defaultProps = defaultProps;
 
 export default GenreList;
