@@ -16,9 +16,9 @@ module.exports = {
     `node`
   ],
   moduleNameMapper,
-  globals: {
+  "globals": {
     "ts-jest": {
-      "tsConfigFile": "tsconfig.json",
+      "tsConfig": "tsconfig.json",
       "enableTsDiagnostics": true
     }
   },
