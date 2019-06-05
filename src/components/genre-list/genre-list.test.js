@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import GenreList from 'components/genre-list/genre-list.tsx';
+import GenreList from 'components/genre-list/genre-list';
 
 import {MOVIES} from 'mocks/movies';
 import {

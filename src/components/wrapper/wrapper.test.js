@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Wrapper from 'components/wrapper/wrapper.tsx';
+import Wrapper from 'components/wrapper/wrapper';
 
 describe(`Wrapper component`, () => {
   it(`should render correctly`, () => {

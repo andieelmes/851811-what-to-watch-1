@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import VideoPlayer from 'components/video-player/video-player.tsx';
+import VideoPlayer from 'components/video-player/video-player';
 
 interface Props {
   id: number,

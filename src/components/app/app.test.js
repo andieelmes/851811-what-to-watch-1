@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {BrowserRouter} from 'react-router-dom';
-import {App} from 'components/app/app.tsx';
+import {App} from 'components/app/app';
 
 import {MOVIES, GENRES} from 'mocks/movies';
 

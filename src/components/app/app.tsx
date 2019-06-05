@@ -7,11 +7,11 @@ import {ActionCreator} from "reducer/data/data";
 import {getGenres, getMovies} from "reducer/data/selectors";
 import {getAuthorizationStatus, getUserInfo} from "reducer/user/selectors";
 
-import privateRoute from 'hocs/private-route/private-route.tsx';
+import privateRoute from 'hocs/private-route/private-route';
 
-import Wrapper from 'components/wrapper/wrapper.tsx';
-import Main from 'components/main/main.tsx';
-import SignIn from 'components/sign-in/sign-in.tsx';
+import Wrapper from 'components/wrapper/wrapper';
+import Main from 'components/main/main';
+import SignIn from 'components/sign-in/sign-in';
 import Favorites from 'components/favorites/favorites';
 
 import {Movie} from 'types';
