@@ -37,16 +37,21 @@ const onLoginSuccess = (response, dispatch) => {
 }
 
 const Operation = {
-  postLogin: (email, password) => (dispatch, _getState, api) => {
+  postLogin: (email, password, callback) => (dispatch, _getState, api) => {
     return api.post(`/login`, {email, password})
-      .then((responce) => onLoginSuccess(responce, dispatch))
+      .then((response) =>
+        {
+          onLoginSuccess(response, dispatch);
+          callback();
+        }
+      )
       .catch((error) => {
         console.log(error);
       })
   },
   getLogin: () => (dispatch, _getState, api) => {
     return api.get(`/login`)
-      .then((responce) => onLoginSuccess(responce, dispatch))
+      .then((response) => onLoginSuccess(response, dispatch))
       .catch((error) => {
         console.log(error);
       })

@@ -7,6 +7,7 @@ Enzyme.configure({adapter: new Adapter()});
 
 describe(`Sign in component`, () => {
   const submitHandler = jest.fn();
+  const historyGobackHandler = jest.fn();
 
   it(`should update state on input change`, () => {
     const signIn = shallow(<SignIn
@@ -26,10 +27,10 @@ describe(`Sign in component`, () => {
     expect(signIn.state(`email`)).toEqual(`1`);
   });
 
-  it(`should submit password and email`, () => {
+  it(`should submit password and email, and pass go back callback`, () => {
     const signIn = shallow(<SignIn
       history={{
-        goBack: jest.fn()
+        goBack: historyGobackHandler
       }}
       onSubmit={submitHandler}
       getLogin={() => {}}
@@ -49,25 +50,6 @@ describe(`Sign in component`, () => {
       preventDefault() {}
     });
 
-    expect(submitHandler).toHaveBeenCalledWith({email: `1`, password: `2`});
-  });
-
-  it(`should go back after form submit`, () => {
-    const historyGobackHandler = jest.fn();
-    const signIn = shallow(<SignIn
-      history={{
-        goBack: historyGobackHandler
-      }}
-      onSubmit={submitHandler}
-      getLogin={() => {}}
-    />);
-
-    const form = signIn.find(`form`);
-
-    form.simulate(`submit`, {
-      preventDefault() {}
-    });
-
-    expect(historyGobackHandler).toHaveBeenCalledTimes(1);
+    expect(submitHandler).toHaveBeenCalledWith({email: `1`, password: `2`}, historyGobackHandler);
   });
 });

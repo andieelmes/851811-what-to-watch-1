@@ -47,8 +47,7 @@ class SignIn extends React.PureComponent {
       onSubmit,
       history
     } = this.props;
-    onSubmit({email: this.state.email, password: this.state.password});
-    history.goBack();
+    onSubmit({email: this.state.email, password: this.state.password}, history.goBack);
   }
 
   render() {
@@ -112,8 +111,8 @@ SignIn.propTypes = propTypes;
 export {SignIn};
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: ({email, password}) => {
-    dispatch(Operation.postLogin(email, password));
+  onSubmit: ({email, password}, callback) => {
+    dispatch(Operation.postLogin(email, password, callback));
   },
   getLogin: () => {
     dispatch(Operation.getLogin());
