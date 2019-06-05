@@ -1,6 +1,11 @@
 import {ENDPOINT_URL} from 'server-variables';
+import { Action, ActionCreator, AnyAction } from 'redux';
+import { ThunkDispatch, ThunkAction } from 'redux-thunk';
 
-const initialState = {
+import {User} from 'types';
+import { Dispatch } from 'react';
+
+const initialState: User = {
   isAuthorizationRequired: true,
   avatar: ``,
   name: ``,
@@ -11,23 +16,27 @@ const ActionType = {
   GET_USER_DATA: `GET_USER_DATA`
 };
 
-const ActionCreator = {
-  requireAuthorization: (status) => {
-    return {
-      type: ActionType.REQUIRED_AUTHORIZATION,
-      payload: status,
-    };
-  },
-
-  getUserData: (data) => {
-    return {
-      type: ActionType.GET_USER_DATA,
-      payload: data,
-    };
-  },
+const requireAuthorization: ActionCreator<Action> = (status: boolean) => {
+  return {
+    type: ActionType.REQUIRED_AUTHORIZATION,
+    payload: status,
+  };
 };
 
-const onLoginSuccess = (response, dispatch) => {
+const getUserData: ActionCreator<Action> = (data: {avatar: string, name: string}) => {
+  return {
+    type: ActionType.GET_USER_DATA,
+    payload: data,
+  };
+};
+
+
+const ActionCreator = {
+  requireAuthorization: requireAuthorization,
+  getUserData: getUserData,
+};
+
+const onLoginSuccess = (response, dispatch: Dispatch<any>) => {
   const data = {
     avatar: `${ENDPOINT_URL}${response.data.avatar_url.replace(`/wtw`, ``)}`,
     name: response.data.name,
@@ -37,7 +46,7 @@ const onLoginSuccess = (response, dispatch) => {
 }
 
 const Operation = {
-  postLogin: (email, password, callback) => (dispatch, _getState, api) => {
+  postLogin: (email: string, password: string, callback: () => void): ThunkAction<void, User, null, AnyAction> => (dispatch: ThunkDispatch<User, void, AnyAction>, _getState: () => User, api: any) => {
     return api.post(`/login`, {email, password})
       .then((response) =>
         {
@@ -49,7 +58,7 @@ const Operation = {
         console.log(error);
       })
   },
-  getLogin: () => (dispatch, _getState, api) => {
+  getLogin: () :ThunkAction<void, User, null, AnyAction> => (dispatch: ThunkDispatch<User, void, AnyAction>, _getState: () => User, api: any) => {
     return api.get(`/login`)
       .then((response) => onLoginSuccess(response, dispatch))
       .catch((error) => {
@@ -58,7 +67,7 @@ const Operation = {
   },
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case ActionType.REQUIRED_AUTHORIZATION:
       return {...state, isAuthorizationRequired: action.payload}

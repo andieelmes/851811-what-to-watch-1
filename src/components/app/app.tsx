@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from "react-redux";
+import {Dispatch} from 'redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import {ActionCreator} from "reducer/data/data";
@@ -14,26 +14,22 @@ import Main from 'components/main/main.tsx';
 import SignIn from 'components/sign-in/sign-in.tsx';
 import Favorites from 'components/favorites/favorites';
 
+import {Movie} from 'types';
+
 const PrivateFavorites = privateRoute(Favorites);
 
-const propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        img: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-      })
-  ),
-  onGenreClick: PropTypes.func.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string),
-  user: PropTypes.shape({
-    authorized: PropTypes.bool.isRequired,
-    avatar: PropTypes.string,
-    name: PropTypes.string,
-  }),
+interface Props {
+  movies: Movie[],
+  onGenreClick: (genre: string) => void,
+  genres: string[],
+  user: {
+    authorized: boolean,
+    avatar: string,
+    name: string,
+  },
 };
 
-class App extends React.PureComponent {
+class App extends React.PureComponent<Props, null> {
   render() {
     const {
       genres,
@@ -52,7 +48,7 @@ class App extends React.PureComponent {
                 genres={genres}
                 movies={movies}
                 user={user}
-                onGenreClick={(clickedGenre) => onGenreClick(clickedGenre)}
+                onGenreClick={(clickedGenre: string) => onGenreClick(clickedGenre)}
                 {...props}
               />
             )}
@@ -79,13 +75,11 @@ const mapStateToProps = (state, ownProps) => {
   });
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onGenreClick: (genre) => {
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  onGenreClick: (genre: string) => {
     dispatch(ActionCreator.changeGenre(genre));
   },
 });
-
-App.propTypes = propTypes;
 
 export {App};
 

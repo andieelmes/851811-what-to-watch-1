@@ -1,20 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import MovieCard from 'components/movie-card/movie-card.tsx';
 
-const propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        img: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-      })
-  ),
-  onChange: PropTypes.func.isRequired,
-  activeItem: PropTypes.number,
+import {Movie} from 'types';
+
+interface Props {
+  movies: Movie[],
+  onChange: () => void
+  activeItem: number,
 };
 
-const MovieCardList = (props) => {
+const MovieCardList: React.FunctionComponent<Props> = (props) => {
   const {
     movies,
     onChange,
@@ -29,7 +24,5 @@ const MovieCardList = (props) => {
     </div>
   );
 };
-
-MovieCardList.propTypes = propTypes;
 
 export default MovieCardList;

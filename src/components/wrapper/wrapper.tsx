@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from "react";
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
+interface Props {
+  children: React.ReactNode,
 };
 
-const Wrapper = (props) => (
+const Wrapper: React.FunctionComponent<Props> = (props) => (
   <>
     <div className="visually-hidden">
       <svg xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +40,5 @@ const Wrapper = (props) => (
     {props.children}
   </>
 );
-
-Wrapper.propTypes = propTypes;
 
 export default Wrapper;

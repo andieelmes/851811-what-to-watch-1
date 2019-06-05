@@ -1,39 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import withActiveItem from 'hocs/with-active-item/with-active-item.tsx';
 import {Link} from 'react-router-dom';
 import GenreList from 'components/genre-list/genre-list.tsx';
 import MovieCardList from 'components/movie-card-list/movie-card-list.tsx';
-import {
-  ALL_GENRES
-} from "movie-variables";
 
-const propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        img: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-      })
-  ),
-  onGenreClick: PropTypes.func.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string),
-  user: PropTypes.shape({
-    authorized: PropTypes.bool.isRequired,
-    avatar: PropTypes.string,
-    name: PropTypes.string,
-  }),
+import {Movie, User} from 'types';
+
+interface Props {
+  movies: Movie[],
+  onGenreClick: (genre: string) => void,
+  genres: string[],
+  user: {
+    authorized: boolean,
+    avatar: string,
+    name: string,
+  },
 };
-
-const defaultProps = {
-  genre: ALL_GENRES,
-};
-
 
 const GenreListWithActiveItem = withActiveItem(GenreList);
 const MovieCardListWithActiveItem = withActiveItem(MovieCardList);
 
-const Main = (props) => {
+const Main: React.FunctionComponent<Props> = (props) => {
   const {
     genres,
     movies,
@@ -135,8 +122,5 @@ const Main = (props) => {
     </>
   );
 };
-
-Main.propTypes = propTypes;
-Main.defaultProps = defaultProps;
 
 export default Main;

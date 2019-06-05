@@ -1,19 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from "react";
 import {connect} from "react-redux";
 import {getAuthorizationStatus} from "reducer/user/selectors";
 
 import {getDisplayName} from 'utils';
 
-const privateRoute = (Component) => {
-  const propTypes = {
-    authorized: PropTypes.bool.isRequired,
-    history: PropTypes.shape({
-      push: PropTypes.func,
-    }).isRequired,
-  };
+interface State {
+  authorized: boolean,
+  history: {push: () => void},
+}
 
-  class WrappedComponent extends React.Component {
+const privateRoute = (Component) => {
+  type P = React.ComponentProps<typeof Component>;
+
+  class WrappedComponent extends React.Component<P, State> {
+    static readonly displayName = `privateRoute(${getDisplayName(Component)})`;
+
     componentDidUpdate() {
       if (!this.props.authorized) {
         this.props.history.push(`/login`);
@@ -29,9 +30,6 @@ const privateRoute = (Component) => {
       authorized: getAuthorizationStatus(state),
     });
   };
-
-  WrappedComponent.propTypes = propTypes;
-  WrappedComponent.displayName = `privateRoute(${getDisplayName(Component)})`;
 
   const connectedWrappedComponent = connect(mapStateToProps)(WrappedComponent);
 

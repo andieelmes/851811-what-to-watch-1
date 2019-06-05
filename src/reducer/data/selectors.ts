@@ -3,25 +3,26 @@ import Namespace from "../namespaces";
 import {
   ALL_GENRES
 } from "movie-variables";
+import {Data, Movie} from 'types';
 
 const NAMESPACE = Namespace.DATA;
 
-export const getAllMovies = (state) => {
+export const getAllMovies = (state: Data) => {
   return state[NAMESPACE].movies;
 };
 
-export const getGenre = (state) => {
+export const getGenre = (state: Data) => {
   return state[NAMESPACE].genre;
 };
 
 export const getGenres = createSelector(
     getAllMovies,
-    (movies) => [ALL_GENRES, ...new Set(movies.map((movie) => movie.genre))]
+    (movies) => [ALL_GENRES, ...new Set(movies.map((movie: Movie) => movie.genre))]
 );
 
 
 export const getMovies = createSelector(
     getGenre,
     getAllMovies,
-    (genre, movies) => genre === ALL_GENRES ? movies : movies.filter((movie) => movie.genre === genre)
+    (genre, movies) => genre === ALL_GENRES ? movies : movies.filter((movie: Movie) => movie.genre === genre)
 );
