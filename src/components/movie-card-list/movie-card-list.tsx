@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MovieCard from 'components/movie-card/movie-card';
+import MovieCard from 'App/components/movie-card/movie-card';
 
 import {Movie} from 'types';
 

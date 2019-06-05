@@ -1,12 +1,11 @@
-import { Dispatch } from "react";
 import { Movie } from 'types';
 import { Action, ActionCreator, AnyAction } from 'redux';
 import { ThunkDispatch, ThunkAction } from 'redux-thunk';
 
 import {
   ALL_GENRES
-} from "movie-variables";
-import {Data} from 'types';
+} from "App/movie-variables";
+import {Data} from 'App/types';
 
 const initialState: Data = {
   genre: ALL_GENRES,

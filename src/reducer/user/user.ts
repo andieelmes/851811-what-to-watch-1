@@ -1,8 +1,8 @@
-import {ENDPOINT_URL} from 'server-variables';
+import {ENDPOINT_URL} from 'App/server-variables';
 import { Action, ActionCreator, AnyAction } from 'redux';
 import { ThunkDispatch, ThunkAction } from 'redux-thunk';
 
-import {User} from 'types';
+import {User} from 'App/types';
 import { Dispatch } from 'react';
 
 const initialState: User = {

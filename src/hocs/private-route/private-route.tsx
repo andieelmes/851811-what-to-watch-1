@@ -1,8 +1,8 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {getAuthorizationStatus} from "reducer/user/selectors";
+import {getAuthorizationStatus} from "App/reducer/user/selectors";
 
-import {getDisplayName} from 'utils';
+import {getDisplayName} from 'App/utils';
 
 interface State {
   authorized: boolean,

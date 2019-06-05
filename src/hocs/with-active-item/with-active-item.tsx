@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Subtract} from "utility-types";
-import {getDisplayName} from 'utils';
+import {getDisplayName} from 'App/utils';
 
 interface State {
   activeItem: string,

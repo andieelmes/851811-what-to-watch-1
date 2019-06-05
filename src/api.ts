@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {ActionCreator} from 'reducer/user/user';
-import {ENDPOINT_URL} from 'server-variables';
+import {ActionCreator} from 'App/reducer/user/user';
+import {ENDPOINT_URL} from 'App/server-variables';
 
 export const createAPI = (dispatch) => {
   const api = axios.create({

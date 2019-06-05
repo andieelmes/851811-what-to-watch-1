@@ -3,18 +3,18 @@ import {connect} from "react-redux";
 import {Dispatch} from 'redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-import {ActionCreator} from "reducer/data/data";
-import {getGenres, getMovies} from "reducer/data/selectors";
-import {getAuthorizationStatus, getUserInfo} from "reducer/user/selectors";
+import {ActionCreator} from "App/reducer/data/data";
+import {getGenres, getMovies} from "App/reducer/data/selectors";
+import {getAuthorizationStatus, getUserInfo} from "App/reducer/user/selectors";
 
-import privateRoute from 'hocs/private-route/private-route';
+import privateRoute from 'App/hocs/private-route/private-route';
 
-import Wrapper from 'components/wrapper/wrapper';
-import Main from 'components/main/main';
-import SignIn from 'components/sign-in/sign-in';
-import Favorites from 'components/favorites/favorites';
+import Wrapper from 'App/components/wrapper/wrapper';
+import Main from 'App/components/main/main';
+import SignIn from 'App/components/sign-in/sign-in';
+import Favorites from 'App/components/favorites/favorites';
 
-import {Movie} from 'types';
+import {Movie} from 'App/types';
 
 const PrivateFavorites = privateRoute(Favorites);
 

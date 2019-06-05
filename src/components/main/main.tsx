@@ -1,8 +1,8 @@
 import * as React from 'react';
-import withActiveItem from 'hocs/with-active-item/with-active-item';
+import withActiveItem from 'App/hocs/with-active-item/with-active-item';
 import {Link} from 'react-router-dom';
-import GenreList from 'components/genre-list/genre-list';
-import MovieCardList from 'components/movie-card-list/movie-card-list';
+import GenreList from 'App/components/genre-list/genre-list';
+import MovieCardList from 'App/components/movie-card-list/movie-card-list';
 
 import {Movie, User} from 'types';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import MovieCardList from 'components/movie-card-list/movie-card-list';
-import MovieCard from 'components/movie-card/movie-card';
+import MovieCardList from 'App/components/movie-card-list/movie-card-list';
+import MovieCard from 'App/components/movie-card/movie-card';
 
 const movies = [
   {

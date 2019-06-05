@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {BrowserRouter} from 'react-router-dom';
-import Main from 'components/main/main';
+import Main from 'App/components/main/main';
 
-import {MOVIES, GENRES} from 'mocks/movies';
+import {MOVIES, GENRES} from 'App/mocks/movies';
 
 describe(`Main component`, () => {
   it(`should render correctly when authorized`, () => {

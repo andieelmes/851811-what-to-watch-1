@@ -2,8 +2,8 @@ import {createSelector} from "reselect";
 import Namespace from "../namespaces";
 import {
   ALL_GENRES
-} from "movie-variables";
-import {Data, Movie} from 'types';
+} from "App/movie-variables";
+import {Data, Movie} from 'App/types';
 
 const NAMESPACE = Namespace.DATA;
 

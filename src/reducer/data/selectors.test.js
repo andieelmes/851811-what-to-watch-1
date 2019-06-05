@@ -4,7 +4,7 @@ import {
 } from "./selectors";
 import {
   ALL_GENRES
-} from "movie-variables";
+} from "App/movie-variables";
 import Namespace from "../namespaces";
 
 const NAMESPACE = Namespace.DATA;

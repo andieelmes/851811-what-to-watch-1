@@ -1,5 +1,4 @@
 import Namespace from "../namespaces";
-import { userInfo } from "os";
 
 const NAMESPACE = Namespace.USER;
 

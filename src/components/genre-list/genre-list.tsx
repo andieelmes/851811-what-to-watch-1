@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import {
   ALL_GENRES
-} from "movie-variables";
+} from "App/movie-variables";
 
 
 interface Props {

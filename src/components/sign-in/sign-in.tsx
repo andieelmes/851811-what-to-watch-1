@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from "react-redux";
-import {Operation} from "reducer/user/user";
+import {Operation} from "App/reducer/user/user";
 
 interface Props {
   onSubmit: ({}: State, callback: () => void) => void,

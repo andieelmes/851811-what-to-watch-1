@@ -5,7 +5,7 @@ import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 import {compose} from "recompose";
 
-import App from 'components/app/app';
+import App from 'App/components/app/app';
 import reducer from "./reducer";
 import {Operation as DataOperation} from "reducer/data/data";
 import {Operation as UserOperation} from "reducer/user/user";
