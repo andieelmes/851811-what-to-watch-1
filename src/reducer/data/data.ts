@@ -55,7 +55,18 @@ const onMovieListLoadSuccess = (response, dispatch: Dispatch<any>) => {
       img: movie.background_image,
       title: movie.name,
       preview: movie.preview_video_link,
+      video: movie.video_link,
       genre: movie.genre.toLowerCase(),
+      poster: movie.poster_image,
+      backgroundColor: movie.background_color,
+      description: movie.description,
+      rating: movie.rating,
+      ratingsNumber: movie.scores_count,
+      director: movie.director,
+      starring: movie.starring,
+      duration: movie.run_time,
+      released: movie.released,
+      favorite: movie.favorite,
     }
   })
 }
