@@ -24,3 +24,9 @@ export const getRating = (rating: number) => {
 
   return 'bad'
 }
+
+export const getHoursAndMinutes = (duration: number) => {
+  const minutes = duration % 60;
+  const hours = (duration - minutes) / 60;
+  return `${hours}h ${minutes}m`
+}
