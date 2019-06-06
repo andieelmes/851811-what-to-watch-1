@@ -4,6 +4,16 @@ export interface Movie {
   title: string,
   preview: string,
   genre: string,
+  poster: string,
+  backgroundColor: string,
+  description: string,
+  rating: number,
+  ratingsCount: number,
+  director: string,
+  starring: string[],
+  duration: number,
+  year: number,
+  favorite: boolean,
 }
 
 export interface User {

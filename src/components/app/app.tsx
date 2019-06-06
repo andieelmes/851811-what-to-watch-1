@@ -60,8 +60,9 @@ class App extends React.PureComponent<Props, null> {
           <Route exact path="/login" render={(props) => (<SignIn user={user} {...props}/>)}/>
           <Route exact path="/mylist" render={(props) => (<PrivateFavorites user={user} movies={favorites} {...props}/>)}/>
           <Route path="/film/:id" render={(props) => {
-            const movie = movies.find((movie) => movie.id === +props.match.params.id);
-            return <Movie user={user} movie={movie} {...props}/>
+            const currentMovie = movies.find((movie) => movie.id === +props.match.params.id);
+            const similarMovies = movies.filter((movie) => movie.genre === currentMovie.genre && movie.id !== currentMovie.id).slice(0, 4);
+            return <Movie user={user} movie={currentMovie} similar={similarMovies} {...props}/>
           }}/>
         </Switch>
       </Wrapper>

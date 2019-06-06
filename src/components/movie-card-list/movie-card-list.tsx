@@ -1,7 +1,8 @@
 import * as React from 'react';
 import MovieCard from 'App/components/movie-card/movie-card';
 
-import {Movie} from 'types';
+import {Movie} from 'App/types';
+import {INITIAL_MOVIES_LENGTH, MOVIES_TO_SHOW} from 'App/movie-variables';
 
 interface Props {
   movies: Movie[],
@@ -20,8 +21,8 @@ class MovieCardList extends React.PureComponent<Props, State> {
     super(props);
 
     this.state = {
-      show: 20,
-      increase: 20,
+      show: INITIAL_MOVIES_LENGTH,
+      increase: MOVIES_TO_SHOW,
     };
 
     this.onMore = this.onMore.bind(this);

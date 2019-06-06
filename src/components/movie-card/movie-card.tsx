@@ -31,7 +31,7 @@ const MovieCard: React.FunctionComponent<Props> = (props) => {
     >
       <VideoPlayer img={img} preview={preview} title={title} active={activeItem === id} id={id}/>
       <h3 className="small-movie-card__title">
-        <Link to={`film/${id}`} className="small-movie-card__link" href="movie-page.html">{title}</Link>
+        <Link to={`/film/${id}`} className="small-movie-card__link" href="movie-page.html">{title}</Link>
       </h3>
     </article>
   );

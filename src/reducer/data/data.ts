@@ -61,11 +61,11 @@ const onMovieListLoadSuccess = (response, dispatch: Dispatch<any>) => {
       backgroundColor: movie.background_color,
       description: movie.description,
       rating: movie.rating,
-      ratingsNumber: movie.scores_count,
+      ratingsCount: movie.scores_count,
       director: movie.director,
       starring: movie.starring,
       duration: movie.run_time,
-      released: movie.released,
+      year: movie.released,
       favorite: movie.favorite,
     }
   })

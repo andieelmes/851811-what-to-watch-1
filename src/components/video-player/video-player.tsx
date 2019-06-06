@@ -111,7 +111,7 @@ class VideoPlayer extends React.PureComponent<Props, State> {
 
     return (
       <Link
-        to={`film/${id}`}
+        to={`/film/${id}`}
         className="small-movie-card__image"
         style={this.props.active ? activeContainerStyles : containerStyles}
       >
