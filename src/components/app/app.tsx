@@ -4,7 +4,7 @@ import {Dispatch} from 'redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import {ActionCreator} from "App/reducer/data/data";
-import {getGenres, getMovies} from "App/reducer/data/selectors";
+import {getGenres, getMovies, getFavorites} from "App/reducer/data/selectors";
 import {getAuthorizationStatus, getUserInfo} from "App/reducer/user/selectors";
 
 import privateRoute from 'App/hocs/private-route/private-route';
@@ -13,13 +13,15 @@ import Wrapper from 'App/components/wrapper/wrapper';
 import Main from 'App/components/main/main';
 import SignIn from 'App/components/sign-in/sign-in';
 import Favorites from 'App/components/favorites/favorites';
+import Movie from 'App/components/movie/movie';
 
-import {Movie} from 'App/types';
+import {Movie as MovieType} from 'App/types';
 
 const PrivateFavorites = privateRoute(Favorites);
 
 interface Props {
-  movies: Movie[],
+  movies: MovieType[],
+  favorites: MovieType[],
   onGenreClick: (genre: string) => void,
   genres: string[],
   user: {
@@ -34,11 +36,13 @@ class App extends React.PureComponent<Props, null> {
     const {
       genres,
       movies,
+      favorites,
       onGenreClick,
       user,
     } = this.props;
 
     return (
+      movies.length && (
       <Wrapper>
         <Switch>
           <Route
@@ -53,10 +57,15 @@ class App extends React.PureComponent<Props, null> {
               />
             )}
           />
-          <Route exact path="/login" component={SignIn}/>
-          <Route exact path="/mylist" component={PrivateFavorites}/>
+          <Route exact path="/login" render={(props) => (<SignIn user={user} {...props}/>)}/>
+          <Route exact path="/mylist" render={(props) => (<PrivateFavorites user={user} movies={favorites} {...props}/>)}/>
+          <Route path="/film/:id" render={(props) => {
+            const movie = movies.find((movie) => movie.id === +props.match.params.id);
+            return <Movie user={user} movie={movie} {...props}/>
+          }}/>
         </Switch>
       </Wrapper>
+    )
     );
   }
 }
@@ -66,6 +75,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return Object.assign({}, ownProps, {
     movies: getMovies(state),
+    favorites: getFavorites(state),
     genres: getGenres(state),
     user: {
       authorized: getAuthorizationStatus(state),

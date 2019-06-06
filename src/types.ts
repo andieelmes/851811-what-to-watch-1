@@ -15,6 +15,7 @@ export interface User {
 export interface Data {
   genre: string,
   movies: [],
+  favorites: [],
   genres: [],
 }
 

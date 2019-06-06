@@ -6,6 +6,11 @@ interface Props {
   onSubmit: ({}: State, callback: () => void) => void,
   history: {goBack: () => void},
   getLogin: () => void,
+  user: {
+    authorized: boolean,
+    avatar: string,
+    name: string,
+  },
 };
 
 interface State {
@@ -29,6 +34,15 @@ class SignIn extends React.PureComponent<Props, State> {
 
   componentDidMount() {
     this.props.getLogin();
+  }
+
+  componentDidUpdate() {
+    const {
+      user,
+      history
+    } = this.props;
+
+    if (user.authorized) history.goBack()
   }
 
   onEmailChange({target: {value}}) {

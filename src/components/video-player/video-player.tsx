@@ -1,10 +1,12 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 
 interface Props {
   img: string,
   preview: string,
   title: string,
   active: boolean,
+  id: number,
 };
 
 interface State {
@@ -82,9 +84,15 @@ class VideoPlayer extends React.PureComponent<Props, State> {
     const {
       img,
       title,
+      id,
     } = this.props;
 
     const containerStyles: React.CSSProperties = {
+      display: `block`,
+    };
+
+    const activeContainerStyles: React.CSSProperties = {
+      display: `block`,
       position: `relavive` as `relative`,
       zIndex: 3,
     };
@@ -102,9 +110,10 @@ class VideoPlayer extends React.PureComponent<Props, State> {
     };
 
     return (
-      <div
+      <Link
+        to={`film/${id}`}
         className="small-movie-card__image"
-        style={this.props.active ? containerStyles : null}
+        style={this.props.active ? activeContainerStyles : containerStyles}
       >
         <img
           src={img}
@@ -121,7 +130,7 @@ class VideoPlayer extends React.PureComponent<Props, State> {
           loop={true}
           style={this.state.active ? videoPlayerStyles : hiddenStyles}
         />
-      </div>
+      </Link>
     );
   }
 

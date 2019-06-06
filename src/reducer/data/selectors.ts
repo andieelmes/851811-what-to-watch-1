@@ -17,7 +17,7 @@ export const getGenre = (state: Data) => {
 
 export const getGenres = createSelector(
     getAllMovies,
-    (movies) => [ALL_GENRES, ...new Set(movies.map((movie: Movie) => movie.genre))]
+    (movies) => [ALL_GENRES, ...new Set(movies.map((movie: Movie) => movie.genre))].slice(0, 10)
 );
 
 
@@ -26,3 +26,7 @@ export const getMovies = createSelector(
     getAllMovies,
     (genre, movies) => genre === ALL_GENRES ? movies : movies.filter((movie: Movie) => movie.genre === genre)
 );
+
+export const getFavorites = (state: Data) => {
+  return state[NAMESPACE].favorites;
+};

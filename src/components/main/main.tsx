@@ -50,9 +50,11 @@ const Main: React.FunctionComponent<Props> = (props) => {
             {
               user.authorized
                 ? (
-                  <div className="user-block__avatar">
-                    <img src={user.avatar} alt={`User avatar of ${user.name}`} width="63" height="63" />
-                  </div>
+                  <Link to="/mylist">
+                    <div className="user-block__avatar">
+                      <img src={user.avatar} alt={`User avatar of ${user.name}`} width="63" height="63" />
+                    </div>
+                  </Link>
                 )
                 : (
                   <Link to="/login" className="user-block__link">Sign in</Link>
@@ -98,11 +100,7 @@ const Main: React.FunctionComponent<Props> = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenreListWithActiveItem onActiveItemChange={onGenreClick} genres={genres}/>
-          <MovieCardListWithActiveItem movies={movies}/>
-
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <MovieCardListWithActiveItem movies={movies} withButton/>
         </section>
 
         <footer className="page-footer">

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 
 import VideoPlayer from 'App/components/video-player/video-player';
 
@@ -28,9 +29,9 @@ const MovieCard: React.FunctionComponent<Props> = (props) => {
       onMouseEnter={() => onHover(id)}
       onMouseLeave={() => onHover(null)}
     >
-      <VideoPlayer img={img} preview={preview} title={title} active={activeItem === id}/>
+      <VideoPlayer img={img} preview={preview} title={title} active={activeItem === id} id={id}/>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+        <Link to={`film/${id}`} className="small-movie-card__link" href="movie-page.html">{title}</Link>
       </h3>
     </article>
   );

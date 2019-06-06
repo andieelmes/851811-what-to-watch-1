@@ -30,7 +30,6 @@ const getUserData: ActionCreator<Action> = (data: {avatar: string, name: string}
   };
 };
 
-
 const ActionCreator = {
   requireAuthorization: requireAuthorization,
   getUserData: getUserData,
@@ -65,7 +64,7 @@ const Operation = {
         console.log(error);
       })
   },
-};
+}
 
 const reducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
