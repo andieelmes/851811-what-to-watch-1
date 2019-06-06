@@ -30,3 +30,11 @@ export const getHoursAndMinutes = (duration: number) => {
   const hours = (duration - minutes) / 60;
   return `${hours}h ${minutes}m`
 }
+
+export const getRandomInt = (min, max) => {
+  return Math.floor(Math.random() * Math.floor((max - min) + 1) + min);
+};
+
+export const getRandomElement = (array) => {
+  return array[getRandomInt(0, array.length - 1)];
+};

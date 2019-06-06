@@ -5,7 +5,8 @@ import GenreList from 'App/components/genre-list/genre-list';
 import MovieCardList from 'App/components/movie-card-list/movie-card-list';
 import Footer from 'App/components/footer/footer';
 
-import {Movie, User} from 'types';
+import {Movie, User} from 'App/types';
+import { getRandomElement, capitalize } from 'App/utils';
 
 interface Props {
   movies: Movie[],
@@ -29,11 +30,13 @@ const Main: React.FunctionComponent<Props> = (props) => {
     user,
   } = props;
 
+  const mainMovie = getRandomElement(movies)
+
   return (
     <>
-      <section className="movie-card">
+      <section className="movie-card" style={{ backgroundColor: mainMovie.backgroundColor}}>
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={mainMovie.backgroundImage} alt={mainMovie.title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -53,14 +56,14 @@ const Main: React.FunctionComponent<Props> = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={mainMovie.poster} alt={`${mainMovie.title} poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{mainMovie.title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__genre">{capitalize(mainMovie.genre)}</span>
+                <span className="movie-card__year">{mainMovie.year}</span>
               </p>
 
               <div className="movie-card__buttons">

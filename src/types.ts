@@ -5,6 +5,7 @@ export interface Movie {
   preview: string,
   genre: string,
   poster: string,
+  backgroundImage: string,
   backgroundColor: string,
   description: string,
   rating: number,

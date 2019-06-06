@@ -58,6 +58,7 @@ const onMovieListLoadSuccess = (response, dispatch: Dispatch<any>) => {
       video: movie.video_link,
       genre: movie.genre.toLowerCase(),
       poster: movie.poster_image,
+      backgroundImage: movie.background_image,
       backgroundColor: movie.background_color,
       description: movie.description,
       rating: movie.rating,
