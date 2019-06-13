@@ -8,6 +8,7 @@ import {getGenres, getMovies, getFavorites} from "App/reducer/data/selectors";
 import {getAuthorizationStatus, getUserInfo} from "App/reducer/user/selectors";
 
 import privateRoute from 'App/hocs/private-route/private-route';
+import withActiveItem from 'App/hocs/with-active-item/with-active-item';
 
 import Wrapper from 'App/components/wrapper/wrapper';
 import Main from 'App/components/main/main';
@@ -18,6 +19,7 @@ import Movie from 'App/components/movie/movie';
 import {Movie as MovieType} from 'App/types';
 
 const PrivateFavorites = privateRoute(Favorites);
+const MoviePageWithActiveItem = withActiveItem(Movie);
 
 interface Props {
   movies: MovieType[],
@@ -62,7 +64,7 @@ class App extends React.PureComponent<Props, null> {
           <Route path="/film/:id" render={(props) => {
             const currentMovie = movies.find((movie) => movie.id === +props.match.params.id);
             const similarMovies = movies.filter((movie) => movie.genre === currentMovie.genre && movie.id !== currentMovie.id).slice(0, 4);
-            return <Movie user={user} movie={currentMovie} similar={similarMovies} {...props}/>
+            return <MoviePageWithActiveItem user={user} movie={currentMovie} similar={similarMovies} {...props}/>
           }}/>
         </Switch>
       </Wrapper>
