@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {connect} from "react-redux";
-import {Dispatch} from 'redux';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { connect } from "react-redux";
+import { Dispatch } from 'redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import {ActionCreator} from "App/reducer/data/data";
-import {getGenres, getMovies, getFavorites} from "App/reducer/data/selectors";
-import {getAuthorizationStatus, getUserInfo} from "App/reducer/user/selectors";
+import { ActionCreator } from "App/reducer/data/data";
+import { getGenres, getMovies, getFavorites } from "App/reducer/data/selectors";
+import { getAuthorizationStatus, getUserInfo } from "App/reducer/user/selectors";
 
 import privateRoute from 'App/hocs/private-route/private-route';
 import withActiveItem from 'App/hocs/with-active-item/with-active-item';
@@ -16,7 +16,7 @@ import SignIn from 'App/components/sign-in/sign-in';
 import Favorites from 'App/components/favorites/favorites';
 import Movie from 'App/components/movie/movie';
 
-import {Movie as MovieType} from 'App/types';
+import { Movie as MovieType } from 'App/types';
 
 const PrivateFavorites = privateRoute(Favorites);
 const MoviePageWithActiveItem = withActiveItem(Movie);

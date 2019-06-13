@@ -1,9 +1,9 @@
-import {createSelector} from "reselect";
+import { createSelector } from "reselect";
 import Namespace from "../namespaces";
 import {
   ALL_GENRES
 } from "App/movie-variables";
-import {Data, Movie} from 'App/types';
+import { Data, Movie } from 'App/types';
 
 const NAMESPACE = Namespace.DATA;
 
@@ -20,7 +20,6 @@ export const getGenres = createSelector(
     (movies) => [ALL_GENRES, ...new Set(movies.map((movie: Movie) => movie.genre))].slice(0, 10)
 );
 
-
 export const getMovies = createSelector(
     getGenre,
     getAllMovies,
@@ -29,4 +28,8 @@ export const getMovies = createSelector(
 
 export const getFavorites = (state: Data) => {
   return state[NAMESPACE].favorites;
+};
+
+export const getReviews = (state: Data, id: number) => {
+  return state[NAMESPACE].reviews[id];
 };

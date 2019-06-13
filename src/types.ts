@@ -17,6 +17,17 @@ export interface Movie {
   favorite: boolean,
 }
 
+export interface Review {
+  id: number,
+  user: {
+    id: number,
+    name: string,
+  }
+  comment: string,
+  rating: number,
+  date: number,
+}
+
 export interface User {
   isAuthorizationRequired: boolean,
   avatar: string,
@@ -28,6 +39,7 @@ export interface Data {
   movies: [],
   favorites: [],
   genres: [],
+  reviews: [],
 }
 
 export interface State {

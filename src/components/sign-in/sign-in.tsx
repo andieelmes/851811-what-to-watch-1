@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {connect} from "react-redux";
-import {Operation} from "App/reducer/user/user";
+import { connect } from "react-redux";
+import { Operation } from "App/reducer/user/user";
 import Footer from 'App/components/footer/footer';
 
 interface Props {

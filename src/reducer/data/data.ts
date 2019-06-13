@@ -13,12 +13,14 @@ const initialState: Data = {
   movies: [],
   favorites: [],
   genres: [],
+  reviews: [],
 };
 
 const ActionType = {
   LOAD_MOVIES: `LOAD_MOVIES`,
   CHANGE_GENRE: `CHANGE_GENRE`,
   LOAD_FAVORITES: `LOAD_FAVORITES`,
+  LOAD_REVIEWS: `LOAD_REVIEWS`,
 };
 
 const loadMovies: ActionCreator<Action> = (movies: Movie[]) => {
@@ -42,10 +44,21 @@ const loadFavorites: ActionCreator<Action> = (favorites: Movie[]) => {
   };
 };
 
+const loadComments: ActionCreator<Action> = (reviews, id) => {
+  return {
+    type: ActionType.LOAD_REVIEWS,
+    payload: {
+      id,
+      reviews,
+    },
+  };
+};
+
 const ActionCreator = {
   loadMovies: loadMovies,
   changeGenre: changeGenre,
   loadFavorites: loadFavorites,
+  loadComments: loadComments,
 };
 
 const onMovieListLoadSuccess = (response, dispatch: Dispatch<any>) => {
@@ -93,6 +106,15 @@ const Operation = {
         console.log(error);
       })
   },
+  loadComments: (id: number) :ThunkAction<void, Data, null, AnyAction> => (dispatch: ThunkDispatch<Data, void, AnyAction>, _getState: () => Data, api: any) => {
+    return api.get(`/comments/${id}`)
+      .then((response) => {
+        dispatch(ActionCreator.loadComments(response.data, id));
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  },
 };
 
 const reducer = (state = initialState, action: AnyAction) => {
@@ -100,11 +122,17 @@ const reducer = (state = initialState, action: AnyAction) => {
     case ActionType.LOAD_MOVIES: return {...state, movies: action.payload}
     case ActionType.CHANGE_GENRE: return {...state, genre: action.payload}
     case ActionType.LOAD_FAVORITES: return {...state, favorites: action.payload}
+    case ActionType.LOAD_REVIEWS:
+      return {
+        ...state,
+        reviews: {
+          [action.payload.id]: action.payload.reviews
+        }
+      }
   }
 
   return state;
 };
-
 
 export {
   ActionCreator,

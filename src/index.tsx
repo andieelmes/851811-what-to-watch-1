@@ -1,15 +1,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {createStore, applyMiddleware, Action} from "redux";
-import {Provider} from "react-redux";
+import { createStore, applyMiddleware, Action } from "redux";
+import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import {compose} from "recompose";
+import { compose } from "recompose";
 
 import App from 'App/components/app/app';
 import reducer from "./reducer";
-import {Operation as DataOperation} from "reducer/data/data";
-import {Operation as UserOperation} from "reducer/user/user";
-import {createAPI} from './api';
+import { Operation as DataOperation } from "reducer/data/data";
+import { Operation as UserOperation } from "reducer/user/user";
+import { createAPI } from './api';
 
 const api = createAPI((action: Action) => store.dispatch(action));
 
