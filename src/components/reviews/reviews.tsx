@@ -13,16 +13,8 @@ const Reviews: React.FunctionComponent<Props> = (props) => {
   } = props;
 
   const sortedReviews = reviews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-
-  const columnHeight = Math.ceil(reviews.length / 2);
-
-  const reviewsByColumn = sortedReviews.reduce((sorted, review) => (
-    review.id % columnHeight === 0
-      ? sorted.push([review])
-      : sorted[sorted.length - 1].push(review))
-    && sorted,
-  []);
-
+  const reviewColHeight = Math.ceil(sortedReviews.length / 2);
+  const reviewsByColumn = [sortedReviews.slice(0, reviewColHeight), sortedReviews.slice(reviewColHeight)]
 
   return (
     <div className="movie-card__reviews movie-card__row">
