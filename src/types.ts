@@ -3,6 +3,7 @@ export interface Movie {
   img: string,
   title: string,
   preview: string,
+  video: string,
   genre: string,
   poster: string,
   backgroundImage: string,
