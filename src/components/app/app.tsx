@@ -4,7 +4,7 @@ import { Dispatch } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { ActionCreator } from "App/reducer/data/data";
-import { getGenres, getMovies, getFavorites } from "App/reducer/data/selectors";
+import { getGenres, getMovies, getFavorites, getPromoMovie } from "App/reducer/data/selectors";
 import { getAuthorizationStatus, getUserInfo } from "App/reducer/user/selectors";
 
 import privateRoute from 'App/hocs/private-route/private-route';
@@ -25,6 +25,7 @@ const MoviePageWithActiveItem = withActiveItem(Movie);
 
 interface Props {
   movies: MovieType[],
+  promo: MovieType,
   favorites: MovieType[],
   onGenreClick: (genre: string) => void,
   genres: string[],
@@ -40,13 +41,14 @@ class App extends React.PureComponent<Props, null> {
     const {
       genres,
       movies,
+      promo,
       favorites,
       onGenreClick,
       user,
     } = this.props;
 
     return (
-      movies.length && (
+      (movies.length && !!promo) && (
       <Wrapper>
         <Switch>
           <Route
@@ -55,6 +57,7 @@ class App extends React.PureComponent<Props, null> {
               <Main
                 genres={genres}
                 movies={movies}
+                promo={promo}
                 user={user}
                 onGenreClick={(clickedGenre: string) => onGenreClick(clickedGenre)}
                 {...props}
@@ -87,6 +90,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return Object.assign({}, ownProps, {
     movies: getMovies(state),
+    promo: getPromoMovie(state),
     favorites: getFavorites(state),
     genres: getGenres(state),
     user: {

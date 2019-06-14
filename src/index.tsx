@@ -25,8 +25,8 @@ const enhancer = composeEnhancers(applyMiddleware(thunk.withExtraArgument(api)))
 const store = createStore(reducer, enhancer);
 
 store.dispatch(DataOperation.loadMovies() as any);
+store.dispatch(DataOperation.loadPromoMovie() as any);
 store.dispatch(UserOperation.getLogin() as any).then(() => store.dispatch(DataOperation.loadFavorites() as any))
-
 
 ReactDOM.render(
     <Provider store={store}>

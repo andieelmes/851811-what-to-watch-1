@@ -22,12 +22,20 @@ const ActionType = {
   LOAD_FAVORITES: `LOAD_FAVORITES`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   UPDATE_MOVIE: `UPDATE_MOVIE`,
+  LOAD_PROMO_MOVIE: `LOAD_PROMO_MOVIE`,
 };
 
 const loadMovies: ActionCreator<Action> = (movies: Movie[]) => {
   return {
     type: ActionType.LOAD_MOVIES,
     payload: movies,
+  };
+};
+
+const loadPromoMovie: ActionCreator<Action> = (movie: Movie) => {
+  return {
+    type: ActionType.LOAD_PROMO_MOVIE,
+    payload: movie,
   };
 };
 
@@ -68,6 +76,7 @@ const ActionCreator = {
   loadFavorites: loadFavorites,
   loadComments: loadComments,
   updateMovie: updateMovie,
+  loadPromoMovie: loadPromoMovie,
 };
 
 const adapt = (movie) => ({
@@ -100,6 +109,16 @@ const Operation = {
       .then((response) => {
         const data = onMovieListLoadSuccess(response)
         dispatch(ActionCreator.loadMovies(data));
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  },
+  loadPromoMovie: () :ThunkAction<void, Data, null, AnyAction> => (dispatch: ThunkDispatch<Data, void, AnyAction>, _getState: () => Data, api: any) => {
+    return api.get(`/films/promo`)
+      .then((response) => {
+        const data = adapt(response.data)
+        dispatch(ActionCreator.loadPromoMovie(data));
       })
       .catch((error) => {
         console.log(error);
@@ -147,6 +166,7 @@ const Operation = {
 const reducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case ActionType.LOAD_MOVIES: return {...state, movies: action.payload}
+    case ActionType.LOAD_PROMO_MOVIE: return {...state, promoMovie: action.payload}
     case ActionType.CHANGE_GENRE: return {...state, genre: action.payload}
     case ActionType.LOAD_FAVORITES: return {...state, favorites: action.payload}
     case ActionType.LOAD_REVIEWS:

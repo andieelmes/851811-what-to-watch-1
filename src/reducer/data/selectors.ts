@@ -33,3 +33,10 @@ export const getFavorites = (state: Data) => {
 export const getReviews = (state: Data, id: number) => {
   return state[NAMESPACE].reviews[id];
 };
+
+export const getPromoMovie = (state: Data) => {
+  if (!state[NAMESPACE].promoMovie) return false;
+  const promoMovieId = state[NAMESPACE].promoMovie.id;
+  const promoMovie = state[NAMESPACE].movies.find((movie) => movie.id === promoMovieId)
+  return promoMovie;
+};

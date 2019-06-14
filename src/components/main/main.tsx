@@ -1,16 +1,21 @@
 import * as React from 'react';
+import { connect } from "react-redux";
 import withActiveItem from 'App/hocs/with-active-item/with-active-item';
 import Profile from 'App/components/profile/profile';
 import GenreList from 'App/components/genre-list/genre-list';
 import MovieCardList from 'App/components/movie-card-list/movie-card-list';
 import Footer from 'App/components/footer/footer';
 
-import {Movie, User} from 'App/types';
-import { getRandomElement, capitalize } from 'App/utils';
+import { Operation } from "App/reducer/data/data";
+
+import { Movie, User } from 'App/types';
+import { capitalize } from 'App/utils';
 
 interface Props {
   movies: Movie[],
+  promo: Movie,
   onGenreClick: (genre: string) => void,
+  toggleFavorite: () => void
   genres: string[],
   user: {
     authorized: boolean,
@@ -25,18 +30,18 @@ const MovieCardListWithActiveItem = withActiveItem(MovieCardList);
 const Main: React.FunctionComponent<Props> = (props) => {
   const {
     genres,
+    promo,
     movies,
     onGenreClick,
+    toggleFavorite,
     user,
   } = props;
 
-  const mainMovie = getRandomElement(movies)
-
   return (
     <>
-      <section className="movie-card" style={{ backgroundColor: mainMovie.backgroundColor}}>
+      <section className="movie-card" style={{ backgroundColor: promo.backgroundColor}}>
         <div className="movie-card__bg">
-          <img src={mainMovie.backgroundImage} alt={mainMovie.title} />
+          <img src={promo.backgroundImage} alt={promo.title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -56,14 +61,14 @@ const Main: React.FunctionComponent<Props> = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={mainMovie.poster} alt={`${mainMovie.title} poster`} width="218" height="327" />
+              <img src={promo.poster} alt={`${promo.title} poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{mainMovie.title}</h2>
+              <h2 className="movie-card__title">{promo.title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{capitalize(mainMovie.genre)}</span>
-                <span className="movie-card__year">{mainMovie.year}</span>
+                <span className="movie-card__genre">{capitalize(promo.genre)}</span>
+                <span className="movie-card__year">{promo.year}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -73,9 +78,9 @@ const Main: React.FunctionComponent<Props> = (props) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
+                <button className="btn btn--list movie-card__button" type="button" onClick={toggleFavorite}>
                   <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
+                  <use xlinkHref={promo.favorite ? "#in-list" : "#add"}></use>
                   </svg>
                   <span>My list</span>
                 </button>
@@ -99,4 +104,14 @@ const Main: React.FunctionComponent<Props> = (props) => {
   );
 };
 
-export default Main;
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  toggleFavorite: () => {
+    dispatch(Operation.toggleFavorite(ownProps.promo.id, ownProps.promo.favorite));
+  },
+});
+
+export {Main};
+
+const connectedMain = connect(null, mapDispatchToProps)(Main);
+
+export default connectedMain;
