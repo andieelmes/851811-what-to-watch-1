@@ -126,7 +126,7 @@ class Movie extends React.PureComponent<Props> {
                 { (activeItem === Tabs.OVERVIEW || !activeItem) && (
                   <>
                     <div className="movie-rating">
-                      <div className="movie-rating__score">{movie.rating}</div>
+                      <div className="movie-rating__score">{movie.rating.toFixed(1)}</div>
                       <p className="movie-rating__meta">
                         <span className="movie-rating__level">{capitalize(getRating(movie.rating))}</span>
                         <span className="movie-rating__count">{movie.ratingsCount} {getPlural(movie.ratingsCount, 'rating', 'ratings')}</span>
