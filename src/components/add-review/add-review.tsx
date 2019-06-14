@@ -103,7 +103,7 @@ class AddReview extends React.PureComponent<Props, State> {
       opacity: 0.7,
     }
 
-    const isValid = text.length <= 400 && text.length >= 50;
+    const isValid = text.length <= 400 && text.length >= 50 && rating;
 
     return (
       <section className="movie-card movie-card--full" style={{ backgroundColor: movie.backgroundColor}}>
