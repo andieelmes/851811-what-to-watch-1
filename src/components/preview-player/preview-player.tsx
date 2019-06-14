@@ -14,7 +14,7 @@ interface State {
   isLoading: boolean,
 };
 
-class VideoPlayer extends React.PureComponent<Props, State> {
+class PreviewPlayer extends React.PureComponent<Props, State> {
   _videoRef: React.RefObject<HTMLVideoElement>;
   videoTimeout: NodeJS.Timer;
   VIDEO_TIMEOUT_DELAY: number;
@@ -97,7 +97,7 @@ class VideoPlayer extends React.PureComponent<Props, State> {
       zIndex: 3,
     };
 
-    const videoPlayerStyles: React.CSSProperties = {
+    const previewPlayerStyles: React.CSSProperties = {
       position: `relavive` as `relative`,
       zIndex: 2,
       objectFit: `cover`,
@@ -128,7 +128,7 @@ class VideoPlayer extends React.PureComponent<Props, State> {
           muted={true}
           controls={true}
           loop={true}
-          style={this.state.active ? videoPlayerStyles : hiddenStyles}
+          style={this.state.active ? previewPlayerStyles : hiddenStyles}
         />
       </Link>
     );
@@ -145,4 +145,4 @@ class VideoPlayer extends React.PureComponent<Props, State> {
   }
 }
 
-export default VideoPlayer;
+export default PreviewPlayer;
