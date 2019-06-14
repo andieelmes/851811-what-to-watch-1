@@ -25,7 +25,7 @@ export interface Review {
   }
   comment: string,
   rating: number,
-  date: number,
+  date: string,
 }
 
 export interface User {

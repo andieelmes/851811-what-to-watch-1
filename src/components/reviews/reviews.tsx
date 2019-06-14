@@ -21,25 +21,32 @@ const Reviews: React.FunctionComponent<Props> = (props) => {
     && sorted,
   []);
 
+
   return (
     <div className="movie-card__reviews movie-card__row">
       {
         reviewsByColumn.map((column: ReviewType[]) => (
           <div className="movie-card__reviews-col" key={column[0].id}>
             {
-              column.map((review: ReviewType) => (
-                <div className="review" key={review.id}>
-                  <blockquote className="review__quote">
-                    <p className="review__text">{review.comment}</p>
-                    <footer className="review__details">
-                      <cite className="review__author">{review.user.name}</cite>
-                      <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
-                    </footer>
-                  </blockquote>
+              column.map((review: ReviewType) => {
+                const datetime = review.date.split('T')[0];
+                const date = new Date(review.date);
+                const formattedDate = `${date.toLocaleString('en-us', { month: 'long', day: 'numeric' })}, ${date.getFullYear()}`;
 
-                  <div className="review__rating">{review.rating}</div>
-                </div>
-              ))
+                return (
+                  <div className="review" key={review.id}>
+                    <blockquote className="review__quote">
+                      <p className="review__text">{review.comment}</p>
+                      <footer className="review__details">
+                        <cite className="review__author">{review.user.name}</cite>
+                        <time className="review__date" dateTime={datetime}>{formattedDate}</time>
+                      </footer>
+                    </blockquote>
+
+                    <div className="review__rating">{review.rating}</div>
+                  </div>
+                )
+              })
             }
           </div>
         ))
