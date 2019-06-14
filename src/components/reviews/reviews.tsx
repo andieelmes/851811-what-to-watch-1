@@ -19,8 +19,10 @@ const Reviews: React.FunctionComponent<Props> = (props) => {
   return (
     <div className="movie-card__reviews movie-card__row">
       {
-        reviewsByColumn.map((column: ReviewType[]) => (
-          <div className="movie-card__reviews-col" key={column[0].id}>
+        reviewsByColumn.map((column: ReviewType[]) => {
+          if (!column[0]) return false
+          return (
+            <div className="movie-card__reviews-col" key={column[0].id}>
             {
               column.map((review: ReviewType) => {
                 const datetime = review.date.split('T')[0];
@@ -43,7 +45,8 @@ const Reviews: React.FunctionComponent<Props> = (props) => {
               })
             }
           </div>
-        ))
+          )
+        })
       }
     </div>
   );
