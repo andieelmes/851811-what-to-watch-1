@@ -15,10 +15,12 @@ import Main from 'App/components/main/main';
 import SignIn from 'App/components/sign-in/sign-in';
 import Favorites from 'App/components/favorites/favorites';
 import Movie from 'App/components/movie/movie';
+import AddReview from 'App/components/add-review/add-review';
 
 import { Movie as MovieType } from 'App/types';
 
 const PrivateFavorites = privateRoute(Favorites);
+const PrivateAddReview = privateRoute(AddReview);
 const MoviePageWithActiveItem = withActiveItem(Movie);
 
 interface Props {
@@ -61,15 +63,22 @@ class App extends React.PureComponent<Props, null> {
           />
           <Route exact path="/login" render={(props) => (<SignIn user={user} {...props}/>)}/>
           <Route exact path="/mylist" render={(props) => (<PrivateFavorites user={user} movies={favorites} {...props}/>)}/>
+          <Route path="/film/:id/review" render={(props) => {
+            const currentMovie = App.getCurrentMovie(movies, +props.match.params.id)
+            return <PrivateAddReview user={user} movie={currentMovie} {...props}/>
+          }}/>
           <Route path="/film/:id" render={(props) => {
-            const currentMovie = movies.find((movie) => movie.id === +props.match.params.id);
+            const currentMovie = App.getCurrentMovie(movies, +props.match.params.id)
             const similarMovies = movies.filter((movie) => movie.genre === currentMovie.genre && movie.id !== currentMovie.id).slice(0, 4);
             return <MoviePageWithActiveItem user={user} movie={currentMovie} similar={similarMovies} {...props}/>
           }}/>
         </Switch>
       </Wrapper>
-    )
-    );
+    ));
+  }
+
+  static getCurrentMovie(movies, id) {
+    return  movies.find((movie) => movie.id === id);
   }
 }
 

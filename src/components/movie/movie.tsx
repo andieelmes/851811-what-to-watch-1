@@ -93,7 +93,7 @@ class Movie extends React.PureComponent<Props> {
                     </svg>
                     <span>My list</span>
                   </button>
-                  <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  <Link to={`/film/${movie.id}/review`} className="btn movie-card__button">Add review</Link>
                 </div>
               </div>
             </div>

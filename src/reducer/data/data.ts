@@ -115,6 +115,14 @@ const Operation = {
         console.log(error);
       })
   },
+  postComment: (id: number, rating: number, comment: string, onSuccess: () => void, onError: () => void): ThunkAction<void, Data, null, AnyAction> => (dispatch: ThunkDispatch<Data, void, AnyAction>, _getState: () => Data, api: any) => {
+    return api.post(`/comments/${id}`, {rating, comment})
+      .then(onSuccess)
+      .catch((error) => {
+        console.log(error);
+        onError()
+      })
+  },
 };
 
 const reducer = (state = initialState, action: AnyAction) => {
