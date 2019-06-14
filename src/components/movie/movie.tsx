@@ -23,6 +23,7 @@ interface Props {
   },
   similar: MovieType[],
   onChange: (genre: string) => void
+  toggleFavorite: () => void
   onLoad: () => ReviewType[],
   activeItem: string,
   reviews: ReviewType[],
@@ -41,6 +42,7 @@ class Movie extends React.PureComponent<Props> {
       user,
       similar,
       onChange,
+      toggleFavorite,
       activeItem,
       reviews,
     } = this.props;
@@ -87,9 +89,9 @@ class Movie extends React.PureComponent<Props> {
                     </svg>
                     <span>Play</span>
                   </button>
-                  <button className="btn btn--list movie-card__button" type="button">
+                  <button className="btn btn--list movie-card__button" type="button" onClick={toggleFavorite}>
                     <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"></use>
+                      <use xlinkHref={movie.favorite ? "#in-list" : "#add"}></use>
                     </svg>
                     <span>My list</span>
                   </button>
@@ -205,6 +207,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onLoad: () => {
     dispatch(Operation.loadComments(ownProps.movie.id));
+  },
+  toggleFavorite: () => {
+    dispatch(Operation.toggleFavorite(ownProps.movie.id, ownProps.movie.favorite));
   },
 });
 

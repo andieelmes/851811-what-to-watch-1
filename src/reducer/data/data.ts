@@ -21,12 +21,20 @@ const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   LOAD_FAVORITES: `LOAD_FAVORITES`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
+  UPDATE_MOVIE: `UPDATE_MOVIE`,
 };
 
 const loadMovies: ActionCreator<Action> = (movies: Movie[]) => {
   return {
     type: ActionType.LOAD_MOVIES,
     payload: movies,
+  };
+};
+
+const updateMovie: ActionCreator<Action> = (movie) => {
+  return {
+    type: ActionType.UPDATE_MOVIE,
+    payload: movie,
   };
 };
 
@@ -59,37 +67,38 @@ const ActionCreator = {
   changeGenre: changeGenre,
   loadFavorites: loadFavorites,
   loadComments: loadComments,
+  updateMovie: updateMovie,
 };
 
-const onMovieListLoadSuccess = (response, dispatch: Dispatch<any>) => {
-  return response.data.map((movie) => {
-    return {
-      id: movie.id,
-      img: movie.background_image,
-      title: movie.name,
-      preview: movie.preview_video_link,
-      video: movie.video_link,
-      genre: movie.genre.toLowerCase(),
-      poster: movie.poster_image,
-      backgroundImage: movie.background_image,
-      backgroundColor: movie.background_color,
-      description: movie.description,
-      rating: movie.rating,
-      ratingsCount: movie.scores_count,
-      director: movie.director,
-      starring: movie.starring,
-      duration: movie.run_time,
-      year: movie.released,
-      favorite: movie.favorite,
-    }
-  })
+const adapt = (movie) => ({
+  id: movie.id,
+  img: movie.background_image,
+  title: movie.name,
+  preview: movie.preview_video_link,
+  video: movie.video_link,
+  genre: movie.genre.toLowerCase(),
+  poster: movie.poster_image,
+  backgroundImage: movie.background_image,
+  backgroundColor: movie.background_color,
+  description: movie.description,
+  rating: movie.rating,
+  ratingsCount: movie.scores_count,
+  director: movie.director,
+  starring: movie.starring,
+  duration: movie.run_time,
+  year: movie.released,
+  favorite: movie.is_favorite,
+})
+
+const onMovieListLoadSuccess = (response) => {
+  return response.data.map((movie) => adapt(movie))
 }
 
 const Operation = {
   loadMovies: () :ThunkAction<void, Data, null, AnyAction> => (dispatch: ThunkDispatch<Data, void, AnyAction>, _getState: () => Data, api: any) => {
     return api.get(`/films`)
       .then((response) => {
-        const data = onMovieListLoadSuccess(response, dispatch)
+        const data = onMovieListLoadSuccess(response)
         dispatch(ActionCreator.loadMovies(data));
       })
       .catch((error) => {
@@ -99,7 +108,7 @@ const Operation = {
   loadFavorites: () :ThunkAction<void, Data, null, AnyAction> => (dispatch: ThunkDispatch<Data, void, AnyAction>, _getState: () => Data, api: any) => {
     return api.get(`/favorite`)
       .then((response) => {
-        const data = onMovieListLoadSuccess(response, dispatch)
+        const data = onMovieListLoadSuccess(response)
         dispatch(ActionCreator.loadFavorites(data));
       })
       .catch((error) => {
@@ -123,6 +132,16 @@ const Operation = {
         onError()
       })
   },
+  toggleFavorite: (id: number, favorite: boolean): ThunkAction<void, Data, null, AnyAction> => (dispatch: ThunkDispatch<Data, void, AnyAction>, _getState: () => Data, api: any) => {
+    return api.post(`/favorite/${id}/${favorite ? '0' : '1'}`)
+      .then((response) => {
+        const data = adapt(response.data)
+        dispatch(ActionCreator.updateMovie(data));
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  },
 };
 
 const reducer = (state = initialState, action: AnyAction) => {
@@ -136,6 +155,15 @@ const reducer = (state = initialState, action: AnyAction) => {
         reviews: {
           [action.payload.id]: action.payload.reviews
         }
+      }
+    case ActionType.UPDATE_MOVIE:
+      const movies: Movie[]= [ ...state.movies]
+      const movieIndex: number = movies.findIndex((movie: Movie) => movie.id === action.payload.id);
+      movies.splice(movieIndex, 1, action.payload);
+
+      return {
+        ...state,
+        movies: movies
       }
   }
 
