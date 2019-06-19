@@ -78,12 +78,16 @@ const Main: React.FunctionComponent<Props> = (props) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button" onClick={toggleFavorite}>
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref={promo.favorite ? "#in-list" : "#add"}></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
+                {
+                  user.authorized && (
+                    <button className="btn btn--list movie-card__button" type="button" onClick={toggleFavorite}>
+                      <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref={promo.favorite ? "#in-list" : "#add"}></use>
+                      </svg>
+                      <span>My list</span>
+                    </button>
+                  )
+                }
               </div>
             </div>
           </div>
