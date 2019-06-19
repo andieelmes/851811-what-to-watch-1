@@ -242,7 +242,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(Operation.loadComments(ownProps.movie.id));
   },
   toggleFavorite: () => {
-    dispatch(Operation.toggleFavorite(ownProps.movie.id, ownProps.movie.favorite));
+    dispatch(Operation.toggleFavorite(ownProps.movie.id, ownProps.movie.favorite)).then(() => dispatch(Operation.loadFavorites()));
   },
 });
 

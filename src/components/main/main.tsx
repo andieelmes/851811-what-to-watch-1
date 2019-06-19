@@ -106,7 +106,7 @@ const Main: React.FunctionComponent<Props> = (props) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   toggleFavorite: () => {
-    dispatch(Operation.toggleFavorite(ownProps.promo.id, ownProps.promo.favorite));
+    dispatch(Operation.toggleFavorite(ownProps.promo.id, ownProps.promo.favorite)).then(() => dispatch(Operation.loadFavorites()));
   },
 });
 
