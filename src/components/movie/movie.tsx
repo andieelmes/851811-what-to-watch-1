@@ -41,10 +41,11 @@ class Movie extends React.PureComponent<Props, State> {
     super(props);
 
     this.state = {
-      videoPlayerIsActive: true,
+      videoPlayerIsActive: false,
     };
 
     this._showPlayer = this._showPlayer.bind(this);
+    this._hidePlayer = this._hidePlayer.bind(this);
   }
 
   componentDidMount() {
@@ -69,7 +70,7 @@ class Movie extends React.PureComponent<Props, State> {
 
     return (
       <>
-        { this.state.videoPlayerIsActive && <MoviePlayer movie={movie}/>}
+        { this.state.videoPlayerIsActive && <MoviePlayer movie={movie} onExit={this._hidePlayer}/>}
         { !this.state.videoPlayerIsActive && (
           <>
             <section className="movie-card movie-card--full" style={{ backgroundColor: movie.backgroundColor}}>
@@ -220,6 +221,12 @@ class Movie extends React.PureComponent<Props, State> {
   _showPlayer() {
     this.setState({
       videoPlayerIsActive: true,
+    })
+  }
+
+  _hidePlayer() {
+    this.setState({
+      videoPlayerIsActive: false,
     })
   }
 }

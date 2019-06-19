@@ -4,6 +4,7 @@ import { Movie as MovieType } from 'App/types';
 
 interface Props {
   movie: MovieType,
+  onExit: () => void,
 };
 
 interface State {
@@ -62,6 +63,7 @@ class MoviePlayer extends React.PureComponent<Props, State> {
   render() {
     const {
       movie,
+      onExit,
     } = this.props;
 
     const {
@@ -92,7 +94,7 @@ class MoviePlayer extends React.PureComponent<Props, State> {
             alignSelf: 'center'
           }}
         />
-        <button type="button" className="player__exit">Exit</button>
+        <button type="button" className="player__exit" onClick={onExit}>Exit</button>
 
         <div className="player__controls">
           <div className="player__controls-row">
