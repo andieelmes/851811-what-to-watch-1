@@ -157,6 +157,10 @@ class MoviePlayer extends React.PureComponent<Props, State> {
     })
   }
 
+  static padNumber(number: number) {
+    return number < 10 ? `0${number}` : number
+  }
+
   static getFormattedTime(time: number) {
     if (!time) return undefined;
 
@@ -164,7 +168,7 @@ class MoviePlayer extends React.PureComponent<Props, State> {
     const hours = Math.floor(time / (60 * 60));
     const seconds = Math.floor(time % minutes);
 
-    return `${hours ? `${hours}:` : ''}${minutes ? `${minutes}:` : ''}${seconds}`;
+    return `${hours ? `${MoviePlayer.padNumber(hours)}:` : ''}${minutes ? `${MoviePlayer.padNumber(minutes)}:` : ''}${MoviePlayer.padNumber(seconds)}`;
   }
 }
 
