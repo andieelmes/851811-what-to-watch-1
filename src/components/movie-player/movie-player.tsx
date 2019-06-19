@@ -12,6 +12,7 @@ interface State {
   isFullscreen: boolean,
   progress: number,
   timeLeft: number,
+  height: number,
 };
 
 class MoviePlayer extends React.PureComponent<Props, State> {
@@ -28,6 +29,7 @@ class MoviePlayer extends React.PureComponent<Props, State> {
       isFullscreen: false,
       progress: 0,
       timeLeft: 0,
+      height: 0,
     };
 
     this._togglePlay = this._togglePlay.bind(this);
@@ -46,6 +48,7 @@ class MoviePlayer extends React.PureComponent<Props, State> {
 
     video.onloadedmetadata = () => this.setState({
       timeLeft: Math.floor(video.duration),
+      height: video.videoHeight,
     });
   }
 
@@ -65,18 +68,29 @@ class MoviePlayer extends React.PureComponent<Props, State> {
       progress,
       timeLeft,
       isPlaying,
+      height,
+      isFullscreen
     } = this.state;
 
     const formattedTimeLeft = MoviePlayer.getFormattedTime(timeLeft)
 
     return (
-      <div className="player">
+      <div className="player"
+        style={{
+          backgroundColor: 'black',
+          display: 'flex',
+        }}
+      >
         <video
           className="player__video"
           poster={movie.backgroundImage}
           muted /////revmore
           ref={this._videoRef}
           onTimeUpdate={this._onUpdate}
+          style={{
+            height: (isFullscreen || height === 0) ? '100%' : height,
+            alignSelf: 'center'
+          }}
         />
         <button type="button" className="player__exit">Exit</button>
 
@@ -130,7 +144,7 @@ class MoviePlayer extends React.PureComponent<Props, State> {
 
   _setFullscreen() {
     this.setState({
-      isFullscreen: true,
+      isFullscreen: !this.state.isFullscreen,
     })
   }
 
