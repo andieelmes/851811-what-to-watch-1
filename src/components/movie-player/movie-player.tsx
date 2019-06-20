@@ -54,10 +54,15 @@ class MoviePlayer extends React.PureComponent<Props, State> {
       isLoading: false,
     });
 
-    video.onloadedmetadata = () => this.setState({
-      timeLeft: Math.floor(video.duration),
-      height: video.videoHeight,
-    });
+    video.onloadedmetadata = () => {
+      video.play()
+
+      this.setState({
+        timeLeft: Math.floor(video.duration),
+        height: video.videoHeight,
+        isPlaying: true,
+      });
+    }
   }
 
   componentWillUnmount() {
