@@ -16,6 +16,7 @@ interface Props {
   promo: Movie,
   onGenreClick: (genre: string) => void,
   toggleFavorite: () => void
+  onPlay: () => void;
   genres: string[],
   user: {
     authorized: boolean,
@@ -33,6 +34,7 @@ const Main: React.FunctionComponent<Props> = (props) => {
     promo,
     movies,
     onGenreClick,
+    onPlay,
     toggleFavorite,
     user,
   } = props;
@@ -72,7 +74,7 @@ const Main: React.FunctionComponent<Props> = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button className="btn btn--play movie-card__button" type="button" onClick={onPlay}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>

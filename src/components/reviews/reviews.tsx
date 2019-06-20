@@ -9,7 +9,7 @@ interface Props {
 
 const Reviews: React.FunctionComponent<Props> = (props) => {
   const {
-    reviews,
+    reviews = [],
   } = props;
 
   const sortedReviews = reviews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())

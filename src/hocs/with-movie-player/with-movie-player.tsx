@@ -1,22 +1,24 @@
 import * as React from "react";
 import {Subtract} from "utility-types";
 import {getDisplayName} from 'App/utils';
+import MoviePlayer from 'App/components/movie-player/movie-player';
+
+import { Movie as MovieType } from 'App/types';
 
 interface State {
-  activeItem: string,
+  videoPlayerIsActive: boolean,
 }
 
 interface Props {
-  onActiveItemChange: () => void,
+  moviePlayerContent: MovieType,
 }
 
 // Пропсы, которые добавляет хок в компонент
 interface InjectedProps {
-  activeItem: string,
-  onChange: () => string
+  onPlay: () => void
 }
 
-const withActiveItem = (Component) => {
+const withMoviePlayer = (Component) => {
   // Получаем пропсы переданного компонента
   type P = React.ComponentProps<typeof Component>;
 
@@ -29,34 +31,44 @@ const withActiveItem = (Component) => {
   type T = Subtract<P, InjectedProps>;
 
   class WrappedComponent extends React.Component<T, State> {
-    static readonly displayName = `withActiveItem(${getDisplayName(Component)})`;
+    static readonly displayName = `withMoviePlayer(${getDisplayName(Component)})`;
 
     constructor(props) {
       super(props);
 
       this.state = {
-        activeItem: undefined,
+        videoPlayerIsActive: false,
       };
 
-      this._handleChange = this._handleChange.bind(this);
+      this._showPlayer = this._showPlayer.bind(this);
+      this._hidePlayer = this._hidePlayer.bind(this);
     }
 
     render() {
-      return <Component activeItem={this.state.activeItem} onChange={this._handleChange} {...this.props}/>;
+      return (
+        <>
+          { this.state.videoPlayerIsActive
+            ? <MoviePlayer movie={this.props.moviePlayerContent} onExit={this._hidePlayer}/>
+            : <Component onPlay={this._showPlayer} {...this.props}/>
+          }
+        </>
+      );
     }
 
-    private _handleChange(value) {
+    private _showPlayer() {
       this.setState({
-        activeItem: value
-      });
+        videoPlayerIsActive: true,
+      })
+    }
 
-      if (this.props.onActiveItemChange) {
-        this.props.onActiveItemChange(value);
-      }
+    private _hidePlayer() {
+      this.setState({
+        videoPlayerIsActive: false,
+      })
     }
   }
 
   return WrappedComponent;
 };
 
-export default withActiveItem;
+export default withMoviePlayer;

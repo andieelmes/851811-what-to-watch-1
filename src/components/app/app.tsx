@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from "react-redux";
 import { Dispatch } from 'redux';
+import { compose } from 'redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { ActionCreator } from "App/reducer/data/data";
@@ -9,6 +10,7 @@ import { getAuthorizationStatus, getUserInfo } from "App/reducer/user/selectors"
 
 import privateRoute from 'App/hocs/private-route/private-route';
 import withActiveItem from 'App/hocs/with-active-item/with-active-item';
+import withMoviePlayer from 'App/hocs/with-movie-player/with-movie-player';
 
 import Wrapper from 'App/components/wrapper/wrapper';
 import Main from 'App/components/main/main';
@@ -21,7 +23,11 @@ import { Movie as MovieType } from 'App/types';
 
 const PrivateFavorites = privateRoute(Favorites);
 const PrivateAddReview = privateRoute(AddReview);
-const MoviePageWithActiveItem = withActiveItem(Movie);
+const MainPageWithMoviePlayer = withMoviePlayer(Main);
+
+const composeMoviePage = (WrappedComponent) => compose(withMoviePlayer, withActiveItem)(WrappedComponent);
+
+const MoviePageWithActiveItemWithMoviePlayer = composeMoviePage(Movie)
 
 interface Props {
   movies: MovieType[],
@@ -54,11 +60,12 @@ class App extends React.PureComponent<Props, null> {
           <Route
             exact path="/"
             render={(props) => (
-              <Main
+              <MainPageWithMoviePlayer
                 genres={genres}
                 movies={movies}
                 promo={promo}
                 user={user}
+                moviePlayerContent={promo}
                 onGenreClick={(clickedGenre: string) => onGenreClick(clickedGenre)}
                 {...props}
               />
@@ -73,7 +80,7 @@ class App extends React.PureComponent<Props, null> {
           <Route path="/film/:id" render={(props) => {
             const currentMovie = App.getCurrentMovie(movies, +props.match.params.id)
             const similarMovies = movies.filter((movie) => movie.genre === currentMovie.genre && movie.id !== currentMovie.id).slice(0, 4);
-            return <MoviePageWithActiveItem user={user} movie={currentMovie} similar={similarMovies} {...props}/>
+            return <MoviePageWithActiveItemWithMoviePlayer moviePlayerContent={currentMovie} user={user} movie={currentMovie} similar={similarMovies} {...props}/>
           }}/>
         </Switch>
       </Wrapper>
