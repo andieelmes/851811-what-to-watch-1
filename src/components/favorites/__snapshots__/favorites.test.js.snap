@@ -12,7 +12,8 @@ exports[`Favorites component should render correctly 1`] = `
     >
       <a
         className="logo__link"
-        href="main.html"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
@@ -43,9 +44,9 @@ exports[`Favorites component should render correctly 1`] = `
         className="user-block__avatar"
       >
         <img
-          alt="User avatar"
+          alt="User avatar of name"
           height="63"
-          src="img/avatar.jpg"
+          src="/"
           width="63"
         />
       </div>
@@ -64,271 +65,95 @@ exports[`Favorites component should render correctly 1`] = `
     >
       <article
         className="small-movie-card catalog__movies-card"
+        data-movie-id={1}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
-        <button
-          className="small-movie-card__play-btn"
-          type="button"
-        >
-          Play
-        </button>
-        <div
+        <a
           className="small-movie-card__image"
+          href="/film/1"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "block",
+            }
+          }
         >
           <img
-            alt="Fantastic Beasts: The Crimes of Grindelwald"
+            alt="Midnight Special"
             height="175"
-            src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+            src="https://es31-server.appspot.com/wtw/static/film/background/Midnight_Special.jpg"
+            style={null}
             width="280"
           />
-        </div>
+          <video
+            controls={true}
+            loop={true}
+            muted={true}
+            poster="https://es31-server.appspot.com/wtw/static/film/background/Midnight_Special.jpg"
+            style={
+              Object {
+                "display": "none",
+              }
+            }
+          />
+        </a>
         <h3
           className="small-movie-card__title"
         >
           <a
             className="small-movie-card__link"
-            href="movie-page.html"
+            href="/film/1"
+            onClick={[Function]}
           >
-            Fantastic Beasts: The Crimes of Grindelwald
+            Midnight Special
           </a>
         </h3>
       </article>
       <article
         className="small-movie-card catalog__movies-card"
+        data-movie-id={2}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
-        <button
-          className="small-movie-card__play-btn"
-          type="button"
-        >
-          Play
-        </button>
-        <div
+        <a
           className="small-movie-card__image"
-        >
-          <img
-            alt="Bohemian Rhapsody"
-            height="175"
-            src="img/bohemian-rhapsody.jpg"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="movie-page.html"
-          >
-            Bohemian Rhapsody
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-      >
-        <button
-          className="small-movie-card__play-btn"
-          type="button"
-        >
-          Play
-        </button>
-        <div
-          className="small-movie-card__image"
-        >
-          <img
-            alt="Macbeth"
-            height="175"
-            src="img/macbeth.jpg"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="movie-page.html"
-          >
-            Macbeth
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-      >
-        <button
-          className="small-movie-card__play-btn"
-          type="button"
-        >
-          Play
-        </button>
-        <div
-          className="small-movie-card__image"
-        >
-          <img
-            alt="Aviator"
-            height="175"
-            src="img/aviator.jpg"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="movie-page.html"
-          >
-            Aviator
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-      >
-        <button
-          className="small-movie-card__play-btn"
-          type="button"
-        >
-          Play
-        </button>
-        <div
-          className="small-movie-card__image"
-        >
-          <img
-            alt="We need to talk about Kevin"
-            height="175"
-            src="img/we-need-to-talk-about-kevin.jpg"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="movie-page.html"
-          >
-            We need to talk about Kevin
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-      >
-        <button
-          className="small-movie-card__play-btn"
-          type="button"
-        >
-          Play
-        </button>
-        <div
-          className="small-movie-card__image"
+          href="/film/2"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "block",
+            }
+          }
         >
           <img
             alt="What We Do in the Shadows"
             height="175"
-            src="img/what-we-do-in-the-shadows.jpg"
+            src="https://es31-server.appspot.com/wtw/static/film/background/What-We-Do-in-the-Shadows.jpg"
+            style={null}
             width="280"
           />
-        </div>
+          <video
+            controls={true}
+            loop={true}
+            muted={true}
+            poster="https://es31-server.appspot.com/wtw/static/film/background/What-We-Do-in-the-Shadows.jpg"
+            style={
+              Object {
+                "display": "none",
+              }
+            }
+          />
+        </a>
         <h3
           className="small-movie-card__title"
         >
           <a
             className="small-movie-card__link"
-            href="movie-page.html"
+            href="/film/2"
+            onClick={[Function]}
           >
             What We Do in the Shadows
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-      >
-        <button
-          className="small-movie-card__play-btn"
-          type="button"
-        >
-          Play
-        </button>
-        <div
-          className="small-movie-card__image"
-        >
-          <img
-            alt="Revenant"
-            height="175"
-            src="img/revenant.jpg"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="movie-page.html"
-          >
-            Revenant
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-      >
-        <button
-          className="small-movie-card__play-btn"
-          type="button"
-        >
-          Play
-        </button>
-        <div
-          className="small-movie-card__image"
-        >
-          <img
-            alt="Johnny English"
-            height="175"
-            src="img/johnny-english.jpg"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="movie-page.html"
-          >
-            Johnny English
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-      >
-        <button
-          className="small-movie-card__play-btn"
-          type="button"
-        >
-          Play
-        </button>
-        <div
-          className="small-movie-card__image"
-        >
-          <img
-            alt="Shutter Island"
-            height="175"
-            src="img/shutter-island.jpg"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="movie-page.html"
-          >
-            Shutter Island
           </a>
         </h3>
       </article>
@@ -342,7 +167,8 @@ exports[`Favorites component should render correctly 1`] = `
     >
       <a
         className="logo__link logo__link--light"
-        href="main.html"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Fragment } from 'react';
 import { connect } from "react-redux";
-import { Operation as DataOperation } from "reducer/data/data";
-import { Operation as UserOperation } from "reducer/user/user";
+import { Operation as DataOperation } from "App/reducer/data/data";
+import { Operation as UserOperation } from "App/reducer/user/user";
 import { Link } from 'react-router-dom';
 import Profile from 'App/components/profile/profile';
 

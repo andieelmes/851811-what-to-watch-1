@@ -1,10 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video player component should render correctly 1`] = `
-<div
+<a
   className="small-movie-card__image"
+  href="/film/undefined"
+  onClick={[Function]}
   style={
     Object {
+      "display": "block",
       "position": "relavive",
       "zIndex": 3,
     }
@@ -28,5 +31,5 @@ exports[`Video player component should render correctly 1`] = `
       }
     }
   />
-</div>
+</a>
 `;

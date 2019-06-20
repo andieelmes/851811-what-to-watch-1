@@ -1,39 +1,50 @@
 export const MOVIES = [
   {
     id: 1,
-    img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    title: `Fantastic Beasts: The Crimes of Grindelwald`,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    genre: `comedies`,
+    img: 'https://es31-server.appspot.com/wtw/static/film/background/Midnight_Special.jpg',
+    title: 'Midnight Special',
+    preview: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    video: 'http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4',
+    genre: 'action',
+    poster: 'https://es31-server.appspot.com/wtw/static/film/poster/Midnight_Special.jpg',
+    backgroundImage: 'https://es31-server.appspot.com/wtw/static/film/background/Midnight_Special.jpg',
+    backgroundColor: '#828585',
+    description: 'A father and son go on the run, pursued by the government and a cult drawn to the child\'s special powers.',
+    rating: 3.3,
+    ratingsCount: 67815,
+    director: 'Jeff Nichols',
+    starring: [
+      'Michael Shannon',
+      'Joel Edgerton',
+      'Kirsten Dunst '
+    ],
+    duration: 112,
+    year: 2016,
+    favorite: false
   },
   {
     id: 2,
-    img: `img/bohemian-rhapsody.jpg`,
-    title: `Bohemian Rhapsody`,
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    genre: `crime`,
-  },
-  {
-    id: 3,
-    img: `img/seven-years-in-tibet.jpg`,
-    title: `Seven Years in Tibet`,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    genre: `documentaries`,
-  },
-  {
-    id: 4,
-    img: `img/what-we-do-in-the-shadows.jpg`,
-    title: `What We Do in the Shadows`,
-    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-    genre: `dramas`,
-  },
-  {
-    id: 5,
-    img: `img/pulp-fiction.jpg`,
-    title: `Pulp Fiction`,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    genre: `dramas`,
-  },
+    img: 'https://es31-server.appspot.com/wtw/static/film/background/What-We-Do-in-the-Shadows.jpg',
+    title: 'What We Do in the Shadows',
+    preview: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    video: 'http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4',
+    genre: 'comedy',
+    poster: 'https://es31-server.appspot.com/wtw/static/film/poster/What-We-Do-in-the-Shadows.jpg',
+    backgroundImage: 'https://es31-server.appspot.com/wtw/static/film/background/What-We-Do-in-the-Shadows.jpg',
+    backgroundColor: '#A39E81',
+    description: 'A look into the daily (or rather, nightly) lives of three vampires who\'ve lived together for over 100 years, in Staten Island.',
+    rating: 4.2,
+    ratingsCount: 6173,
+    director: 'Jemaine Clement',
+    starring: [
+      'Kayvan Novak',
+      'Matt Berry',
+      'Natasia Demetriou'
+    ],
+    duration: 30,
+    year: 2019,
+    favorite: true
+  }
 ];
 
 export const GENRES = [

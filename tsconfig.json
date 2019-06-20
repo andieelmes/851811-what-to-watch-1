@@ -9,7 +9,7 @@
     "allowSyntheticDefaultImports": false,
     "baseUrl": "src",
     "paths": {
-      "App/*": [ "src/*" ]
+      "App/*": [ "./src/*" ]
     }
   },
   "exclude": ["node_modules", "dist"]

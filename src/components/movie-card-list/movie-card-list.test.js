@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {BrowserRouter} from 'react-router-dom';
 import MovieCardList from 'App/components/movie-card-list/movie-card-list';
 
 const movies = [
@@ -20,11 +21,11 @@ const movies = [
 describe(`Movie card list component`, () => {
   it(`should render correctly`, () => {
     const tree = renderer
-      .create(
-          <MovieCardList
-            movies={movies}
-            onChange={() => {}}
-          />, {createNodeMock: (el) => el})
+      .create(<BrowserRouter>
+        <MovieCardList
+          movies={movies}
+          onChange={() => {}}
+        /></BrowserRouter>, {createNodeMock: (el) => el})
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

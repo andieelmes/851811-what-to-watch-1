@@ -1,6 +1,7 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import {BrowserRouter} from 'react-router-dom';
 import MovieCard from 'App/components/movie-card/movie-card';
 
 const movie = {
@@ -13,20 +14,23 @@ const movie = {
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`Movie card component`, () => {
-  let movieCard;
-  const hoverHandler = jest.fn();
-
-  beforeEach(() => {
-    movieCard = shallow(<MovieCard
-      {...movie}
-      onHover={hoverHandler}
-    />);
-
-  });
-
   it(`should receive active card id on hover`, () => {
+    const hoverHandler = jest.fn();
+
+    const movieCard = shallow(
+        <BrowserRouter>
+          <MovieCard
+            {...movie}
+            onHover={hoverHandler}
+          />
+        </BrowserRouter>
+    );
+
     movieCard.simulate(`mouseenter`);
 
-    expect(hoverHandler).toHaveBeenCalledWith(1);
+    setTimeout(() => {
+      expect(hoverHandler).toHaveBeenCalledWith(1);
+    }, 0);
+
   });
 });

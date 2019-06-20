@@ -2,12 +2,12 @@ const tsconfig = require("./tsconfig.json");
 const moduleNameMapper = require("tsconfig-paths-jest")(tsconfig);
 
 module.exports = {
-  "transform": {
+  transform: {
     "^.+\\.tsx?$": `ts-jest`,
     "^.+\\.js?$": `babel-jest`,
   },
-  "testRegex": `.test.(js?|jsx?|tsx?)$`,
-  "moduleFileExtensions": [
+  testRegex: `.test.(js?|jsx?|tsx?)$`,
+  moduleFileExtensions: [
     `js`,
     `ts`,
     `tsx`,
@@ -16,10 +16,12 @@ module.exports = {
     `node`
   ],
   moduleNameMapper,
-  "globals": {
+  globals: {
     "ts-jest": {
       "tsConfig": "tsconfig.json",
-      "diagnostics": true
+      "diagnostics": {
+        warnOnly: true
+      }
     }
   },
 };

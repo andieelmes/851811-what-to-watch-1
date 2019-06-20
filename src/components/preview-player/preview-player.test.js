@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {BrowserRouter} from 'react-router-dom';
 import PreviewPlayer from 'App/components/preview-player/preview-player';
 
 const PreviewPlayerProps = {
@@ -12,10 +13,10 @@ const PreviewPlayerProps = {
 describe(`Video player component`, () => {
   it(`should render correctly`, () => {
     const tree = renderer
-      .create(
-          <PreviewPlayer
-            {...PreviewPlayerProps}
-          />, {createNodeMock: (el) => el})
+      .create(<BrowserRouter>
+        <PreviewPlayer
+          {...PreviewPlayerProps}
+        /></BrowserRouter>, {createNodeMock: (el) => el})
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

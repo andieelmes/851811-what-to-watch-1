@@ -7,9 +7,15 @@ exports[`Movie card component should render correctly 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  <div
+  <a
     className="small-movie-card__image"
-    style={null}
+    href="/film/1"
+    onClick={[Function]}
+    style={
+      Object {
+        "display": "block",
+      }
+    }
   >
     <img
       alt="Fantastic Beasts: The Crimes of Grindelwald"
@@ -29,13 +35,14 @@ exports[`Movie card component should render correctly 1`] = `
         }
       }
     />
-  </div>
+  </a>
   <h3
     className="small-movie-card__title"
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="/film/1"
+      onClick={[Function]}
     >
       Fantastic Beasts: The Crimes of Grindelwald
     </a>

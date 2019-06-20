@@ -45,6 +45,7 @@ exports[`Sign in component should render correctly 1`] = `
       className="sign-in__form"
       onSubmit={[Function]}
     >
+      
       <div
         className="sign-in__fields"
       >
@@ -92,6 +93,7 @@ exports[`Sign in component should render correctly 1`] = `
       >
         <button
           className="sign-in__btn"
+          disabled={true}
           type="submit"
         >
           Sign in
@@ -107,7 +109,8 @@ exports[`Sign in component should render correctly 1`] = `
     >
       <a
         className="logo__link logo__link--light"
-        href="main.html"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
