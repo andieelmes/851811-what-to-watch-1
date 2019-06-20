@@ -45,16 +45,16 @@ const onLoginSuccess = (response, dispatch: Dispatch<any>) => {
 }
 
 const Operation = {
-  postLogin: (email: string, password: string, callback: () => void): ThunkAction<void, User, null, AnyAction> => (dispatch: ThunkDispatch<User, void, AnyAction>, _getState: () => User, api: any) => {
+  postLogin: (email: string, password: string, onSuccess: () => void, onError: (string) => void): ThunkAction<void, User, null, AnyAction> => (dispatch: ThunkDispatch<User, void, AnyAction>, _getState: () => User, api: any) => {
     return api.post(`/login`, {email, password})
       .then((response) =>
         {
           onLoginSuccess(response, dispatch);
-          callback();
+          onSuccess();
         }
       )
       .catch((error) => {
-        console.log(error);
+        onError(error);
       })
   },
   getLogin: () :ThunkAction<void, User, null, AnyAction> => (dispatch: ThunkDispatch<User, void, AnyAction>, _getState: () => User, api: any) => {
