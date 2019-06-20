@@ -22,7 +22,7 @@ const GenreList: React.FunctionComponent<Props> = (props) => {
     activeItem,
   } = props;
 
-  const onGenreClick = (e, genre) => {
+  const _handleGenreClick = (e, genre) => {
     e.preventDefault();
     onChange(genre);
   };
@@ -39,7 +39,7 @@ const GenreList: React.FunctionComponent<Props> = (props) => {
               key={genre}
               className={`catalog__genres-item ${genre === activeItem ? `catalog__genres-item--active` : ``}`}
             >
-              <a href="#" className="catalog__genres-link" onClick={(e) => onGenreClick(e, genre)}>{capitalizedGenre}</a>
+              <a href="#" className="catalog__genres-link" onClick={(e) => _handleGenreClick(e, genre)}>{capitalizedGenre}</a>
             </li>
           );
         })

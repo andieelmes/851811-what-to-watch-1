@@ -25,13 +25,7 @@ class MovieCardList extends React.PureComponent<Props, State> {
       increase: MOVIES_TO_SHOW,
     };
 
-    this.onMore = this.onMore.bind(this);
-  }
-
-  onMore() {
-    this.setState({
-      show: this.state.show + this.state.increase,
-    })
+    this._handleMoreButtonClick = this._handleMoreButtonClick.bind(this);
   }
 
   render() {
@@ -51,11 +45,18 @@ class MovieCardList extends React.PureComponent<Props, State> {
         </div>
         { (withButton && movies.length > this.state.show) && (
           <div className="catalog__more">
-            <button className="catalog__button" type="button" onClick={this.onMore}>Show more</button>
+            <button className="catalog__button" type="button" onClick={this._handleMoreButtonClick}>Show more</button>
           </div>
         )}
       </>
     );
+  }
+
+
+  private _handleMoreButtonClick() {
+    this.setState({
+      show: this.state.show + this.state.increase,
+    })
   }
 };
 

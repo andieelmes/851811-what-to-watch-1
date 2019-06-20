@@ -74,11 +74,11 @@ class App extends React.PureComponent<Props, null> {
           <Route exact path="/login" render={(props) => (<SignIn user={user} {...props}/>)}/>
           <Route exact path="/mylist" render={(props) => (<PrivateFavorites user={user} movies={favorites} {...props}/>)}/>
           <Route path="/film/:id/review" render={(props) => {
-            const currentMovie = App.getCurrentMovie(movies, +props.match.params.id)
+            const currentMovie = App._getCurrentMovie(movies, +props.match.params.id)
             return <PrivateAddReview user={user} movie={currentMovie} {...props}/>
           }}/>
           <Route path="/film/:id" render={(props) => {
-            const currentMovie = App.getCurrentMovie(movies, +props.match.params.id)
+            const currentMovie = App._getCurrentMovie(movies, +props.match.params.id)
             const similarMovies = movies.filter((movie) => movie.genre === currentMovie.genre && movie.id !== currentMovie.id).slice(0, 4);
             return <MoviePageWithActiveItemWithMoviePlayer moviePlayerContent={currentMovie} user={user} movie={currentMovie} similar={similarMovies} {...props}/>
           }}/>
@@ -87,7 +87,7 @@ class App extends React.PureComponent<Props, null> {
     ));
   }
 
-  static getCurrentMovie(movies, id) {
+  static _getCurrentMovie(movies, id) {
     return  movies.find((movie) => movie.id === id);
   }
 }

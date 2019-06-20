@@ -36,54 +36,15 @@ class AddReview extends React.PureComponent<Props, State> {
       isSubmitting: false,
     };
 
-    this.onTextChange = this.onTextChange.bind(this);
-    this.onRatingChange = this.onRatingChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onSuccess = this.onSuccess.bind(this);
-    this.onError = this.onError.bind(this);
+    this._handleTextChange = this._handleTextChange.bind(this);
+    this._handleRatingChange = this._handleRatingChange.bind(this);
+    this._handleFormSubmit = this._handleFormSubmit.bind(this);
+    this._handleSuccess = this._handleSuccess.bind(this);
+    this._handleError = this._handleError.bind(this);
   }
 
   componentDidMount() {
     this.props.getLogin();
-  }
-
-  componentDidUpdate() {
-    const {
-      user,
-      history
-    } = this.props;
-  }
-
-  onTextChange({target: {value}}) {
-    this.setState({
-      text: value
-    });
-  }
-
-  onRatingChange({target: {value}}) {
-    this.setState({
-      rating: +value
-    });
-  }
-
-  onSubmit(e) {
-    const {
-      onSubmit,
-      movie
-    } = this.props;
-
-    e.preventDefault();
-    this.setState({ isSubmitting: true })
-
-    onSubmit(movie.id, {rating: this.state.rating, comment: this.state.text}, this.onSuccess, this.onError);
-  }
-
-  onSuccess() {
-    this.props.history.push(`/film/${this.props.movie.id}`);
-  }
-
-  onError() {
-    this.setState({ isSubmitting: false })
   }
 
   render() {
@@ -146,7 +107,7 @@ class AddReview extends React.PureComponent<Props, State> {
           <form
             action="#"
             className="add-review__form"
-            onSubmit={this.onSubmit}
+            onSubmit={this._handleFormSubmit}
           >
             <div className="rating">
               <div className="rating__stars">
@@ -160,7 +121,7 @@ class AddReview extends React.PureComponent<Props, State> {
                         type="radio"
                         name="rating"
                         value={index + 1}
-                        onChange={this.onRatingChange}
+                        onChange={this._handleRatingChange}
                         checked={rating === index + 1}
                         disabled={isSubmitting}
                       />
@@ -177,7 +138,7 @@ class AddReview extends React.PureComponent<Props, State> {
                 name="review-text"
                 id="review-text"
                 placeholder="Review text"
-                onChange={this.onTextChange}
+                onChange={this._handleTextChange}
                 defaultValue={text}
                 minLength={50}
                 maxLength={400}
@@ -197,6 +158,38 @@ class AddReview extends React.PureComponent<Props, State> {
         </div>
       </section>
     );
+  }
+
+  private _handleTextChange({target: {value}}) {
+    this.setState({
+      text: value
+    });
+  }
+
+  private _handleRatingChange({target: {value}}) {
+    this.setState({
+      rating: +value
+    });
+  }
+
+  private _handleFormSubmit(e) {
+    const {
+      onSubmit,
+      movie
+    } = this.props;
+
+    e.preventDefault();
+    this.setState({ isSubmitting: true })
+
+    onSubmit(movie.id, {rating: this.state.rating, comment: this.state.text}, this._handleSuccess, this._handleError);
+  }
+
+  private _handleSuccess() {
+    this.props.history.push(`/film/${this.props.movie.id}`);
+  }
+
+  private _handleError() {
+    this.setState({ isSubmitting: false })
   }
 }
 

@@ -44,7 +44,7 @@ const Movie: React.FunctionComponent<Props> = (props) => {
     reviews,
   } = props;
 
-  const onTabClick = (e, activeItem: string) => {
+  const _handleTabClick = (e, activeItem: string) => {
     e.preventDefault();
     onChange(activeItem);
   };
@@ -115,13 +115,13 @@ const Movie: React.FunctionComponent<Props> = (props) => {
               <nav className="movie-nav movie-card__nav">
                 <ul className="movie-nav__list">
                   <li className={`movie-nav__item ${(activeItem === Tabs.OVERVIEW || !activeItem) ? `movie-nav__item--active`: ''}`}>
-                    <a href="#" className="movie-nav__link" onClick={(e) => onTabClick(e, Tabs.OVERVIEW)}>Overview</a>
+                    <a href="#" className="movie-nav__link" onClick={(e) => _handleTabClick(e, Tabs.OVERVIEW)}>Overview</a>
                   </li>
                   <li className={`movie-nav__item ${activeItem === Tabs.DETAILS ? `movie-nav__item--active`: ''}`}>
-                    <a href="#" className="movie-nav__link" onClick={(e) => onTabClick(e, Tabs.DETAILS)}>Details</a>
+                    <a href="#" className="movie-nav__link" onClick={(e) => _handleTabClick(e, Tabs.DETAILS)}>Details</a>
                   </li>
                   <li className={`movie-nav__item ${activeItem === Tabs.REVIEWS ? `movie-nav__item--active`: ''}`}>
-                    <a href="#" className="movie-nav__link" onClick={(e) => onTabClick(e, Tabs.REVIEWS)}>Reviews</a>
+                    <a href="#" className="movie-nav__link" onClick={(e) => _handleTabClick(e, Tabs.REVIEWS)}>Reviews</a>
                   </li>
                 </ul>
               </nav>
