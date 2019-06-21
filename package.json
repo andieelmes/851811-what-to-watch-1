@@ -27,6 +27,7 @@
     "eslint-plugin-react": "7.12.4",
     "jest": "24.7.1",
     "react-test-renderer": "16.8.6",
+    "redux-mock-store": "1.5.3",
     "ts-jest": "24.0.2",
     "ts-loader": "6.0.2",
     "tsconfig-paths-jest": "0.0.1",
