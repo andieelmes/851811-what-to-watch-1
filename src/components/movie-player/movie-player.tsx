@@ -99,7 +99,7 @@ class MoviePlayer extends React.PureComponent<Props, State> {
         <video
           className="player__video"
           poster={movie.backgroundImage}
-          muted /////revmore
+          muted
           ref={this._videoRef}
           onTimeUpdate={this._handleUpdate}
           style={{
