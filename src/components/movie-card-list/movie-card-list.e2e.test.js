@@ -25,10 +25,12 @@ describe(`Movie card list component`, () => {
   const changeHandler = jest.fn();
 
   it(`should receive active card id on card hover`, () => {
-    const movieCardList = shallow(<MovieCardList
-      movies={movies}
-      onChange={changeHandler}
-    />);
+    const movieCardList = shallow(
+        <MovieCardList
+          movies={movies}
+          onChange={changeHandler}
+        />
+    );
 
     const movieCard = movieCardList.find(MovieCard).at(0).dive().find(`[data-movie-id=1]`);
 

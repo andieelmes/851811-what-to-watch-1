@@ -18,7 +18,9 @@ describe(`Genre list component`, () => {
             onChange={() => {}}
             activeItem="comedies"
             genres={genres}
-          />, {createNodeMock: (el) => el})
+          />,
+          {createNodeMock: (el) => el}
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

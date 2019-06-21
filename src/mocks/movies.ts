@@ -50,3 +50,36 @@ export const MOVIES = [
 export const GENRES = [
   `all genres`, `comedies`, `crime`, `documentaries`, `dramas`,
 ];
+
+export const REVIEWS = [
+  {
+    id: 1,
+    user: {
+      id: 13,
+      name: 'Zak'
+    },
+    rating: 2,
+    comment: 'A movie that will take you to another world full of emotions.',
+    date: '2019-05-30T04:04:34.909Z'
+  },
+  {
+    id: 2,
+    user: {
+      id: 11,
+      name: 'Jack'
+    },
+    rating: 5,
+    comment: 'I really find it difficult to believe this movie is rated highly by people. It\'s hands down the worst movie I\'ve seen in my life',
+    date: '2019-06-02T04:04:34.909Z'
+  },
+  {
+    id: 3,
+    user: {
+      id: 14,
+      name: 'Corey'
+    },
+    rating: 4,
+    comment: 'It was well acted, directed, and the music was good. But the story is yawn. Not trying to rip anybody but I checked my watch a dozen times during this movie.',
+    date: '2019-06-10T04:04:34.909Z'
+  }
+];

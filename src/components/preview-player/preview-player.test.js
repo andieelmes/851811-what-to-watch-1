@@ -10,13 +10,17 @@ const PreviewPlayerProps = {
   active: true,
 };
 
-describe(`Video player component`, () => {
+describe(`Preview player component`, () => {
   it(`should render correctly`, () => {
     const tree = renderer
-      .create(<BrowserRouter>
-        <PreviewPlayer
-          {...PreviewPlayerProps}
-        /></BrowserRouter>, {createNodeMock: (el) => el})
+      .create(
+          <BrowserRouter>
+            <PreviewPlayer
+              {...PreviewPlayerProps}
+            />
+          </BrowserRouter>,
+          {createNodeMock: (el) => el}
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

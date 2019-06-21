@@ -88,7 +88,7 @@ class App extends React.PureComponent<Props, null> {
   }
 
   static _getCurrentMovie(movies, id) {
-    return  movies.find((movie) => movie.id === id);
+    return movies.find((movie) => movie.id === id);
   }
 }
 

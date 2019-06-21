@@ -1,17 +1,23 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {BrowserRouter} from 'react-router-dom';
-import Favorites from 'App/components/favorites/favorites';
+import {AddReview} from 'App/components/add-review/add-review';
 
-import {USER} from 'App/mocks/user';
 import {MOVIES} from 'App/mocks/movies';
+import {USER} from 'App/mocks/user';
 
-describe(`Favorites component`, () => {
+describe(`Add review component`, () => {
   it(`should render correctly`, () => {
     const tree = renderer
       .create(
           <BrowserRouter>
-            <Favorites user={USER} movies={MOVIES}/>
+            <AddReview
+              movie={MOVIES[0]}
+              onSubmit={() => {}}
+              getLogin={() => {}}
+              user={USER}
+              history={{push: () => {}}}
+            />
           </BrowserRouter>,
           {createNodeMock: (el) => el}
       )

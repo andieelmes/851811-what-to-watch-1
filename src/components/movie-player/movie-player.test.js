@@ -1,18 +1,17 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {BrowserRouter} from 'react-router-dom';
-import Favorites from 'App/components/favorites/favorites';
+import MoviePlayer from 'App/components/movie-player/movie-player';
 
-import {USER} from 'App/mocks/user';
 import {MOVIES} from 'App/mocks/movies';
 
-describe(`Favorites component`, () => {
+describe(`Movie player component`, () => {
   it(`should render correctly`, () => {
     const tree = renderer
       .create(
-          <BrowserRouter>
-            <Favorites user={USER} movies={MOVIES}/>
-          </BrowserRouter>,
+          <MoviePlayer
+            movie={MOVIES[0]}
+            onExit={() => {}}
+          />,
           {createNodeMock: (el) => el}
       )
       .toJSON();

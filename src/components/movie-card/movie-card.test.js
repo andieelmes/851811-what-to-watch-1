@@ -13,11 +13,15 @@ const movie = {
 describe(`Movie card component`, () => {
   it(`should render correctly`, () => {
     const tree = renderer
-      .create(<BrowserRouter>
-        <MovieCard
-          {...movie}
-          onHover={() => {}}
-        /></BrowserRouter>, {createNodeMock: (el) => el})
+      .create(
+          <BrowserRouter>
+            <MovieCard
+              {...movie}
+              onHover={() => {}}
+            />
+          </BrowserRouter>,
+          {createNodeMock: (el) => el}
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

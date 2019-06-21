@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add review component should render correctly 1`] = `
+<div
+  className="user-block"
+>
+  <a
+    href="/mylist"
+    onClick={[Function]}
+  >
+    <div
+      className="user-block__avatar"
+    >
+      <img
+        alt="User avatar of name"
+        height="63"
+        src="/"
+        width="63"
+      />
+    </div>
+  </a>
+</div>
+`;

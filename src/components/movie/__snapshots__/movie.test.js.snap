@@ -1,0 +1,413 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie component should render correctly 1`] = `
+Array [
+  <section
+    className="movie-card movie-card--full"
+    style={
+      Object {
+        "backgroundColor": "#828585",
+      }
+    }
+  >
+    <div
+      className="movie-card__hero"
+    >
+      <div
+        className="movie-card__bg"
+      >
+        <img
+          alt="Midnight Special"
+          src="https://es31-server.appspot.com/wtw/static/film/background/Midnight_Special.jpg"
+        />
+      </div>
+      <h1
+        className="visually-hidden"
+      >
+        WTW
+      </h1>
+      <header
+        className="page-header movie-card__head"
+      >
+        <div
+          className="logo"
+        >
+          <a
+            className="logo__link"
+            href="/"
+            onClick={[Function]}
+          >
+            <span
+              className="logo__letter logo__letter--1"
+            >
+              W
+            </span>
+            <span
+              className="logo__letter logo__letter--2"
+            >
+              T
+            </span>
+            <span
+              className="logo__letter logo__letter--3"
+            >
+              W
+            </span>
+          </a>
+        </div>
+        <div
+          className="user-block"
+        >
+          <a
+            href="/mylist"
+            onClick={[Function]}
+          >
+            <div
+              className="user-block__avatar"
+            >
+              <img
+                alt="User avatar of name"
+                height="63"
+                src="/"
+                width="63"
+              />
+            </div>
+          </a>
+        </div>
+      </header>
+      <div
+        className="movie-card__wrap"
+      >
+        <div
+          className="movie-card__desc"
+        >
+          <h2
+            className="movie-card__title"
+          >
+            Midnight Special
+          </h2>
+          <p
+            className="movie-card__meta"
+          >
+            <span
+              className="movie-card__genre"
+            >
+              Action
+            </span>
+            <span
+              className="movie-card__year"
+            >
+              2016
+            </span>
+          </p>
+          <div
+            className="movie-card__buttons"
+          >
+            <button
+              className="btn btn--play movie-card__button"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                height="19"
+                viewBox="0 0 19 19"
+                width="19"
+              >
+                <use
+                  xlinkHref="#play-s"
+                />
+              </svg>
+              <span>
+                Play
+              </span>
+            </button>
+            <button
+              className="btn btn--list movie-card__button"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                height="20"
+                viewBox="0 0 19 20"
+                width="19"
+              >
+                <use
+                  xlinkHref="#add"
+                />
+              </svg>
+              <span>
+                My list
+              </span>
+            </button>
+            <a
+              className="btn movie-card__button"
+              href="/film/1/review"
+              onClick={[Function]}
+            >
+              Add review
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="movie-card__wrap movie-card__translate-top"
+    >
+      <div
+        className="movie-card__info"
+      >
+        <div
+          className="movie-card__poster movie-card__poster--big"
+        >
+          <img
+            alt="Midnight Special poster"
+            height="327"
+            src="https://es31-server.appspot.com/wtw/static/film/poster/Midnight_Special.jpg"
+            width="218"
+          />
+        </div>
+        <div
+          className="movie-card__desc"
+        >
+          <nav
+            className="movie-nav movie-card__nav"
+          >
+            <ul
+              className="movie-nav__list"
+            >
+              <li
+                className="movie-nav__item movie-nav__item--active"
+              >
+                <a
+                  className="movie-nav__link"
+                  href="#"
+                  onClick={[Function]}
+                >
+                  Overview
+                </a>
+              </li>
+              <li
+                className="movie-nav__item "
+              >
+                <a
+                  className="movie-nav__link"
+                  href="#"
+                  onClick={[Function]}
+                >
+                  Details
+                </a>
+              </li>
+              <li
+                className="movie-nav__item "
+              >
+                <a
+                  className="movie-nav__link"
+                  href="#"
+                  onClick={[Function]}
+                >
+                  Reviews
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div
+            className="movie-rating"
+          >
+            <div
+              className="movie-rating__score"
+            >
+              3.3
+            </div>
+            <p
+              className="movie-rating__meta"
+            >
+              <span
+                className="movie-rating__level"
+              >
+                Normal
+              </span>
+              <span
+                className="movie-rating__count"
+              >
+                67815
+                 
+                ratings
+              </span>
+            </p>
+          </div>
+          <div
+            className="movie-card__text"
+          >
+            A father and son go on the run, pursued by the government and a cult drawn to the child's special powers.
+            <p
+              className="movie-card__director"
+            >
+              <strong>
+                Director: 
+                Jeff Nichols
+              </strong>
+            </p>
+            <p
+              className="movie-card__starring"
+            >
+              <strong>
+                Starring: 
+                Michael Shannon, 
+                Joel Edgerton, 
+                Kirsten Dunst false
+                 and other
+              </strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>,
+  <div
+    className="page-content"
+  >
+    <section
+      className="catalog catalog--like-this"
+    >
+      <h2
+        className="catalog__title"
+      >
+        More like this
+      </h2>
+      <div
+        className="catalog__movies-list"
+      >
+        <article
+          className="small-movie-card catalog__movies-card"
+          data-movie-id={1}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            className="small-movie-card__image"
+            href="/film/1"
+            onClick={[Function]}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <img
+              alt="Midnight Special"
+              height="175"
+              src="https://es31-server.appspot.com/wtw/static/film/background/Midnight_Special.jpg"
+              style={null}
+              width="280"
+            />
+            <video
+              controls={true}
+              loop={true}
+              muted={true}
+              poster="https://es31-server.appspot.com/wtw/static/film/background/Midnight_Special.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            />
+          </a>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="/film/1"
+              onClick={[Function]}
+            >
+              Midnight Special
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          data-movie-id={2}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            className="small-movie-card__image"
+            href="/film/2"
+            onClick={[Function]}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <img
+              alt="What We Do in the Shadows"
+              height="175"
+              src="https://es31-server.appspot.com/wtw/static/film/background/What-We-Do-in-the-Shadows.jpg"
+              style={null}
+              width="280"
+            />
+            <video
+              controls={true}
+              loop={true}
+              muted={true}
+              poster="https://es31-server.appspot.com/wtw/static/film/background/What-We-Do-in-the-Shadows.jpg"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            />
+          </a>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="/film/2"
+              onClick={[Function]}
+            >
+              What We Do in the Shadows
+            </a>
+          </h3>
+        </article>
+      </div>
+    </section>
+    <footer
+      className="page-footer"
+    >
+      <div
+        className="logo"
+      >
+        <a
+          className="logo__link logo__link--light"
+          href="/"
+          onClick={[Function]}
+        >
+          <span
+            className="logo__letter logo__letter--1"
+          >
+            W
+          </span>
+          <span
+            className="logo__letter logo__letter--2"
+          >
+            T
+          </span>
+          <span
+            className="logo__letter logo__letter--3"
+          >
+            W
+          </span>
+        </a>
+      </div>
+      <div
+        className="copyright"
+      >
+        <p>
+          © 2019 What to watch Ltd.
+        </p>
+      </div>
+    </footer>
+  </div>,
+]
+`;

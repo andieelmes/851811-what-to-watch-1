@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Video player component should render correctly 1`] = `
+exports[`Preview player component should render correctly 1`] = `
 <a
   className="small-movie-card__image"
   href="/film/undefined"

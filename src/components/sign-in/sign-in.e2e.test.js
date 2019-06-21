@@ -12,14 +12,16 @@ describe(`Sign in component`, () => {
   const historyGobackHandler = jest.fn();
 
   it(`should update state on input change`, () => {
-    const signIn = shallow(<SignIn
-      history={{
-        goBack: jest.fn()
-      }}
-      handleSubmit={submitHandler}
-      getLogin={() => {}}
-      user={USER}
-    />);
+    const signIn = shallow(
+        <SignIn
+          history={{
+            goBack: jest.fn()
+          }}
+          handleSubmit={submitHandler}
+          getLogin={() => {}}
+          user={USER}
+        />
+    );
 
     const email = signIn.find(`input[type="email"]`);
 
@@ -31,14 +33,16 @@ describe(`Sign in component`, () => {
   });
 
   it(`should submit password and email, and pass success and error callbacks`, () => {
-    const signIn = shallow(<SignIn
-      history={{
-        goBack: historyGobackHandler
-      }}
-      handleSubmit={submitHandler}
-      getLogin={() => {}}
-      user={USER}
-    />);
+    const signIn = shallow(
+        <SignIn
+          history={{
+            goBack: historyGobackHandler
+          }}
+          handleSubmit={submitHandler}
+          getLogin={() => {}}
+          user={USER}
+        />
+    );
 
     signIn.instance()._displayError = jest.fn();
 
