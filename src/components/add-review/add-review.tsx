@@ -197,7 +197,7 @@ export {AddReview};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onSubmit: (id, {rating, comment}, onSuccess, onError) => {
-    dispatch(DataOperation.postComment(id, rating, comment, onSuccess, onError)).then(() => dispatch(DataOperation.loadComments(ownProps.movie.id)));
+    dispatch(DataOperation.postComment(id, rating, comment, onSuccess, onError))
   },
   getLogin: () => {
     dispatch(UserOperation.getLogin());
