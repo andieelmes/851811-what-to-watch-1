@@ -12,12 +12,11 @@ exports[`Movie player component should render correctly 1`] = `
 >
   <video
     className="player__video"
-    onTimeUpdate={[Function]}
     poster="https://es31-server.appspot.com/wtw/static/film/background/Midnight_Special.jpg"
     style={
       Object {
         "alignSelf": "center",
-        "height": "100%",
+        "height": undefined,
       }
     }
   />
@@ -40,17 +39,13 @@ exports[`Movie player component should render correctly 1`] = `
         <progress
           className="player__progress"
           max="100"
-          onClick={[Function]}
-          onMouseDown={[Function]}
           onMouseMove={[Function]}
-          onMouseUp={[Function]}
-          value={0}
         />
         <div
           className="player__toggler"
           style={
             Object {
-              "left": "0%",
+              "left": "undefined%",
             }
           }
         >
@@ -68,7 +63,6 @@ exports[`Movie player component should render correctly 1`] = `
     >
       <button
         className="player__play"
-        onClick={[Function]}
         type="button"
       >
         <svg
@@ -91,7 +85,6 @@ exports[`Movie player component should render correctly 1`] = `
       </div>
       <button
         className="player__full-screen"
-        onClick={[Function]}
         type="button"
       >
         <svg

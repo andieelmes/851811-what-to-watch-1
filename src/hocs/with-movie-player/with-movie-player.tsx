@@ -2,8 +2,11 @@ import * as React from "react";
 import {Subtract} from "utility-types";
 import {getDisplayName} from 'App/utils';
 import MoviePlayer from 'App/components/movie-player/movie-player';
+import withMoviePlayerFunctionality from 'App/hocs/with-movie-player-functionality/with-movie-player-functionality';
 
 import { Movie as MovieType } from 'App/types';
+
+const MoviePlayerWithFunctionality = withMoviePlayerFunctionality(MoviePlayer);
 
 interface State {
   videoPlayerIsActive: boolean,
@@ -48,7 +51,7 @@ const withMoviePlayer = (Component) => {
       return (
         <>
           { this.state.videoPlayerIsActive
-            ? <MoviePlayer movie={this.props.moviePlayerContent} onExit={this._hidePlayer}/>
+            ? <MoviePlayerWithFunctionality movie={this.props.moviePlayerContent} onExit={this._hidePlayer}/>
             : <Component onPlay={this._showPlayer} {...this.props}/>
           }
         </>

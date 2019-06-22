@@ -7,146 +7,63 @@ interface Props {
   title: string,
   active: boolean,
   id: number,
+  forwardedRef: React.RefObject<HTMLVideoElement>
 };
 
-interface State {
-  active: boolean,
-  isLoading: boolean,
-};
+const PreviewPlayer: React.FunctionComponent<Props> = (props) => {
+  const {
+    img,
+    title,
+    id,
+    active,
+    forwardedRef,
+  } = props;
 
-class PreviewPlayer extends React.PureComponent<Props, State> {
-  _videoRef: React.RefObject<HTMLVideoElement>;
-  videoTimeout: NodeJS.Timer;
-  VIDEO_TIMEOUT_DELAY: number;
-  containerStyles: React.CSSProperties;
-  activeContainerStyles: React.CSSProperties;
-  previewPlayerStyles: React.CSSProperties;
-  hiddenStyles: React.CSSProperties;
+  const containerStyles: React.CSSProperties = {
+    display: `block`,
+  };
 
-  constructor(props) {
-    super(props);
+  const activeContainerStyles: React.CSSProperties = {
+    display: `block`,
+    position: `relavive` as `relative`,
+    zIndex: 3,
+  };
 
-    this._videoRef = React.createRef();
+  const previewPlayerStyles: React.CSSProperties = {
+    position: `relavive` as `relative`,
+    zIndex: 2,
+    objectFit: `cover`,
+    maxWidth: `100%`,
+    height: `100%`,
+  };
 
-    this.state = {
-      isLoading: true,
-      active: false,
-    };
+  const hiddenStyles: React.CSSProperties = {
+    display: `none`,
+  };
 
-    this._getVideoStatus = this._getVideoStatus.bind(this);
-    this.videoTimeout = null;
-    this.VIDEO_TIMEOUT_DELAY = 1000;
-
-    this.containerStyles = {
-      display: `block`,
-    };
-
-    this.activeContainerStyles = {
-      display: `block`,
-      position: `relavive` as `relative`,
-      zIndex: 3,
-    };
-
-    this.previewPlayerStyles = {
-      position: `relavive` as `relative`,
-      zIndex: 2,
-      objectFit: `cover`,
-      maxWidth: `100%`,
-      height: `100%`,
-    };
-
-    this.hiddenStyles = {
-      display: `none`,
-    };
-  }
-
-  componentDidMount() {
-    const {preview} = this.props;
-    const video = this._videoRef.current;
-
-    video.src = preview;
-
-    video.oncanplaythrough = () => this.setState({
-      isLoading: false,
-    });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.active !== this.props.active) {
-      this._getVideoStatus();
-    }
-
-    if (prevState.active !== this.state.active) {
-      const video = this._videoRef.current;
-
-      const playPromise = video.play();
-
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          if (this.state.active) {
-            video.currentTime = 0;
-          } else {
-            video.pause();
-          }
-        })
-        .catch((error) => {
-          throw error;
-        });
-      }
-    }
-  }
-
-
-  componentWillUnmount() {
-    const video = this._videoRef.current;
-
-    video.oncanplaythrough = null;
-    video.src = ``;
-
-    clearTimeout(this.videoTimeout);
-  }
-
-  render() {
-    const {
-      img,
-      title,
-      id,
-    } = this.props;
-
-    return (
-      <Link
-        to={`/film/${id}`}
-        className="small-movie-card__image"
-        style={this.props.active ? this.activeContainerStyles : this.containerStyles}
-      >
-        <img
-          src={img}
-          alt={title}
-          width="280"
-          height="175"
-          style={this.state.active ? this.hiddenStyles : null}
-        />
-        <video
-          poster={img}
-          ref={this._videoRef}
-          muted={true}
-          controls={true}
-          loop={true}
-          style={this.state.active ? this.previewPlayerStyles : this.hiddenStyles}
-        />
-      </Link>
-    );
-  }
-
-  _getVideoStatus() {
-    if (this.props.active) {
-      this.videoTimeout = setTimeout(() => {
-        this.setState({active: !this.state.isLoading && this.props.active});
-      }, this.VIDEO_TIMEOUT_DELAY);
-    } else {
-      this.setState({active: !this.state.isLoading && this.props.active});
-    }
-  }
+  return (
+    <Link
+      to={`/film/${id}`}
+      className="small-movie-card__image"
+      style={props.active ? activeContainerStyles : containerStyles}
+    >
+      <img
+        src={img}
+        alt={title}
+        width="280"
+        height="175"
+        style={active ? hiddenStyles : null}
+      />
+      <video
+        poster={img}
+        ref={forwardedRef}
+        muted={true}
+        controls={true}
+        loop={true}
+        style={active ? previewPlayerStyles : hiddenStyles}
+      />
+    </Link>
+  );
 }
 
 export default PreviewPlayer;

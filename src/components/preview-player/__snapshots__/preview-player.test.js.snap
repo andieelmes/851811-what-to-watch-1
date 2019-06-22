@@ -17,7 +17,11 @@ exports[`Preview player component should render correctly 1`] = `
     alt="Fantastic Beasts: The Crimes of Grindelwald"
     height="175"
     src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-    style={null}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
     width="280"
   />
   <video
@@ -27,7 +31,11 @@ exports[`Preview player component should render correctly 1`] = `
     poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
     style={
       Object {
-        "display": "none",
+        "height": "100%",
+        "maxWidth": "100%",
+        "objectFit": "cover",
+        "position": "relavive",
+        "zIndex": 2,
       }
     }
   />

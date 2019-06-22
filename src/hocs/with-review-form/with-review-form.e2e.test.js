@@ -17,8 +17,6 @@ const storeStateMock = {
   }
 };
 
-Enzyme.configure({adapter: new Adapter()});
-
 const MockComponent = (props) => (
   <div>
     <textarea value={props.text} onChange={props.onTextChange}/>

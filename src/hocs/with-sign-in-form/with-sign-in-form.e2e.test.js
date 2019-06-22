@@ -17,8 +17,6 @@ const storeStateMock = {
   }
 };
 
-Enzyme.configure({adapter: new Adapter()});
-
 const MockComponent = (props) => (
   <div>
     <input type="email" value={props.email} onChange={props.onEmailChange}/>
