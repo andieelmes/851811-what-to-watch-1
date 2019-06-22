@@ -11,6 +11,7 @@ import { getAuthorizationStatus, getUserInfo } from "App/reducer/user/selectors"
 import privateRoute from 'App/hocs/private-route/private-route';
 import withActiveItem from 'App/hocs/with-active-item/with-active-item';
 import withMoviePlayer from 'App/hocs/with-movie-player/with-movie-player';
+import withReviewForm from 'App/hocs/with-review-form/with-review-form';
 
 import Wrapper from 'App/components/wrapper/wrapper';
 import Main from 'App/components/main/main';
@@ -26,12 +27,13 @@ import {
 } from "App/movie-variables";
 
 const PrivateFavorites = privateRoute(Favorites);
-const PrivateAddReview = privateRoute(AddReview);
 const MainPageWithMoviePlayer = withMoviePlayer(Main);
 
 const composeMoviePage = (WrappedComponent) => compose(withMoviePlayer, withActiveItem)(WrappedComponent);
-
 const MoviePageWithActiveItemWithMoviePlayer = composeMoviePage(Movie)
+
+const composeAddReviewPage = (WrappedComponent) => compose(privateRoute, withReviewForm)(WrappedComponent);
+const PrivateAddReviewPageWithForm = composeAddReviewPage(AddReview)
 
 interface Props {
   movies: MovieType[],
@@ -79,7 +81,7 @@ class App extends React.PureComponent<Props, null> {
           <Route exact path="/mylist" render={(props) => (<PrivateFavorites user={user} movies={favorites} {...props}/>)}/>
           <Route path="/film/:id/review" render={(props) => {
             const currentMovie = App._getCurrentMovie(movies, +props.match.params.id)
-            return <PrivateAddReview user={user} movie={currentMovie} {...props}/>
+            return <PrivateAddReviewPageWithForm user={user} movie={currentMovie} {...props}/>
           }}/>
           <Route path="/film/:id" render={(props) => {
             const currentMovie = App._getCurrentMovie(movies, +props.match.params.id)
