@@ -27,6 +27,8 @@ interface State {
 };
 
 class AddReview extends React.PureComponent<Props, State> {
+  disabledStyles: React.CSSProperties;
+
   constructor(props) {
     super(props);
 
@@ -41,6 +43,11 @@ class AddReview extends React.PureComponent<Props, State> {
     this._handleFormSubmit = this._handleFormSubmit.bind(this);
     this._handleSuccess = this._handleSuccess.bind(this);
     this._handleError = this._handleError.bind(this);
+
+    this.disabledStyles = {
+      color: 'grey',
+      opacity: 0.7,
+    }
   }
 
   componentDidMount() {
@@ -58,11 +65,6 @@ class AddReview extends React.PureComponent<Props, State> {
       user,
       movie,
     } = this.props;
-
-    const disabledStyles = {
-      color: 'grey',
-      opacity: 0.7,
-    }
 
     const isValid = text.length <= 400 && text.length >= 50 && rating;
 
@@ -149,7 +151,7 @@ class AddReview extends React.PureComponent<Props, State> {
                   className="add-review__btn"
                   type="submit"
                   disabled={!isValid || isSubmitting}
-                  style={!isValid ? disabledStyles : null}
+                  style={!isValid ? this.disabledStyles : null}
                 >Post</button>
               </div>
 

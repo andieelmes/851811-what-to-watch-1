@@ -56,11 +56,6 @@ class Movie extends React.PureComponent<Props, null> {
       onLoad,
     } = this.props;
 
-    const _handleTabClick = (e, activeItem: string) => {
-      e.preventDefault();
-      onChange(activeItem);
-    };
-
     return (
       <>
         <section className="movie-card movie-card--full" style={{ backgroundColor: movie.backgroundColor}}>
@@ -127,13 +122,13 @@ class Movie extends React.PureComponent<Props, null> {
                 <nav className="movie-nav movie-card__nav">
                   <ul className="movie-nav__list">
                     <li className={`movie-nav__item ${(activeItem === Tabs.OVERVIEW || !activeItem) ? `movie-nav__item--active`: ''}`}>
-                      <a href="#" className="movie-nav__link" onClick={(e) => _handleTabClick(e, Tabs.OVERVIEW)}>Overview</a>
+                      <a href="#" className="movie-nav__link" onClick={(e) => Movie._handleTabClick(e, Tabs.OVERVIEW, onChange)}>Overview</a>
                     </li>
                     <li className={`movie-nav__item ${activeItem === Tabs.DETAILS ? `movie-nav__item--active`: ''}`}>
-                      <a href="#" className="movie-nav__link" onClick={(e) => _handleTabClick(e, Tabs.DETAILS)}>Details</a>
+                      <a href="#" className="movie-nav__link" onClick={(e) => Movie._handleTabClick(e, Tabs.DETAILS, onChange)}>Details</a>
                     </li>
                     <li className={`movie-nav__item ${activeItem === Tabs.REVIEWS ? `movie-nav__item--active`: ''}`}>
-                      <a href="#" className="movie-nav__link" onClick={(e) => _handleTabClick(e, Tabs.REVIEWS)}>Reviews</a>
+                      <a href="#" className="movie-nav__link" onClick={(e) => Movie._handleTabClick(e, Tabs.REVIEWS, onChange)}>Reviews</a>
                     </li>
                   </ul>
                 </nav>
@@ -212,6 +207,11 @@ class Movie extends React.PureComponent<Props, null> {
       </>
     );
   }
+
+  static _handleTabClick(e, activeItem: string, callback: (string) => void) {
+    e.preventDefault();
+    callback(activeItem);
+  };
 }
 
 const mapStateToProps = (state, ownProps) => {

@@ -18,6 +18,10 @@ class PreviewPlayer extends React.PureComponent<Props, State> {
   _videoRef: React.RefObject<HTMLVideoElement>;
   videoTimeout: NodeJS.Timer;
   VIDEO_TIMEOUT_DELAY: number;
+  containerStyles: React.CSSProperties;
+  activeContainerStyles: React.CSSProperties;
+  previewPlayerStyles: React.CSSProperties;
+  hiddenStyles: React.CSSProperties;
 
   constructor(props) {
     super(props);
@@ -32,6 +36,28 @@ class PreviewPlayer extends React.PureComponent<Props, State> {
     this._getVideoStatus = this._getVideoStatus.bind(this);
     this.videoTimeout = null;
     this.VIDEO_TIMEOUT_DELAY = 1000;
+
+    this.containerStyles = {
+      display: `block`,
+    };
+
+    this.activeContainerStyles = {
+      display: `block`,
+      position: `relavive` as `relative`,
+      zIndex: 3,
+    };
+
+    this.previewPlayerStyles = {
+      position: `relavive` as `relative`,
+      zIndex: 2,
+      objectFit: `cover`,
+      maxWidth: `100%`,
+      height: `100%`,
+    };
+
+    this.hiddenStyles = {
+      display: `none`,
+    };
   }
 
   componentDidMount() {
@@ -87,40 +113,18 @@ class PreviewPlayer extends React.PureComponent<Props, State> {
       id,
     } = this.props;
 
-    const containerStyles: React.CSSProperties = {
-      display: `block`,
-    };
-
-    const activeContainerStyles: React.CSSProperties = {
-      display: `block`,
-      position: `relavive` as `relative`,
-      zIndex: 3,
-    };
-
-    const previewPlayerStyles: React.CSSProperties = {
-      position: `relavive` as `relative`,
-      zIndex: 2,
-      objectFit: `cover`,
-      maxWidth: `100%`,
-      height: `100%`,
-    };
-
-    const hiddenStyles: React.CSSProperties = {
-      display: `none`,
-    };
-
     return (
       <Link
         to={`/film/${id}`}
         className="small-movie-card__image"
-        style={this.props.active ? activeContainerStyles : containerStyles}
+        style={this.props.active ? this.activeContainerStyles : this.containerStyles}
       >
         <img
           src={img}
           alt={title}
           width="280"
           height="175"
-          style={this.state.active ? hiddenStyles : null}
+          style={this.state.active ? this.hiddenStyles : null}
         />
         <video
           poster={img}
@@ -128,7 +132,7 @@ class PreviewPlayer extends React.PureComponent<Props, State> {
           muted={true}
           controls={true}
           loop={true}
-          style={this.state.active ? previewPlayerStyles : hiddenStyles}
+          style={this.state.active ? this.previewPlayerStyles : this.hiddenStyles}
         />
       </Link>
     );
