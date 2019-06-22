@@ -7,4 +7,6 @@ export const Tabs = {
   OVERVIEW: 'overview',
   DETAILS: 'details',
   REVIEWS: 'reviews',
-}
+};
+export const MIN_REVIEW_LENGTH = 50;
+export const MAX_REVIEW_LENGTH = 400;

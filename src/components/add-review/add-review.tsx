@@ -8,6 +8,8 @@ import Profile from 'App/components/profile/profile';
 
 import { Movie as MovieType, Review as ReviewType } from 'App/types';
 
+import {MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH} from 'App/movie-variables';
+
 interface Props {
   onSubmit: (id: number, {}: { rating: number, comment: string}, onSuccess: () => void, onError: () => void) => void,
   history: {push: (string) => void},
@@ -66,7 +68,7 @@ class AddReview extends React.PureComponent<Props, State> {
       movie,
     } = this.props;
 
-    const isValid = text.length <= 400 && text.length >= 50 && rating;
+    const isValid = text.length <= MAX_REVIEW_LENGTH && text.length >= MIN_REVIEW_LENGTH && rating;
 
     return (
       <section className="movie-card movie-card--full" style={{ backgroundColor: movie.backgroundColor}}>
