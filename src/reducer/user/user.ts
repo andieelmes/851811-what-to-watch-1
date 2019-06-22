@@ -54,6 +54,7 @@ const Operation = {
         }
       )
       .catch((error) => {
+        if (!error.response) return false;
         onError(error);
       })
   },
