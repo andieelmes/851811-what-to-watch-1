@@ -12,6 +12,7 @@ import privateRoute from 'App/hocs/private-route/private-route';
 import withActiveItem from 'App/hocs/with-active-item/with-active-item';
 import withMoviePlayer from 'App/hocs/with-movie-player/with-movie-player';
 import withReviewForm from 'App/hocs/with-review-form/with-review-form';
+import withSignInForm from 'App/hocs/with-sign-in-form/with-sign-in-form';
 
 import Wrapper from 'App/components/wrapper/wrapper';
 import Main from 'App/components/main/main';
@@ -28,6 +29,7 @@ import {
 
 const PrivateFavorites = privateRoute(Favorites);
 const MainPageWithMoviePlayer = withMoviePlayer(Main);
+const SignInPageWithForm = withSignInForm(SignIn);
 
 const composeMoviePage = (WrappedComponent) => compose(withMoviePlayer, withActiveItem)(WrappedComponent);
 const MoviePageWithActiveItemWithMoviePlayer = composeMoviePage(Movie)
@@ -77,7 +79,7 @@ class App extends React.PureComponent<Props, null> {
               />
             )}
           />
-          <Route exact path="/login" render={(props) => (<SignIn user={user} {...props}/>)}/>
+          <Route exact path="/login" render={(props) => (<SignInPageWithForm user={user} {...props}/>)}/>
           <Route exact path="/mylist" render={(props) => (<PrivateFavorites user={user} movies={favorites} {...props}/>)}/>
           <Route path="/film/:id/review" render={(props) => {
             const currentMovie = App._getCurrentMovie(movies, +props.match.params.id)

@@ -9,11 +9,17 @@ describe(`Sign in component`, () => {
       .create(
           <BrowserRouter>
             <SignIn
-              onSubmit={() => {}}
               getLogin={() => {}}
               history={{
                 push: () => {}
               }}
+              onEmailChange={() => {}}
+              onPasswordChange={() => {}}
+              onFormSubmit={() => {}}
+              email=''
+              password=''
+              error=''
+              isSubmitting={false}
             />
           </BrowserRouter>
       )

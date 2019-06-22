@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { connect } from "react-redux";
 import { Operation } from "App/reducer/user/user";
+import { Link } from 'react-router-dom';
 import Footer from 'App/components/footer/footer';
 
 interface Props {
-  handleSubmit: ({}: { email: string, password: string}, onSuccess: () => void, onError: (string) => void) => void,
   history: {goBack: () => void},
   getLogin: () => void,
   user: {
@@ -12,32 +12,17 @@ interface Props {
     avatar: string,
     name: string,
   },
-};
-
-interface State {
   email: string,
   password: string,
   error: string,
   isSubmitting: boolean,
+  onEmailChange: () => void,
+  onPasswordChange: () => void,
+  displayError: () => void,
+  onFormSubmit: () => void,
 };
 
-class SignIn extends React.PureComponent<Props, State> {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: ``,
-      password: ``,
-      error: ``,
-      isSubmitting: false,
-    };
-
-    this._handleEmailChange = this._handleEmailChange.bind(this);
-    this._handlePasswordChange = this._handlePasswordChange.bind(this);
-    this._displayError = this._displayError.bind(this);
-    this._handleFormSubmit = this._handleFormSubmit.bind(this);
-  }
-
+class SignIn extends React.PureComponent<Props> {
   componentDidMount() {
     this.props.getLogin();
   }
@@ -57,7 +42,10 @@ class SignIn extends React.PureComponent<Props, State> {
       password,
       error,
       isSubmitting,
-    } = this.state;
+      onEmailChange,
+      onPasswordChange,
+      onFormSubmit,
+    } = this.props;
 
     const isValid = email.length && password.length;
 
@@ -65,18 +53,18 @@ class SignIn extends React.PureComponent<Props, State> {
       <div className="user-page">
         <header className="page-header user-page__head">
           <div className="logo">
-            <a href="main.html" className="logo__link">
+            <Link to="/" className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <h1 className="page-title user-page__title">Sign in</h1>
         </header>
 
         <div className="sign-in user-page__content">
-          <form action="#" className="sign-in__form" onSubmit={this._handleFormSubmit}>
+          <form action="#" className="sign-in__form" onSubmit={onFormSubmit}>
             { error && (
               <div className="sign-in__message">
                 <p>{error}</p>
@@ -84,11 +72,11 @@ class SignIn extends React.PureComponent<Props, State> {
             )}
             <div className="sign-in__fields">
               <div className="sign-in__field">
-                <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" value={email} onChange={this._handleEmailChange}/>
+                <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" value={email} onChange={onEmailChange}/>
                 <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
               </div>
               <div className="sign-in__field">
-                <input className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" value={password} onChange={this._handlePasswordChange}/>
+                <input className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" value={password} onChange={onPasswordChange}/>
                 <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
               </div>
             </div>
@@ -102,46 +90,11 @@ class SignIn extends React.PureComponent<Props, State> {
       </div>
     );
   }
-
-  private _handleEmailChange({target: {value}}) {
-    this.setState({
-      email: value
-    });
-  }
-
-  private _handlePasswordChange({target: {value}}) {
-    this.setState({
-      password: value
-    });
-  }
-
-  private _displayError(error) {
-    this.setState({
-      error: error.response.data.error.match(/\[(.*?)]/)[1],
-      isSubmitting: false,
-    });
-  }
-
-  private _handleFormSubmit(e) {
-    e.preventDefault();
-
-    const {
-      handleSubmit,
-      history
-    } = this.props;
-
-    this.setState({ isSubmitting: true })
-
-    handleSubmit({email: this.state.email, password: this.state.password}, history.goBack, this._displayError);
-  }
 }
 
 export {SignIn};
 
 const mapDispatchToProps = (dispatch) => ({
-  handleSubmit: ({email, password}, onSuccess, onError) => {
-    dispatch(Operation.postLogin(email, password, onSuccess, onError));
-  },
   getLogin: () => {
     dispatch(Operation.getLogin());
   },
