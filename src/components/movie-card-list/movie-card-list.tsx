@@ -2,62 +2,33 @@ import * as React from 'react';
 import MovieCard from 'App/components/movie-card/movie-card';
 
 import {Movie} from 'App/types';
-import {INITIAL_MOVIES_LENGTH, MOVIES_TO_SHOW} from 'App/movie-variables';
 
 interface Props {
   movies: Movie[],
   onChange: () => void
   activeItem: number,
   withButton: boolean,
+  children: React.ReactChildren,
 };
 
-interface State {
-  show: number,
-  increase: number,
-};
+const MovieCardList: React.FunctionComponent<Props> = (props) => {
+  const {
+    movies,
+    onChange,
+    activeItem,
+    children,
+  } = props;
 
-class MovieCardList extends React.PureComponent<Props, State> {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      show: INITIAL_MOVIES_LENGTH,
-      increase: MOVIES_TO_SHOW,
-    };
-
-    this._handleMoreButtonClick = this._handleMoreButtonClick.bind(this);
-  }
-
-  render() {
-    const {
-      movies,
-      onChange,
-      activeItem,
-      withButton,
-    } = this.props;
-
-    return (
-      <>
-        <div className="catalog__movies-list">
-          {
-            movies.slice(0, this.state.show).map((movie) => <MovieCard key={movie.id} onHover={onChange} activeItem={activeItem} {...movie}/>)
-          }
-        </div>
-        { (withButton && movies.length > this.state.show) && (
-          <div className="catalog__more">
-            <button className="catalog__button" type="button" onClick={this._handleMoreButtonClick}>Show more</button>
-          </div>
-        )}
-      </>
-    );
-  }
-
-
-  private _handleMoreButtonClick() {
-    this.setState({
-      show: this.state.show + this.state.increase,
-    })
-  }
+  return (
+    <>
+      <div className="catalog__movies-list">
+        {
+          movies.map((movie) => <MovieCard key={movie.id} onHover={onChange} activeItem={activeItem} {...movie}/>)
+        }
+      </div>
+      {children}
+    </>
+  );
 };
 
 export default MovieCardList;

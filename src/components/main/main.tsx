@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { connect } from "react-redux";
+import { compose } from 'redux'
 import withActiveItem from 'App/hocs/with-active-item/with-active-item';
 import Profile from 'App/components/profile/profile';
 import GenreList from 'App/components/genre-list/genre-list';
+import withShowMoreButton from 'App/hocs/with-show-more-button/with-show-more-button';
 import MovieCardList from 'App/components/movie-card-list/movie-card-list';
 import Footer from 'App/components/footer/footer';
 
@@ -10,6 +12,8 @@ import { Operation } from "App/reducer/data/data";
 
 import { Movie, User } from 'App/types';
 import { capitalize } from 'App/utils';
+
+import {INITIAL_MOVIES_LENGTH, MOVIES_TO_SHOW} from 'App/movie-variables';
 
 interface Props {
   movies: Movie[],
@@ -26,7 +30,9 @@ interface Props {
 };
 
 const GenreListWithActiveItem = withActiveItem(GenreList);
-const MovieCardListWithActiveItem = withActiveItem(MovieCardList);
+const composeMovieCardList = (WrappedComponent) => compose(withActiveItem, withShowMoreButton)(WrappedComponent);
+
+const MovieCardListWithActiveItemwithShowMoreButton = composeMovieCardList(MovieCardList)
 
 const Main: React.FunctionComponent<Props> = (props) => {
   const {
@@ -101,7 +107,7 @@ const Main: React.FunctionComponent<Props> = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenreListWithActiveItem onActiveItemChange={onGenreClick} genres={genres}/>
-          <MovieCardListWithActiveItem movies={movies} withButton/>
+          <MovieCardListWithActiveItemwithShowMoreButton movies={movies} show={INITIAL_MOVIES_LENGTH} increase={MOVIES_TO_SHOW}/>
         </section>
 
         <Footer/>
