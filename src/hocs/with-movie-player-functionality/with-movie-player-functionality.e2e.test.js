@@ -11,21 +11,17 @@ Enzyme.configure({adapter: new Adapter()});
 const MockComponent = (props) => (
   <div>
     <video
-      ref={props.forwardedVideoRef}
       onTimeUpdate={props.onTimeUpdate}
     />
     <progress
       className="player__progress"
       value={props.progress}
-      ref={props.forwardedProgressRef}
       onClick={props.onProgressClick}
     ></progress>
   </div>
 );
 
 MockComponent.propTypes = {
-  forwardedVideoRef: PropTypes.ref,
-  forwardedProgressRef: PropTypes.ref,
   progress: PropTypes.number,
   onTimeUpdate: PropTypes.func,
   onProgressClick: PropTypes.func,

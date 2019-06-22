@@ -118,8 +118,8 @@ const AddReview: React.FunctionComponent<Props> = (props) => {
               placeholder="Review text"
               onChange={onTextChange}
               defaultValue={text}
-              minLength={50}
-              maxLength={400}
+              minLength={MIN_REVIEW_LENGTH}
+              maxLength={MAX_REVIEW_LENGTH}
               disabled={isSubmitting}
             />
             <div className="add-review__submit">

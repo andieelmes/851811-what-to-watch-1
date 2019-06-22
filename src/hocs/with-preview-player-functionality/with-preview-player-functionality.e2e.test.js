@@ -1,22 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import withPreviewPlayerFunctionality from 'App/hocs/with-preview-player-functionality/with-preview-player-functionality';
 
 Enzyme.configure({adapter: new Adapter()});
 
-const MockComponent = (props) => (
+const MockComponent = () => (
   <div>
-    <video
-      ref={props.forwardedVideoRef}
-    />
+    <video/>
   </div>
 );
-
-MockComponent.propTypes = {
-  forwardedVideoRef: PropTypes.ref,
-};
 
 const MockComponentWrapped = withPreviewPlayerFunctionality(MockComponent);
 

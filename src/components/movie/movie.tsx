@@ -198,7 +198,7 @@ class Movie extends React.PureComponent<Props, null> {
             <section className="catalog catalog--like-this">
               <h2 className="catalog__title">More like this</h2>
 
-              <MovieCardListWithActiveItem movies={similar} withButton/>
+              <MovieCardListWithActiveItem movies={similar}/>
             </section>
           )}
 
