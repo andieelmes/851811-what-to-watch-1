@@ -12,7 +12,6 @@ exports[`Movie player component should render correctly 1`] = `
 >
   <video
     className="player__video"
-    muted={true}
     onTimeUpdate={[Function]}
     poster="https://es31-server.appspot.com/wtw/static/film/background/Midnight_Special.jpg"
     style={
