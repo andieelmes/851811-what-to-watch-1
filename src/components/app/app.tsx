@@ -21,6 +21,10 @@ import AddReview from 'App/components/add-review/add-review';
 
 import { Movie as MovieType } from 'App/types';
 
+import {
+  SIMILART_MOVIES_TO_SHOW
+} from "App/movie-variables";
+
 const PrivateFavorites = privateRoute(Favorites);
 const PrivateAddReview = privateRoute(AddReview);
 const MainPageWithMoviePlayer = withMoviePlayer(Main);
@@ -79,7 +83,7 @@ class App extends React.PureComponent<Props, null> {
           }}/>
           <Route path="/film/:id" render={(props) => {
             const currentMovie = App._getCurrentMovie(movies, +props.match.params.id)
-            const similarMovies = movies.filter((movie) => movie.genre === currentMovie.genre && movie.id !== currentMovie.id).slice(0, 4);
+            const similarMovies = movies.filter((movie) => movie.genre === currentMovie.genre && movie.id !== currentMovie.id).slice(0, SIMILART_MOVIES_TO_SHOW);
             return <MoviePageWithActiveItemWithMoviePlayer moviePlayerContent={currentMovie} user={user} movie={currentMovie} similar={similarMovies} {...props}/>
           }}/>
         </Switch>

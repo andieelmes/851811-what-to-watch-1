@@ -1,7 +1,8 @@
 import { createSelector } from "reselect";
 import Namespace from "../namespaces";
 import {
-  ALL_GENRES
+  ALL_GENRES,
+  GENRES_T0_SHOW
 } from "App/movie-variables";
 import { Data, Movie } from 'App/types';
 
@@ -17,7 +18,7 @@ export const getGenre = (state: Data) => {
 
 export const getGenres = createSelector(
     getAllMovies,
-    (movies) => [ALL_GENRES, ...new Set(movies.map((movie: Movie) => movie.genre))].slice(0, 10)
+    (movies) => [ALL_GENRES, ...new Set(movies.map((movie: Movie) => movie.genre))].slice(0, GENRES_T0_SHOW)
 );
 
 export const getMovies = createSelector(
